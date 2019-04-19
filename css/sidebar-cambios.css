@@ -1,0 +1,41 @@
+.link-mayor-menor:before {
+  font-family: "FontAwesome";
+  margin-right: 0.1875rem;
+  float: right;
+}
+
+.link-mayor-menor.up:before {
+  content: "/f107";
+}
+
+.link-mayor-menor.down:before {
+  content: "/f106";
+}
+
+.link-mayor-menor.transition:before {
+  transition: 0.2s all;
+}
+
+.link-mayor-menor:before {
+  opacity: 0.3;
+}
+
+.link-mayor-menor.active:before {
+  opacity: 0.3;
+}
+
+.link-mayor-menor:before {
+  opacity: 0.3;
+}
+
+.link-mayor-menor.active:before {
+  opacity: 0.3;
+}
+
+.link-mayor-menor.rotate:before {
+  transform: rotate(180deg);
+}
+
+.link-mayor-menor.rotate-revert:before {
+  transform: rotate(-180deg);
+}

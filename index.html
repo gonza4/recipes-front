@@ -9,37 +9,68 @@
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/css/perfect-scrollbar.min.css">
+
+	<link rel="stylesheet" href="node_modules/open-sans-fontface/open-sans.css">
+	<link rel="stylesheet" href="css/sidebar.css">
+
 	<link rel="stylesheet" href="css/sidebar.menu.css">
 	<link rel="stylesheet" href="css/sidebar.menu.white.css">
 	<link rel="stylesheet" href="css/sidebar.menu.dark.css">
-	
-	<link rel="stylesheet" href="css/estilos.css">
+
 	<title>RecipesClub</title>
 </head>
 
-<body>
+<body class="body body-lighten">
 	<div class="d-flex" id="wrapper">
 
-		<!-- sidebar menu -->
-		<div class="sidebar bg-white-2">
-			<div class="menu">
+		<!-- sidebar -->
+		<div class="sidebar sidebar-lighten">
+
+			<!-- sidebar menu -->
+			<div class="sidebar-menu">
 
 				<!-- menu -->
-				<ul class="menu scrollbar">
+				<ul class="list list-unstyled list-scrollbar">
 
 					<!-- simple menu -->
-					<li>
-						<span class="name">Categorías</span>
-						<ul>
-							<li><a href="#">Vegetales</a></li>
-							<li><a href="#">Carne</a></li>
-							<li><a href="#">Vegana</a></li>
-							<li><a href="#">Celíacos</a></li>
-							<li><a href="#">Bajas Calorías</a></li>
-							<li><a href="#" class="current">Todas</a></li>
+					<li class="list-item">
+						<p class="list-title">CATEGORÍAS</p>
+						<ul class="list-unstyled">
+							<li><a href="#" class="list-link">Vegetales</a></li>
+							<li><a href="#" class="list-link link-current current">Carne</a></li>
+							<li><a href="#" class="list-link">Vegana</a></li>
+							<li><a href="#" class="list-link">Celíacos</a></li>
+							<li><a href="#" class="list-link">Bajas calorías</a></li>
 						</ul>
 					</li>
 
+					<!-- multi-level dropdown menu -->
+					<li class="list-item">
+						<p class="list-title">ORDENAR POR</p>
+						<ul class="list-unstyled">
+							<li><a href="#" class="list-link link-arrow"><i class="fa"
+										aria-hidden="true"></i>Ingredientes</a>
+								<ul class="list-unstyled list-hidden">
+									<li><a href="#" class="list-link">Mayor</a></li>
+									<li><a href="#" class="list-link">Menor</a></li>
+								</ul>
+							</li>
+							<li><a href="#" class="list-link link-arrow"><i class="fa"
+										aria-hidden="true"></i>Porciones</a>
+								<ul class="list-unstyled list-hidden">
+									<li><a href="#" class="list-link">Mayor</a></li>
+									<li><a href="#" class="list-link">Menor</a></li>
+								</ul>
+							</li>
+							<li><a href="#" class="list-link link-arrow"><i class="fa"
+										aria-hidden="true"></i>Calorías</a>
+								<ul class="list-unstyled list-hidden">
+									<li><a href="#" class="list-link">Mayor</a></li>
+									<li><a href="#" class="list-link">Menor</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
 
 				</ul>
 			</div>
@@ -48,45 +79,40 @@
 		<!-- website content -->
 		<div class="content">
 
-			<!-- barra superior -->
+			<!-- navbar top fixed -->
 			<nav class="navbar navbar-expand-lg fixed-top bg-white-2">
-				<a class="navbar-brand navbar-title" href="#">Menú</a>
+
+				<!-- navbar title -->
+				<a class="navbar-brand navbar-link" href="index.html">RecipesClub</a>
+
+				<!-- navbar sidebar menu toggle -->
 				<span class="navbar-text">
-					<a href="#" id="sidebar" class="bars">
+					<a href="#" id="sidebar-toggle" class="navbar-bars">
 						<i class="fa fa-bars" aria-hidden="true"></i>
 					</a>
 				</span>
+
 			</nav>
 
-			<!-- contenido -->
+			<!-- content container -->
 			<div class="container-fluid">
 
 				<h1>Listado de Recetas</h1>
 
-				<div class="box bg-white" >
+				<!-- one box -->
+				<div class="content-box mb-3 content-lighten">
 					<div class="row">
 						<div class="col-auto">
-							<img src="https://canalcocina.es/medias/_cache/zoom-eaa26596a406e2d6d24cd85613556179-920-518.JPG" class="rounded"
-								width="100" height="100">
-						</div>
-						<div class="col-auto">
-							<a href="detalle.html"><h3>Croquetas de Pollo Asado en su Salsa</h3></a>
-							<p>Ingredientes: 8</p>
-							<p>Calorías: 3734.41 Kcal</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="box bg-white">
-					<div class="row">
-						<div class="col-auto">
-							<img src="https://img-global.cpcdn.com/002_recipes/55ed5edec25a3f2e/664x470cq70/photo.jpg"
+							<img src="https://canalcocina.es/medias/_cache/zoom-eaa26596a406e2d6d24cd85613556179-920-518.JPG"
 								class="rounded" width="100" height="100">
 						</div>
 						<div class="col-auto">
-							<h3>Pastel de Hígado de Pollo</h3>
-							<p>Ingredientes: 5</p>
-							<p>Calorías: 5403.12 Kcal</p>
+							<a href="detalle.html">
+								<h3>Croquetas de Pollo Asado en su Salsa</h3>
+							</a>
+							<p>Ingredientes: 8</p>
+							</p>Porciones: 14</p>
+							Calorías: 3734.41 Kcal
 						</div>
 					</div>
 				</div>
@@ -106,15 +132,17 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.min.js">
+	</script>
+	<script src="js/nanobar.js"></script>
 	<script src="js/sidebar.menu.js"></script>
 	<script>
 		$(function () {
-			new PerfectScrollbar('.scrollbar');
+			new PerfectScrollbar('.list-scrollbar');
+			var nanobar = new Nanobar();
+			nanobar.go(100);
 		});
 	</script>
-
 </body>
 
 </html>
