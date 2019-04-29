@@ -4,36 +4,32 @@ app.controller("myController", function ($scope, $http) {
 
     // variables
     $scope.pantalla = "listado";
-    $scope.orden_crit;
-    $scope.orden_rev;
+    $scope.orderType;
+    $scope.order;
     $scope.procesando = 0;
-    $scope.recetas = [];
+    $scope.recetas;
     $scope.receta;
-    $scope.r = "http://www.edamam.com/ontologies/edamam.owl#recipe_9b5945e03f05acbf9d69625138385408";
-    $scope.url = "https://api.edamam.com/search";
-    $scope.q = "vegetables";
-    $scope.rece
+    $scope.r = "";
+    $scope.url = "http://18.191.243.135:5000";
+    $scope.q = "vegetales";
+    $scope.pag = 1;
 
     // funciones
-    $scope.buscarRecetas = function (q) {
+    $scope.buscarRecetas = function (q,pag) {
 
         $scope.pantalla = "listado"
         $scope.procesando++;
-        $scope.orden_crit = "";
-        $scope.orden_rev = "";
+        $scope.q = q;
 
         $http({
-            url: $scope.url,
+            url: $scope.url + "/api/recipes",
             method: 'GET',
             params: {
                 q: q,
-                from: 0,
-                to: 100,
-                app_id: '81adf351',
-                app_key: '46a6347c2e3680be25b7b56c99911ef8'
+                from: pag
             }
         }).then(function exito(respose) {
-            $scope.recetas = respose.data.hits;
+            $scope.recetas = respose.data;
             $scope.procesando--;
 
         }, function fracaso(respose) {
@@ -42,6 +38,39 @@ app.controller("myController", function ($scope, $http) {
         });
     };
 
+    $scope.buscarRecetasOrdenadas = function (pag, orderType,order) {
+
+        $scope.pantalla = "listado"
+        $scope.procesando++;
+
+        $http({
+            url: $scope.url + "/api/recipes",
+            method: 'GET',
+            params: {
+                q: $scope.q, // de consulta anterior
+                from: pag,
+                orderType: orderType, 
+                order: order
+            }
+        }).then(function exito(respose) {
+            $scope.recetas = respose.data;
+            $scope.procesando--;
+
+        }, function fracaso(respose) {
+            $scope.respuesta = "error get en buscarRecetas()";
+            $scope.procesando--;
+        });
+
+        $scope.orderType = orderType;
+        $scope.order = order;
+    };
+
+    $scope.siguientePag = function() {
+        $scope.pag++;
+        $scope.buscarRecetasOrdenadas($scope.pag, $scope.orderType,$scope.order);
+        window.scrollTo(0, 0);
+    }
+
 
     $scope.buscarReceta = function (r) {
 
@@ -49,15 +78,13 @@ app.controller("myController", function ($scope, $http) {
         $scope.pantalla = 'detalle';
 
         $http({
-            url: $scope.url,
+            url: $scope.url + "/api/recipe/byId",
             method: 'GET',
             params: {
-                r: r,
-                app_id: '81adf351',
-                app_key: '46a6347c2e3680be25b7b56c99911ef8'
+                r: r
             }
         }).then(function exito(respose) {
-            $scope.receta = respose.data[0];
+            $scope.receta = respose.data;
             $scope.procesando--;
 
         }, function fracaso(respose) {
@@ -67,6 +94,6 @@ app.controller("myController", function ($scope, $http) {
     }
 
     // busco recetas por default para mostrar en la homepage
-    $scope.buscarRecetas($scope.q);
+    $scope.buscarRecetas($scope.q,$scope.pag);
 
 });
