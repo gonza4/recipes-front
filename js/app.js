@@ -93,6 +93,25 @@ app.controller("myController", function ($scope, $http) {
         });
     }
 
+    $scope.buscarCategorias=function(){
+        $scope.pantalla="homepage"
+        $scope.procesando++;
+        $http({
+            url: $scope.url + "id de las categorias",
+            method: 'GET',
+            params: {
+                r: r
+            }
+        }).then(function exito(respose) {
+            $scope.receta = respose.data;
+            $scope.procesando--;
+
+        }, function fracaso(respose) {
+            $scope.receta = "error get en buscarReceta()";
+            $scope.procesando--;
+        });
+    }
+
     // busco recetas por default para mostrar en la homepage
     $scope.buscarRecetas($scope.q,$scope.pag);
 

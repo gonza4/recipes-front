@@ -4,11 +4,12 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/css/perfect-scrollbar.min.css">
+	href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/css/perfect-scrollbar.min.css">
 
 	<link rel="stylesheet" href="node_modules/open-sans-fontface/open-sans.css">
 	<link rel="stylesheet" href="css/sidebar.css">
@@ -16,11 +17,98 @@
 	<link rel="stylesheet" href="css/sidebar.menu.css">
 	<link rel="stylesheet" href="css/sidebar.menu.white.css">
 	<link rel="stylesheet" href="css/sidebar.menu.dark.css">
+	<link rel="stylesheet" href="css/styles.css">
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 	<title>RecipesClub</title>
 </head>
 
 <body class="body body-lighten" ng-app="myApp" ng-controller="myController">
+
+	<!--HOME PAGE-->
+	<div class="container-fluid" >
+		<br/>
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-10 col-lg-8">
+
+				<form id="frm" class="card card-sm " method="get" action="#" onsubmit="return validar(this)" >
+					<div class="card-body row no-gutters align-items-center">
+
+						<div class="col">
+							<input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Buscar Receta" id="txtBuscar" name="txtBuscar" >
+						</div>
+						<!--end of col-->
+						<div class="col-auto ml-1	">
+							<button class="btn btn-lg btn-primary" type="submit" name="btnBuscar">Buscar</button>
+						</div>
+						<!--end of col-->
+					</div>
+				</form>
+
+			</div>
+			<!--end of col-->
+		</div>
+
+
+		<!-- Categorias-->
+
+		<div class="container mt-4">
+			<h2 class="text-center">CATEGORIAS</h2>
+			<div class="row mt-30">
+				<div class="col-md-4 col-sm-6">
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content">
+							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content">
+							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content">
+							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content">
+							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content">
+							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content">
+							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
 
 	<div class="d-flex" id="wrapper">
 
@@ -43,7 +131,7 @@
 							<li><a href="#" class="list-link" ng-click="buscarRecetas('vegana')">Vegana</a></li>
 							<li><a href="#" class="list-link" ng-click="buscarRecetas('celiacos')">Celíacos</a></li>
 							<li><a href="#" class="list-link" ng-click="buscarRecetas('bajas calorias')">Bajas
-									calorías</a></li>
+							calorías</a></li>
 						</ul>
 					</li>
 
@@ -52,25 +140,25 @@
 						<p class="list-title">ORDENAR POR</p>
 						<ul class="list-unstyled">
 							<li><a href="#" class="list-link link-arrow"><i class="fa"
-										aria-hidden="true"></i>Ingredientes</a>
+								aria-hidden="true"></i>Ingredientes</a>
 								<ul class="list-unstyled list-hidden">
 									<li><a href="#" class="list-link"
-											ng-click="buscarRecetasOrdenadas('ingredientes','mayor')">Mayor</a>
+										ng-click="buscarRecetasOrdenadas('ingredientes','mayor')">Mayor</a>
 									</li>
 									<li><a href="#" class="list-link"
-											ng-click="buscarRecetasOrdenadas('ingredientes','menor')">Menor</a>
+										ng-click="buscarRecetasOrdenadas('ingredientes','menor')">Menor</a>
 									</li>
 								</ul>
 							</li>
 							<li><a href="#" class="list-link link-arrow"><i class="fa"
-										aria-hidden="true"></i>Porciones</a>
+								aria-hidden="true"></i>Porciones</a>
 								<ul class="list-unstyled list-hidden">
 									<li><a href="#" class="list-link" ng-click="buscarRecetasOrdenadas('porciones','mayor')">Mayor</a></li>
 									<li><a href="#" class="list-link" ng-click="buscarRecetasOrdenadas('porciones','menor')">Menor</a></li>
 								</ul>
 							</li>
 							<li><a href="#" class="list-link link-arrow"><i class="fa"
-										aria-hidden="true"></i>Calorías</a>
+								aria-hidden="true"></i>Calorías</a>
 								<ul class="list-unstyled list-hidden">
 									<li><a href="#" class="list-link" ng-click="buscarRecetasOrdenadas('calorias','mayor')">Mayor</a></li>
 									<li><a href="#" class="list-link" ng-click="buscarRecetasOrdenadas('calorias','menor')">Menor</a></li>
@@ -108,271 +196,272 @@
 
 			<!-- LISTADO -->
 			<!-- content container -->
-			<div class="container-fluid" ng-show="pantalla=='listado'">
+			<div class="container-fluid mt-5" ng-show="pantalla=='listado'">
 
 				<h1>Listado de Recetas</h1>
 
 				<div class="progress" ng-model="barra" ng-show="procesando">
 					<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-						aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+					aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
 				</div>
 
 				<!-- one box -->
 				<div class="content-box mb-3 content-lighten"
-					ng-repeat="r in recetas | orderBy: orden_crit : orden_rev">
-					<div class="row">
-						<div class="col-auto">
-							<img src="{{r.image}}" class="rounded" width="100" height="100">
-						</div>
-						<div class="col-auto">
-							<a href="#" ng-click="buscarReceta(r.uri)">
-								<h3>{{r.label}}</h3>
-							</a>
-							<p>Ingredientes: {{r.ingredientLines.length}}</p>
-							</p>Porciones: {{r.yield}}</p>
-							Calorías: {{r.calories | number: 2}} Kcal
-						</div>
+				ng-repeat="r in recetas | orderBy: orden_crit : orden_rev">
+				<div class="row">
+					<div class="col-auto">
+						<img src="{{r.image}}" class="rounded" width="100" height="100">
 					</div>
+					<div class="col-auto">
+						<a href="#" ng-click="buscarReceta(r.uri)">
+							<h3>{{r.label}}</h3>
+						</a>
+						<p>Ingredientes: {{r.ingredientLines.length}}</p>
+					</p>Porciones: {{r.yield}}</p>
+					Calorías: {{r.calories | number: 2}} Kcal
 				</div>
-
-				<!-- PAGINACION -->
-				<div class="d-flex justify-content-center" ng-show="!procesando" ng-click="siguientePag()"><a href="">ver 20 más</a>
-				</div>
-
 			</div>
+		</div>
 
-			<!-- DETALLE -->
-			<!-- content container -->
-			<div class="container-fluid" ng-show="pantalla=='detalle'">
+		<!-- PAGINACION -->
+		<div class="d-flex justify-content-center" ng-show="!procesando" ng-click="siguientePag()"><a href="">ver 20 más</a>
+		</div>
 
-				<div class="progress" ng-model="barra2" ng-show="procesando">
-					<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-						aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-				</div>
+	</div>
 
-				<div class="row">
-					<div class="col-12">
-						<h1 class="text-justify pt-3">{{receta.label}} </h1>
-						<br>
-					</div>
-					<div class="col-6">
-						<img class="img-fluid" src={{receta.image}}>
-					</div>
-					<div class="col-6">
-						<div class="row justify-content-center">
-							<h4 class="">INGREDIENTES</h4>
+	<!-- DETALLE -->
+	<!-- content container -->
+	<div class="container-fluid" ng-show="pantalla=='detalle'">
 
-							<div class="col-12 justify-content-center">
-								<hr>
-								<h5>Cantidad de porciones: {{receta.yield}} </h5>
-								<hr>
-							</div>
-							<div class="col-12 justify-content-center" ng-repeat="ingredientes in receta.ingredients">
-								<p>
-									- {{ingredientes.text}} <br>
-								</p>
+		<div class="progress" ng-model="barra2" ng-show="procesando">
+			<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+			aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+		</div>
 
-							</div>
-							<hr>
-							<a href={{receta.url}} target="blank">Ver Procedimiento</a>
-						</div>
-					</div>
-				</div>
-
+		<div class="row">
+			<div class="col-12">
+				<h1 class="text-justify pt-3">{{receta.label}} </h1>
 				<br>
-				<h3>INFORMACION NUTRICIONAL</h3>
-				<br>
-				<div class="row">
-					<div class="col-12 col-md-6 ">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th> </th>
-									<th>Cantidad por pocion</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Calorias</td>
-									<td>
-										{{receta.totalNutrients.ENERC_KCAL.quantity |number:2}}
-										{{receta.totalNutrients.ENERC_KCAL.unit}}
+			</div>
+			<div class="col-6">
+				<img class="img-fluid" src={{receta.image}}>
+			</div>
+			<div class="col-6">
+				<div class="row justify-content-center">
+					<h4 class="">INGREDIENTES</h4>
 
-										<str>
+					<div class="col-12 justify-content-center">
+						<hr>
+						<h5>Cantidad de porciones: {{receta.yield}} </h5>
+						<hr>
+					</div>
+					<div class="col-12 justify-content-center" ng-repeat="ingredientes in receta.ingredients">
+						<p>
+							- {{ingredientes.text}} <br>
+						</p>
+
+					</div>
+					<hr>
+					<a href={{receta.url}} target="blank">Ver Procedimiento</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<br>
+	<h3>INFORMACION NUTRICIONAL</h3>
+	<br>
+	<div class="row">
+		<div class="col-12 col-md-6 ">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th> </th>
+						<th>Cantidad por pocion</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Calorias</td>
+						<td>
+							{{receta.totalNutrients.ENERC_KCAL.quantity |number:2}}
+							{{receta.totalNutrients.ENERC_KCAL.unit}}
+
+							<str>
 								<tr>
 									<td>Grasas Saturadas</td>
 									<td>{{receta.totalNutrients.FASAT.quantity  |number:2}}
-										{{receta.totalNutrients.FASAT.unit}}</td>
+									{{receta.totalNutrients.FASAT.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Grasas Trans</td>
 									<td>{{receta.totalNutrients.FATRN.quantity |number:2}}
-										{{receta.totalNutrients.FATRN.unit}}</td>
+									{{receta.totalNutrients.FATRN.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Grasas Monoinsaturadas</td>
 									<td>{{receta.totalNutrients.FAMS.quantity |number:2}}
-										{{receta.totalNutrients.FAMS.unit}}</td>
+									{{receta.totalNutrients.FAMS.unit}}</td>
 
 								</tr>
 
 								<tr>
 									<td>Grasas Poliinsaturadas</td>
 									<td>{{receta.totalNutrients.FAPU.quantity |number:2}}
-										{{receta.totalNutrients.FAPU.unit}}</td>
+									{{receta.totalNutrients.FAPU.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Carbohidratos</td>
 									<td>{{receta.totalNutrients.CHOCDF.quantity |number:2}}
-										{{receta.totalNutrients.CHOCDF.unit}}</td>
+									{{receta.totalNutrients.CHOCDF.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Fibras</td>
 									<td> {{receta.totalNutrients.FIBTG.quantity |number:2}}
-										{{receta.totalNutrients.FIBTG.unit}}</td>
+									{{receta.totalNutrients.FIBTG.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Azucares</td>
 									<td>{{receta.totalNutrients.SUGAR.quantity |number:2}}
-										{{receta.totalNutrients.SUGAR.unit}}</td>
+									{{receta.totalNutrients.SUGAR.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Proteina</td>
 									<td>{{receta.totalNutrients.PROCNT.quantity |number:2}}
-										{{receta.totalNutrients.PROCNT.unit}}</td>
+									{{receta.totalNutrients.PROCNT.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Colesterol</td>
 									<td>{{receta.totalNutrients.CHOLE.quantity |number:2}}
-										{{receta.totalNutrients.CHOLE.unit}}</td>
+									{{receta.totalNutrients.CHOLE.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Sodio</td>
 									<td>{{receta.totalNutrients.NA.quantity |number:2}}
-										{{receta.totalNutrients.NA.unit}}</td>
+									{{receta.totalNutrients.NA.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Calcio</td>
 									<td>{{receta.totalNutrients.CA.quantity |number:2}}
-										{{receta.totalNutrients.CA.unit}}</td>
+									{{receta.totalNutrients.CA.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Magnesio</td>
 									<td>{{receta.totalNutrients.MG.quantity |number:2}}
-										{{receta.totalNutrients.MG.unit}}</td>
+									{{receta.totalNutrients.MG.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Potasio</td>
 									<td>{{receta.totalNutrients.K.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 
-							</tbody>
-						</table>
-					</div>
-					<div class="col-12 col-md-6">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th> </th>
-									<th>Cantidad por pocion</th>
-								</tr>
-							</thead>
-							<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="col-12 col-md-6">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th> </th>
+										<th>Cantidad por pocion</th>
+									</tr>
+								</thead>
+								<tbody>
 								</tr>
 								<tr>
 									<td>Hierro</td>
 									<td>{{receta.totalNutrients.FE.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Zinc</td>
 									<td>{{receta.totalNutrients.ZN.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Fosforo</td>
 									<td>{{receta.totalNutrients.P.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Vitamina A</td>
 									<td>{{receta.totalNutrients.VITA_RAE.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Vitamina C</td>
 									<td>{{receta.totalNutrients.VITC.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Vitamina B1</td>
 									<td>{{receta.totalNutrients.THIA.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Vitamina B2</td>
 									<td>{{receta.totalNutrients.RIBF.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Vitamina B3</td>
 									<td>{{receta.totalNutrients.NIA.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Vitamina B6</td>
 									<td>{{receta.totalNutrients.VITB6A.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Vitamina B9</td>
 									<td>{{receta.totalNutrients.FOL.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Vitamina B12</td>
 									<td>{{receta.totalNutrients.VITB12.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Vitamina D</td>
 									<td>{{receta.totalNutrients.VITD.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Vitamina E</td>
 									<td>{{receta.totalNutrients.TOCPHA.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 								</tr>
 								<tr>
 									<td>Vitamina K</td>
 									<td>{{receta.totalNutrients.VITK1.quantity |number:2}}
-										{{receta.totalNutrients.K.unit}}</td>
+									{{receta.totalNutrients.K.unit}}</td>
 
 								</tr>
 
@@ -386,23 +475,29 @@
 		</div>
 	</div>
 
+	<footer class="mt-5 mb-2">
+		Copyright Recipes Club 2019
+	</footer>
+
 	<!-- SCRIPTS -->
 	<!-- javascript library -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
-		crossorigin="anonymous"></script>
+	integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+	crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-		crossorigin="anonymous"></script>
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-		crossorigin="anonymous"></script>
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.min.js">
 	</script>
 	<script src="js/nanobar.js"></script>
 	<script src="js/sidebar.menu.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
 	<script src="js/app.js"></script>
+	<script src="js/validaciones.js"></script>
 	<script>
 		$(function () {
 			new PerfectScrollbar('.list-scrollbar');
@@ -410,6 +505,8 @@
 			nanobar.go(100);
 		});
 	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 </body>
 
 </html>
