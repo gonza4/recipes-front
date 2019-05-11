@@ -10,11 +10,31 @@ app.controller("myController", function ($scope, $http) {
     $scope.recetas;
     $scope.receta;
     $scope.r = "";
-    $scope.url = "http://18.191.243.135:5000";
+    $scope.url = "http://ec2-18-219-208-158.us-east-2.compute.amazonaws.com:5000";
     $scope.q = "vegetales";
     $scope.pag = 1;
+    $scope.idReceta=0;
 
     // funciones
+    $scope.buscarCategorias=function(){
+        $scope.pantalla="home"
+        $scope.procesando++;
+        $http({
+            url: $scope.url + "id de las categorias",//completar
+            method: 'GET',
+            params: {
+                r: r
+            }
+        }).then(function exito(respose) {
+            $scope.receta = respose.data;
+            $scope.procesando--;
+
+        }, function fracaso(respose) {
+            $scope.receta = "error get en buscarReceta()";
+            $scope.procesando--;
+        });
+    }
+
     $scope.buscarRecetas = function (q,pag) {
 
         $scope.pantalla = "listado"
@@ -75,43 +95,27 @@ app.controller("myController", function ($scope, $http) {
     $scope.buscarReceta = function (r) {
 
         $scope.procesando++;
-        $scope.pantalla = 'detalle';
+        $scope.pantalla = 'listado';
 
         $http({
-            url: $scope.url + "/api/recipe/byId",
+            url: $scope.url + "/api/recipe/byId/0", 
             method: 'GET',
-            params: {
-                r: r
-            }
+            
         }).then(function exito(respose) {
             $scope.receta = respose.data;
             $scope.procesando--;
-
+            console.log($scope.receta);
+            
         }, function fracaso(respose) {
             $scope.receta = "error get en buscarReceta()";
             $scope.procesando--;
+
+            console.log($scope.receta);
+           
         });
     }
 
-    $scope.buscarCategorias=function(){
-        $scope.pantalla="homepage"
-        $scope.procesando++;
-        $http({
-            url: $scope.url + "id de las categorias",
-            method: 'GET',
-            params: {
-                r: r
-            }
-        }).then(function exito(respose) {
-            $scope.receta = respose.data;
-            $scope.procesando--;
-
-        }, function fracaso(respose) {
-            $scope.receta = "error get en buscarReceta()";
-            $scope.procesando--;
-        });
-    }
-
+    
     // busco recetas por default para mostrar en la homepage
     $scope.buscarRecetas($scope.q,$scope.pag);
 

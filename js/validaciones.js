@@ -9,10 +9,11 @@ function validar(frm) {
 		}
 
 		toastr["error"]("Minimo 3 caracteres", "Error")
-
+	
 		frm.txtBuscar.focus(); 
 
 		return false;
 	} 
 	return true;
 } 
+
