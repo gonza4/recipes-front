@@ -90,9 +90,13 @@ app.controller("myController", function ($scope, $http) {
         $scope.buscarRecetasOrdenadas($scope.pag, $scope.orderType,$scope.order);
         window.scrollTo(0, 0);
     }
+     $scope.anteriorPag = function() {
+        $scope.pag--;
+        $scope.buscarRecetasOrdenadas($scope.pag, $scope.orderType,$scope.order);
+        window.scrollTo(0, 0);
+    }
 
-
-    $scope.buscarReceta = function (r) {
+     $scope.buscarReceta = function (r) {
 
         $scope.procesando++;
         $scope.pantalla = 'listado';
@@ -105,7 +109,8 @@ app.controller("myController", function ($scope, $http) {
             $scope.receta = respose.data;
             $scope.procesando--;
             console.log($scope.receta);
-            
+            infoNutricional($scope.receta);
+
         }, function fracaso(respose) {
             $scope.receta = "error get en buscarReceta()";
             $scope.procesando--;
