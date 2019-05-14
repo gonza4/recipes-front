@@ -24,8 +24,11 @@
 	<title>RecipesClub</title>
 </head>
 
-<body class="body body-lighten" ng-app="myApp" ng-controller="myController">
+<body class="body body-lighten" ng-app="myApp" ng-controller="myController"  >
 	
+
+
+
 
 	<!--HOME PAGE-->
 	<div class="container-fluid"  >
@@ -54,146 +57,36 @@
 
 		<!-- Categorias-->
 
-		<div class="container mt-4">
+		<div class="container mt-4" ng-init="buscarCategorias()" >
 			<h2 class="text-center">CATEGORIAS</h2>
-			<div class="row mt-30">
 
-				<div class="col-md-4 col-sm-6">
+			<div class="row mt-30" ng-repeat="c in categoria">
+				
+				<!--PARA LAS CATEGORIAS PRINCIPALES-->
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.DietLabels.values" >
 					<div class="box16">
 						<img src="img/logo-Solo.png">
-						<div class="box-content">
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="box16">
-						<img src="img/logo-Solo.png">
-						<div class="box-content">
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="box16">
-						<img src="img/logo-Solo.png">
-						<div class="box-content">
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="box16">
-						<img src="img/logo-Solo.png">
-						<div class="box-content">
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="box16">
-						<img src="img/logo-Solo.png">
-						<div class="box-content">
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="box16">
-						<img src="img/logo-Solo.png">
-						<div class="box-content">
-						
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a>
-					<!--REVISAR BIEN ESTO -->		
-<a style='cursor: pointer;' onClick="muestra_oculta('contenido')" title="" class="boton_mostrar">Mostrar / Ocultar</a>
-
-
-							</h3>
-
-						</div>
-					</div>
-				</div>
-				 
-				<!--CATEGORIAS OCULTAS-->
-				<div class="container fluid" id="contenido">
-					<div class="row">
-				<div class="col-md-4 col-sm-6">
-					<div class="box16">
-						<img src="img/logo-Solo.png">
-						<div class="box-content">
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="box16">
-						<img src="img/logo-Solo.png">
-						<div class="box-content">
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="box16">
-						<img src="img/logo-Solo.png">
-						<div class="box-content">
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="box16">
-						<img src="img/logo-Solo.png">
-						<div class="box-content">
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="box16">
-						<img src="img/logo-Solo.png">
-						<div class="box-content">
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="box16">
-						<img src="img/logo-Solo.png">
-						<div class="box-content">
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="#">{{cv}}</a></h3>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-4 col-sm-6">
-					<div class="box16">
-						<img src="img/logo-Solo.png">
-						<div class="box-content">
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
+				<!--PARA LAS CATEGORIAS A MOSTRAR-->
+			
+					<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values" >
+						<div class="box16">
+							<img src="img/logo-Solo.png">
+							<div class="box-content" >
+								<h3 class="title"><a class="non-underline-link" href="#">{{cv}}</a></h3>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="box16">
-						<img src="img/logo-Solo.png">
-						<div class="box-content">
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="box16">
-						<img src="img/logo-Solo.png">
-						<div class="box-content">
-							<h3 class="title"><a class="non-underline-link" href="#">Categoria 1</a></h3>
-						</div>
-					</div>
-				</div>
-					
-					</div>
-				</div>
+				
 			</div>
+			<br>
+			<!--REVISAR BIEN -->
+			<a style='cursor: pointer;' onClick="muestra_oculta('contenido')" title="" class="boton_mostrar">Mostrar / Ocultar</a>
 		</div>
 	</div>
 	<!-- FIN HOME PAGE-->
@@ -400,7 +293,7 @@
 									<tbody>
 										<tr>
 											<td>Vitamina K</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
+											<td ng-if="n.label=VITK1"> {{n.quantity |number:2}} {{n.unit}}</td>
 										</tr>
 										<tr>
 											<td>Vitamina E</td>
@@ -535,7 +428,7 @@
 								</table>
 							</div>
 						</div>
-				
+
 					</div>
 				</div>
 			</div>

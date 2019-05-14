@@ -14,26 +14,62 @@ app.controller("myController", function ($scope, $http) {
     $scope.q = "vegetales";
     $scope.pag = 1;
     $scope.idReceta=0;
+    //
+    $scope.categoria;
+    $scope.catPrincipales;
+    $scope.otrasCat;
 
     // funciones
     $scope.buscarCategorias=function(){
-        $scope.pantalla="home"
+        $scope.pantalla="listado" //aqui va home
         $scope.procesando++;
         $http({
-            url: $scope.url + "id de las categorias",//completar
+            url: $scope.url + "/api/categories",
             method: 'GET',
-            params: {
-                r: r
-            }
+            
         }).then(function exito(respose) {
-            $scope.receta = respose.data;
+            $scope.categoria = respose.data;
+            $scope.procesando--;
+           
+            console.log("todas las cat");   
+            console.log($scope.categoria);
+        
+console.log("cat principales")
+          $scope.catPrincipales= $scope.categoriasPrincipales($scope.categoria);
+          console.log($scope.catPrincipales);
+        }, function fracaso(respose) {
+            $scope.categoria = "error get en buscarCategoria()";
             $scope.procesando--;
 
-        }, function fracaso(respose) {
-            $scope.receta = "error get en buscarReceta()";
-            $scope.procesando--;
+            console.log($scope.categoria);
         });
     }
+
+    $scope.categoriasPrincipales=function(parametro){
+
+        
+      
+     /*    for(cat in parametro){
+
+            console.log(cat);
+            console.log(parametro);
+               for(cv in c.DietLabels){
+                    console.log(cv);
+                    if (cv.labels=="Vegana"|| cv=="Vegetariana"|| cv=="Baja en carbohidratos"||cv=="Balanceado") {}
+                       $scope.catPrincipales+=respose.data;
+     console.log($scope.catPrincipales);
+                }
+                for(cv in c.HealthLabels.values){
+                    if (cv=="Libre de Lacteos") {}
+                       $scope.catPrincipales+=respose.data;
+     console.log($scope.catPrincipales);
+                }
+
+        
+    }*/
+        console.log($scope.catPrincipales);
+    }
+
 
     $scope.buscarRecetas = function (q,pag) {
 
@@ -102,14 +138,14 @@ app.controller("myController", function ($scope, $http) {
         $scope.pantalla = 'listado';
 
         $http({
-            url: $scope.url + "/api/recipe/byId/0", 
+            url: $scope.url + "/api/recipe/byId/" + $scope.idReceta , 
             method: 'GET',
             
         }).then(function exito(respose) {
             $scope.receta = respose.data;
             $scope.procesando--;
             console.log($scope.receta);
-            infoNutricional($scope.receta);
+           
 
         }, function fracaso(respose) {
             $scope.receta = "error get en buscarReceta()";
