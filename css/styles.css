@@ -12,7 +12,9 @@
 		padding: 12px;
         background: #f8f9fa;
       }
-
+.hiden{
+	display: none;
+}
 
 .body{}
 

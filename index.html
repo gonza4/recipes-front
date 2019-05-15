@@ -25,18 +25,17 @@
 </head>
 
 <body class="body body-lighten" ng-app="myApp" ng-controller="myController"  >
-	
-
-
-
 
 	<!--HOME PAGE-->
+
+	<!--BUSCADOR-->
+
 	<div class="container-fluid"  >
 		<br/>
 		<div class="row justify-content-center">
 			<div class="col-12 col-md-10 col-lg-8">
 
-				<form id="frm" class="card card-sm " method="get" action="#" onsubmit="return validar(this)" >
+				<form id="frm" class="card card-sm " method="get" action="listado.html" onsubmit="return validar(this)" >
 					<div class="card-body row no-gutters align-items-center">
 
 						<div class="col">
@@ -55,14 +54,210 @@
 		</div>
 
 
-		<!-- Categorias-->
+		<!--CATEGORIAS-->
 
 		<div class="container mt-4" ng-init="buscarCategorias()" >
 			<h2 class="text-center">CATEGORIAS</h2>
 
 			<div class="row mt-30" ng-repeat="c in categoria">
+				<!--CATEGORIAS PRINCIPALES-->
+
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Vegana'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegana',1)">{{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Vegetariana'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html"ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegetariana',1)">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de Lacteos'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Lacteos',1)">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.DietLabels.values | filter:{ $:'Balanceado'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Balanceado',1)">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.DietLabels.values | filter:{ $:'Baja en carbohidratos'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en carbohidratos',1)">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.DietLabels.values | filter:{ $:'Alta en fibra'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Alta en fibra',1)">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+
+<div id="contenido" class="container hiden " >
+	<div class="row mt-30">
+		
+
+
+
 				
-				<!--PARA LAS CATEGORIAS PRINCIPALES-->
+				
+			
+
+				<!--CATEGORIAS OCULTAS-->
+
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.DietLabels.values | filter:{ $:'Alta en proteina'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Alta en proteina',1)">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.DietLabels.values | filter:{ $:'Baja en grasas'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en grasas',1)">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.DietLabels.values | filter:{ $:'Baja en sodio'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en sodio',1)">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de mani'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html"ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de mani',1)"> 	{{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de soja'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html"ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de soja',1)">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de Pescado'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Pescado',1)">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de mariscos'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html"ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de mariscos',1)"> 	{{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de huevos'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de huevos',1)">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de nueces'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html"ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de nueces',1)"> 	{{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Paleo'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html"ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Paleo',1)">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de Gluten'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Gluten',1)">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Low Sugar'}" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Low Sugar',1)">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+				
+
+				
+
+	</div>
+	
+</div>
+
+
+
+
+
+
+
+			</div>
+
+<!--DIV OTRAS-->
+				<div class="col-md-4 col-sm-6" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title">
+								<a class="non-underline-link" href="#" >otras</a>
+								<a style='cursor: pointer;' onClick="muestra_oculta('contenido')" title="" class="boton_mostrar">Mostrar / Ocultar</a>
+							</h3>
+						</div>
+					</div>
+				</div>
+				
+<!--FIN DIV OTRAS-->
+
+
+		</div>
+	</div>
+
+
+				<!--PARA LAS CATEGORIAS PRINCIPALES
 				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.DietLabels.values" >
 					<div class="box16">
 						<img src="img/logo-Solo.png">
@@ -72,431 +267,59 @@
 					</div>
 				</div>
 
-				<!--PARA LAS CATEGORIAS A MOSTRAR-->
-			
-					<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values" >
-						<div class="box16">
+				
+		
+				
+			<div  id="contenido_a_mostrar" class="row mt-30">
+				<h1>caca</h1>
+				<div class="row mt-30">
+					<div  class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values" >
+						<div class="box16 ">
 							<img src="img/logo-Solo.png">
 							<div class="box-content" >
 								<h3 class="title"><a class="non-underline-link" href="#">{{cv}}</a></h3>
 							</div>
 						</div>
 					</div>
-				
+				</div>
+			</div>	
 			</div>
-			<br>
+			<br>-->
 			<!--REVISAR BIEN -->
-			<a style='cursor: pointer;' onClick="muestra_oculta('contenido')" title="" class="boton_mostrar">Mostrar / Ocultar</a>
-		</div>
-	</div>
-	<!-- FIN HOME PAGE-->
+			
+			
 
 
-	<!-- NAV -->
-	<!-- navbar top fixed -->
-	<nav class="navbar navbar-expand-lg  bg-white-2">
-
-		<!-- navbar title -->
-		<a class="navbar-brand navbar-link" href="index.html">RecipesClub</a>
-
-		<!-- navbar sidebar menu toggle -->
-		<span class="navbar-text">
-			<a href="#" id="sidebar-toggle" class="navbar-bars">
-				<i class="fa fa-bars" aria-hidden="true"></i>
-			</a>
-		</span>
-
-	</nav>
-
-	<div class="d-flex" id="wrapper">
-
-		<!-- MENU -->
-		<!-- sidebar -->
-		<div class="sidebar sidebar-lighten">
-
-			<!-- sidebar menu -->
-			<div class="sidebar-menu">
-
-				<!-- menu -->
-				<ul class="list list-unstyled list-scrollbar">
-
-					<!-- simple menu -->
-					<li class="list-item">
-						<p class="list-title">CATEGORÍAS</p>
-						<ul class="list-unstyled">
-							<li><a href="#" class="list-link" ng-click="buscarRecetas('vegetales')">Vegetales</a></li>
-							<li><a href="#" class="list-link" ng-click="buscarRecetas('carne')">Carne</a></li>
-							<li><a href="#" class="list-link" ng-click="buscarRecetas('vegana')">Vegana</a></li>
-							<li><a href="#" class="list-link" ng-click="buscarRecetas('celiacos')">Celíacos</a></li>
-							<li><a href="#" class="list-link" ng-click="buscarRecetas('bajas calorias')">Bajas
-							calorías</a></li>
-						</ul>
-					</li>
-
-					<!-- multi-level dropdown menu -->
-					<li class="list-item">
-						<p class="list-title">ORDENAR POR</p>
-						<ul class="list-unstyled">
-							<li><a href="#" class="list-link link-arrow"><i class="fa"
-								aria-hidden="true"></i>Ingredientes</a>
-								<ul class="list-unstyled list-hidden">
-									<li><a href="#" class="list-link"
-										ng-click="buscarRecetasOrdenadas('ingredientes','mayor')">Mayor</a>
-									</li>
-									<li><a href="#" class="list-link"
-										ng-click="buscarRecetasOrdenadas('ingredientes','menor')">Menor</a>
-									</li>
-								</ul>
-							</li>
-							<li><a href="#" class="list-link link-arrow"><i class="fa"
-								aria-hidden="true"></i>Porciones</a>
-								<ul class="list-unstyled list-hidden">
-									<li><a href="#" class="list-link" ng-click="buscarRecetasOrdenadas('porciones','mayor')">Mayor</a></li>
-									<li><a href="#" class="list-link" ng-click="buscarRecetasOrdenadas('porciones','menor')">Menor</a></li>
-								</ul>
-							</li>
-							<li><a href="#" class="list-link link-arrow"><i class="fa"
-								aria-hidden="true"></i>Calorías</a>
-								<ul class="list-unstyled list-hidden">
-									<li><a href="#" class="list-link" ng-click="buscarRecetasOrdenadas('calorias','mayor')">Mayor</a></li>
-									<li><a href="#" class="list-link" ng-click="buscarRecetasOrdenadas('calorias','menor')">Menor</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-
-				</ul>
-			</div>
-		</div>
-
-
-		<!-- CONTENIDO -->
-		<!-- website content -->
-		<div class="content">
-
-			<!-- NAV Anterior -->
-			<!-- navbar top fixed 
-			<nav class="navbar navbar-expand-lg fixed bg-white-2">
-
-				
-				<a class="navbar-brand navbar-link" href="index.html">RecipesClub</a>
-
-				
-				<span class="navbar-text">
-					<a href="#" id="sidebar-toggle" class="navbar-bars">
-						<i class="fa fa-bars" aria-hidden="true"></i>
-					</a>
-				</span>
-
-			</nav>
-		-->
-
-
-		<!-- LISTADO -->
-		<!-- content container -->
-		<div class="container-fluid mt-5" ng-show="pantalla=='listado'">
-
-			<h1>Listado de Recetas</h1>
-
-			<div class="progress" ng-model="barra" ng-show="procesando">
-				<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-				aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-			</div>
-
-			<!-- one box -->
-			<div class="content-box mb-3 content-lighten"
-			ng-repeat="r in recetas | orderBy: orden_crit : orden_rev">
-			<div class="row">
-				<div class="col-auto">
-					<img src="{{r.image}}" class="rounded" width="100" height="100">
-				</div>
-				<div class="col-auto">
-					<a id="modalDetalle" href="#" ng-click="buscarReceta(r.uri)">
-						<h3>{{r.label}}</h3>
-					</a>
-					<p>Ingredientes: {{r.ingredientLines.length}}</p>
-				</p>Porciones: {{r.yield}}</p>
-				Calorías: {{r.calories | number: 2}} Kcal
-			</div>
-		</div>
-	</div>
-
-
-	<!--MODAL DETALLE-->
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDetalle" ng-click="buscarReceta(r.id)" >
-		Detalle receta
-	</button>
-
-	<!-- Modal -->
-	<div class="modal fade fuid" id="modalDetalle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content" ng-repeat="r in receta">
-
-				<!-- Header modal -->
-				<div class="modal-header">
-					<h3 class="modal-title" id="exampleModalLabel"class="text-justify pt-3">{{r.label}}</h3>
-
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<!-- Body modal -->
-				<div class="modal-body">
-					<div class="row">
-						<div class="col-6">
-							<img class="img-fluid"  src={{r.image}}>
-						</div>
-						<div class="col-6">
-							<div class="row justify-content-center">
-								<h4 class="">INGREDIENTES</h4>
-
-
-								<div class="col-12 justify-content-center" ng-repeat="i in r.ingredientLines">
-									{{i}}
-								</p>
-							</div>
-
-
-							<div class="col-12 justify-content-center">
-								<hr>
-								<h6>Cantidad de porciones: {{r.yield}} </h6>
-								<hr>
-							</div>
-							<div class="col-12 justify-content-center">
-								<h6>Total de Calorias: {{r.calories}} </h6>
-								<hr>
-							</div>
-
-							<hr>
-							<a href={{r.url}} target="blank">Ver Procedimiento</a>
-						</div>
-					</div>
-					<!--revisar-->
-					<div class="container mt-3">
-
-						<a href="#demo" class="btn btn-info" data-toggle="collapse">Ver Informacion Nutricional</a>
-
-						<div id="demo" class="collapse mt-3"
-						ng-repeat="n in r.totalNutrients">
-						<div class="row">
-							<!-- TABLA DE LA IZQUIERDA-->
-							<div class="col-12 col-md-6 ">
-								
-								<table class="table table-striped fluid">
-									<thead>
-										<tr>
-											<th> </th>
-											<th>Cantidad por pocion</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Vitamina K</td>
-											<td ng-if="n.label=VITK1"> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina E</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina D</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina B12</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina B9</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina B6</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina B3</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina B2</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina B1</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina C</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina A</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Fosforo</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Zinc</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Hierro</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Potasio</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<!-- TABLA DE LA DERECHA-->
-							<div class="col-12 col-md-6 ">
-								<table class="table table-striped fluid">
-									<thead>
-										<tr>
-											<th> </th>
-											<th>Cantidad por pocion</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Vitamina K</td>
-											<td> {{n.quantity  |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina E</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina D</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina B12</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina B9</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina B6</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina B3</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina B2</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina B1</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina C</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Vitamina A</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Fosforo</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Zinc</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Hierro</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr>
-											<td>Potasio</td>
-											<td> {{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Footer modal -->
-		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		</div>
-	</div>
-</div>
-</div>
-<!--FIN MODAL -->
+			<!-- FIN HOME PAGE-->
 
 
 
-<!-- PAGINACION -->
+			<footer class="mt-5 mb-2">
+				Copyright Recipes Club 2019
+			</footer>
 
-<nav aria-label="Page navigation example">
-	<ul class="pagination justify-content-center">
-		<li class="page-item disabled">
-			<a class="page-link" href="#" tabindex="-1" ng-show="!procesando" ng-click="anteriorPag()">Anterior</a>
-		</li>
+			<!-- SCRIPTS -->
+			<!-- javascript library -->
+			<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+			crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+			crossorigin="anonymous"></script>
 
-		<li class="page-item">
-			<a class="page-link" ng-show="!procesando" ng-click="siguientePag()" href="#">Siguiente</a>
-		</li>
-	</ul>
-</nav>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.min.js">
+			</script>
+			<script src="js/nanobar.js"></script>
+			<script src="js/sidebar.menu.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+			<script src="js/app.js"></script>
+			<script src="js/validaciones.js"></script>
 
-<!--Paginacion Vieja-->
-<div class="d-flex justify-content-center" ng-show="!procesando" ng-click="siguientePag()"><a href="">ver 20 más</a>
-</div>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-</div>
+		</body>
 
-
-<footer class="mt-5 mb-2">
-	Copyright Recipes Club 2019
-</footer>
-
-<!-- SCRIPTS -->
-<!-- javascript library -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
-crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-crossorigin="anonymous"></script>
-
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.min.js">
-</script>
-<script src="js/nanobar.js"></script>
-<script src="js/sidebar.menu.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-<script src="js/app.js"></script>
-<script src="js/validaciones.js"></script>
-<script>
-	$(function () {
-		new PerfectScrollbar('.list-scrollbar');
-		var nanobar = new Nanobar();
-		nanobar.go(100);
-	});
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-</body>
-
-</html>
+		</html>

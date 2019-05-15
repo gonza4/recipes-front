@@ -11,9 +11,10 @@ app.controller("myController", function ($scope, $http) {
     $scope.receta;
     $scope.r = "";
     $scope.url = "http://ec2-18-219-208-158.us-east-2.compute.amazonaws.com:5000";
-    $scope.q = "vegetales";
-    $scope.pag = 1;
-    $scope.idReceta=0;
+    $scope.category = "HealthLabels";
+    $scope.relation = "HEALTH_LABELS";
+    $scope.value = "Vegana";
+    $scope.from = 1;
     //
     $scope.categoria;
     $scope.catPrincipales;
@@ -34,55 +35,40 @@ app.controller("myController", function ($scope, $http) {
             console.log("todas las cat");   
             console.log($scope.categoria);
         
-console.log("cat principales")
-          $scope.catPrincipales= $scope.categoriasPrincipales($scope.categoria);
-          console.log($scope.catPrincipales);
+       console.log("---------------------------------------------------------------------");
+       for(i in $scope.categoria){
+    
+            for(j in i.DietLabels){
+              console.log("Valor " +j.values);        
+              
+            }
+       }
+            
         }, function fracaso(respose) {
             $scope.categoria = "error get en buscarCategoria()";
             $scope.procesando--;
 
-            console.log($scope.categoria);
+            console.log(categoria);
         });
     }
 
-    $scope.categoriasPrincipales=function(parametro){
-
-        
-      
-     /*    for(cat in parametro){
-
-            console.log(cat);
-            console.log(parametro);
-               for(cv in c.DietLabels){
-                    console.log(cv);
-                    if (cv.labels=="Vegana"|| cv=="Vegetariana"|| cv=="Baja en carbohidratos"||cv=="Balanceado") {}
-                       $scope.catPrincipales+=respose.data;
-     console.log($scope.catPrincipales);
-                }
-                for(cv in c.HealthLabels.values){
-                    if (cv=="Libre de Lacteos") {}
-                       $scope.catPrincipales+=respose.data;
-     console.log($scope.catPrincipales);
-                }
-
-        
-    }*/
-        console.log($scope.catPrincipales);
-    }
-
-
-    $scope.buscarRecetas = function (q,pag) {
+  $scope.buscarRecetas = function (category,relation,value,from) {
 
         $scope.pantalla = "listado"
         $scope.procesando++;
-        $scope.q = q;
+        $scope.category = category;
+        $scope.relation = relation;
+        $scope.value = value;
+        $scope.from = from;
 
         $http({
             url: $scope.url + "/api/recipes",
             method: 'GET',
             params: {
-                q: q,
-                from: pag
+                category: category,
+                relation: relation,
+                value: value,
+                from: from
             }
         }).then(function exito(respose) {
             $scope.recetas = respose.data;
@@ -94,7 +80,7 @@ console.log("cat principales")
         });
     };
 
-    $scope.buscarRecetasOrdenadas = function (pag, orderType,order) {
+    $scope.buscarRecetasOrdenadas = function (from, orderType,order) {
 
         $scope.pantalla = "listado"
         $scope.procesando++;
@@ -103,8 +89,8 @@ console.log("cat principales")
             url: $scope.url + "/api/recipes",
             method: 'GET',
             params: {
-                q: $scope.q, // de consulta anterior
-                from: pag,
+                category: $scope.category, // de consulta anterior
+                from: from,
                 orderType: orderType, 
                 order: order
             }
@@ -122,23 +108,26 @@ console.log("cat principales")
     };
 
     $scope.siguientePag = function() {
-        $scope.pag++;
-        $scope.buscarRecetasOrdenadas($scope.pag, $scope.orderType,$scope.order);
-        window.scrollTo(0, 0);
-    }
-     $scope.anteriorPag = function() {
-        $scope.pag--;
-        $scope.buscarRecetasOrdenadas($scope.pag, $scope.orderType,$scope.order);
+        $scope.from++;
+        $scope.buscarRecetas($scope.category, $scope.relation, $scope.value, $scope.from);
         window.scrollTo(0, 0);
     }
 
-     $scope.buscarReceta = function (r) {
+    $scope.anteriorPag = function() {
+        if($scope.from == 0) return;
+        $scope.from--;
+        $scope.buscarRecetas($scope.category, $scope.relation, $scope.value, $scope.from);
+        window.scrollTo(0, 0);
+    }
+
+
+     $scope.buscarReceta = function (id) {
 
         $scope.procesando++;
         $scope.pantalla = 'listado';
 
         $http({
-            url: $scope.url + "/api/recipe/byId/" + $scope.idReceta , 
+            url: $scope.url + "/api/recipe/byId/" + id, 
             method: 'GET',
             
         }).then(function exito(respose) {
