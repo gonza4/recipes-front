@@ -15,10 +15,8 @@ app.controller("myController", function ($scope, $http) {
     $scope.relation = "HEALTH_LABELS";
     $scope.value = "Vegana";
     $scope.from = 1;
-    //
     $scope.categoria;
-    $scope.catPrincipales;
-    $scope.otrasCat;
+    
 
     // funciones
     $scope.buscarCategorias=function(){
@@ -31,18 +29,6 @@ app.controller("myController", function ($scope, $http) {
         }).then(function exito(respose) {
             $scope.categoria = respose.data;
             $scope.procesando--;
-           
-            console.log("todas las cat");   
-            console.log($scope.categoria);
-        
-       console.log("---------------------------------------------------------------------");
-       for(i in $scope.categoria){
-    
-            for(j in i.DietLabels){
-              console.log("Valor " +j.values);        
-              
-            }
-       }
             
         }, function fracaso(respose) {
             $scope.categoria = "error get en buscarCategoria()";
@@ -52,7 +38,7 @@ app.controller("myController", function ($scope, $http) {
         });
     }
 
-  $scope.buscarRecetas = function (category,relation,value,from) {
+    $scope.buscarRecetas = function (category,relation,value,from) {
 
         $scope.pantalla = "listado"
         $scope.procesando++;
@@ -121,7 +107,7 @@ app.controller("myController", function ($scope, $http) {
     }
 
 
-     $scope.buscarReceta = function (id) {
+    $scope.buscarReceta = function (id) {
 
         $scope.procesando++;
         $scope.pantalla = 'listado';
@@ -134,19 +120,19 @@ app.controller("myController", function ($scope, $http) {
             $scope.receta = respose.data;
             $scope.procesando--;
             console.log($scope.receta);
-           
+            
 
         }, function fracaso(respose) {
             $scope.receta = "error get en buscarReceta()";
             $scope.procesando--;
 
             console.log($scope.receta);
-           
+            
         });
     }
 
     
     // busco recetas por default para mostrar en la homepage
-    $scope.buscarRecetas($scope.q,$scope.pag);
+$scope.buscarRecetas($scope.category,$scope.relation,$scope.value,$scope.from);
 
 });
