@@ -1,6 +1,14 @@
 var app = angular.module("myApp", []);
 
-app.controller("myController", function ($scope, $http) {
+app.config(['$locationProvider', function ($locationProvider) {
+
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
+}]);
+
+app.controller("myController", function ($scope, $http, $location) {
 
     // variables
     $scope.pantalla = "listado";
@@ -18,25 +26,33 @@ app.controller("myController", function ($scope, $http) {
     $scope.categoria;
     $scope.texto = "Buñuelos";
     $scope.dondeEstoy = "";
-    
 
     // funciones
-    $scope.buscarCategorias=function(){
-        $scope.pantalla="listado" //aqui va home
+
+    $scope.leerParametros = function () {
+        $scope.category = $location.search()['category'];
+        $scope.DietLabels = $location.search()['DietLabels'];
+        $scope.from = $location.search()['from'];
+        $scope.relation = $location.search()['relation'];
+        $scope.value = $location.search()['value'];
+    }
+
+    $scope.buscarCategorias = function () {
+        $scope.pantalla = "listado" //aqui va home
         $scope.procesando++;
         $http({
             url: $scope.url + "/api/categories",
             method: 'GET',
-            
+
         }).then(function exito(respose) {
             $scope.categoria = respose.data;
             $scope.procesando--;
-             console.log( $scope.categoria);
+            console.log($scope.categoria);
         }, function fracaso(respose) {
             $scope.categoria = "error get en buscarCategoria()";
             $scope.procesando--;
 
-            console.log( $scope.categoria);
+            console.log($scope.categoria);
         });
     }
 
@@ -51,7 +67,7 @@ app.controller("myController", function ($scope, $http) {
         $scope.texto = texto;
 
         if (texto == null) {
-            $scope.dondeEstoy = "Categoría:" + value;
+            $scope.dondeEstoy = "Categoría: " + value;
             $http({
                 url: $scope.url + "/api/recipes",
                 method: 'GET',
@@ -82,14 +98,14 @@ app.controller("myController", function ($scope, $http) {
                 $scope.procesando--;
 
             }, function fracaso(respose) {
-                $scope.respuesta = "error get en buscarRecetasTexto()";
+                $scope.respuesta = "error get en buscarRecetas()";
                 $scope.procesando--;
             });
 
         }
     };
 
-     $scope.buscarRecetasOrdenadas = function (from, orderType, order) {
+    $scope.buscarRecetasOrdenadas = function (from, orderType, order) {
 
         $scope.pantalla = "listado"
         $scope.procesando++;
@@ -136,26 +152,27 @@ app.controller("myController", function ($scope, $http) {
         $scope.pantalla = 'listado';
 
         $http({
-            url: $scope.url + "/api/recipe/byId/" + id, 
+            url: $scope.url + "/api/recipe/byId/" + id,
             method: 'GET',
-            
+
         }).then(function exito(respose) {
             $scope.receta = respose.data;
             $scope.procesando--;
             console.log($scope.receta);
-            
+
 
         }, function fracaso(respose) {
             $scope.receta = "error get en buscarReceta()";
             $scope.procesando--;
 
             console.log($scope.receta);
-            
+
         });
     }
 
-    
-    // busco recetas por default para mostrar en la homepage
-$scope.buscarRecetas($scope.category,$scope.relation,$scope.value,$scope.from);
+
+    // al inicio
+    $scope.leerParametros();
+    setTimeout($scope.buscarRecetas($scope.category, $scope.relation, $scope.value, $scope.from, null), 3000);
 
 });

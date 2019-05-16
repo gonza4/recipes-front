@@ -159,11 +159,13 @@
 							</p>
 							<p>Categorías:
 								<span ng-repeat="cat in r.dietLabels">
-									<a href=# ng-click="buscarRecetas('DietLabels','DIET_LABELS',cat,1)">{{cat}}</a>
+									<a href='listado.html?category=DietLabels&from=1&relation=DIET_LABELS&value={{cat}}'
+										target="_blank">{{cat}}</a>
 									-
 								</span>
 								<span ng-repeat="cat in r.healthLabels">
-									<a href=# ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS',cat,1)">{{cat}}</a>
+									<a href='listado.html?category=HealthLabels&from=1&relation=HEALTH_LABELS&value={{cat}}'
+										target="_blank">{{cat}}</a>
 									<font ng-show="!$last"> - </font>
 								</span>
 							</p>
