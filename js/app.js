@@ -18,25 +18,25 @@ app.controller("myController", function ($scope, $http) {
     $scope.categoria;
     $scope.texto = "Buñuelos";
     $scope.dondeEstoy = "";
-
+    
 
     // funciones
-    $scope.buscarCategorias = function () {
-        $scope.pantalla = "listado" //aqui va home
+    $scope.buscarCategorias=function(){
+        $scope.pantalla="listado" //aqui va home
         $scope.procesando++;
         $http({
             url: $scope.url + "/api/categories",
             method: 'GET',
-
+            
         }).then(function exito(respose) {
             $scope.categoria = respose.data;
             $scope.procesando--;
-            console.log($scope.categoria);
+             console.log( $scope.categoria);
         }, function fracaso(respose) {
             $scope.categoria = "error get en buscarCategoria()";
             $scope.procesando--;
 
-            console.log($scope.categoria);
+            console.log( $scope.categoria);
         });
     }
 
@@ -89,7 +89,7 @@ app.controller("myController", function ($scope, $http) {
         }
     };
 
-    $scope.buscarRecetasOrdenadas = function (from, orderType, order) {
+     $scope.buscarRecetasOrdenadas = function (from, orderType, order) {
 
         $scope.pantalla = "listado"
         $scope.procesando++;
@@ -136,26 +136,26 @@ app.controller("myController", function ($scope, $http) {
         $scope.pantalla = 'listado';
 
         $http({
-            url: $scope.url + "/api/recipe/byId/" + id,
+            url: $scope.url + "/api/recipe/byId/" + id, 
             method: 'GET',
-
+            
         }).then(function exito(respose) {
             $scope.receta = respose.data;
             $scope.procesando--;
             console.log($scope.receta);
-
+            
 
         }, function fracaso(respose) {
             $scope.receta = "error get en buscarReceta()";
             $scope.procesando--;
 
             console.log($scope.receta);
-
+            
         });
     }
 
-
+    
     // busco recetas por default para mostrar en la homepage
-    $scope.buscarRecetas($scope.category, $scope.relation, $scope.value, $scope.from);
+$scope.buscarRecetas($scope.category,$scope.relation,$scope.value,$scope.from);
 
 });
