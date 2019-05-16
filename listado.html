@@ -39,7 +39,7 @@
 						<p class="list-title">CATEGORÍAS</p>
 						<ul class="list-unstyled">
 							<li><a href="#" class="list-link" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en carbohidratos',1)">Baja en carbohidratos</a></li>
-							<li><a href="#" class="list-link" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Balanceado',1)">Equilibrado</a></li>
+							<li><a href="#" class="list-link" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Balanceado',1)">Equilibrada</a></li>
 							<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegana',1)">Vegana</a></li>
 							<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Lacteos',1)">Libre de lácteos</a></li>
 							<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegetariana',1)">Vegetariana</a></li>							
@@ -96,6 +96,7 @@
 			<div class="container-fluid" ng-show="pantalla=='listado'">
 
 				<h1>Listado de Recetas</h1>
+				<h5 ng-hide="procesando">Categoría: {{value}} - Página: {{from}} </h5>
 
 				<div class="progress" ng-model="barra" ng-show="procesando">
 					<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
@@ -112,9 +113,9 @@
 						<div class="col-auto">
 							<a href="#" ng-click="buscarReceta(r.id)" data-toggle="modal" data-target="#modalDetalle"><h3>{{r.label}}</h3></a>
 							<p>Ingredientes: 
-								<span ng-repeat="il in r.ingredientLines | limitTo:3">
-									{{il}}
-									<font ng-show="!$last"> - </font></span>
+								<p ng-repeat="il in r.ingredientLines | limitTo:3">
+									- {{il}}
+								</p>
 							</p>
 							<p>Categorías: 
 								<span ng-repeat="cat in r.dietLabels">
