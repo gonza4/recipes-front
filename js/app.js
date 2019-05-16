@@ -29,12 +29,12 @@ app.controller("myController", function ($scope, $http) {
         }).then(function exito(respose) {
             $scope.categoria = respose.data;
             $scope.procesando--;
-            
+             console.log( $scope.categoria);
         }, function fracaso(respose) {
             $scope.categoria = "error get en buscarCategoria()";
             $scope.procesando--;
 
-            console.log(categoria);
+            console.log( $scope.categoria);
         });
     }
 

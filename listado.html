@@ -39,7 +39,7 @@
 						<p class="list-title">CATEGORÍAS</p>
 						<ul class="list-unstyled">
 							<li><a href="#" class="list-link" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en carbohidratos',1)">Baja en carbohidratos</a></li>
-							<li><a href="#" class="list-link" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Balanceado',1)">Equilibrada</a></li>
+							<li><a href="#" class="list-link" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Balanceado',1)">Equilibrado</a></li>
 							<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegana',1)">Vegana</a></li>
 							<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Lacteos',1)">Libre de lácteos</a></li>
 							<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegetariana',1)">Vegetariana</a></li>							
@@ -96,7 +96,6 @@
 			<div class="container-fluid" ng-show="pantalla=='listado'">
 
 				<h1>Listado de Recetas</h1>
-				<h5 ng-hide="procesando">Categoría: {{value}} - Página: {{from}} </h5>
 
 				<div class="progress" ng-model="barra" ng-show="procesando">
 					<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
@@ -113,9 +112,9 @@
 						<div class="col-auto">
 							<a href="#" ng-click="buscarReceta(r.id)" data-toggle="modal" data-target="#modalDetalle"><h3>{{r.label}}</h3></a>
 							<p>Ingredientes: 
-								<p ng-repeat="il in r.ingredientLines | limitTo:3">
-									- {{il}}
-								</p>
+								<span ng-repeat="il in r.ingredientLines | limitTo:3">
+									{{il}}
+									<font ng-show="!$last"> - </font></span>
 							</p>
 							<p>Categorías: 
 								<span ng-repeat="cat in r.dietLabels">
@@ -173,16 +172,23 @@
 										<img class="img-fluid" src={{r.image}} height="664" width="470">
 									</div>
 									<div class="col-6">
+
+										<div class="col-12 justify-content-center">
+											
+												<h6>Cantidad de porciones: {{r.yield}}  -  Total de calorías: {{r.calories |number:2}} </h6>
+												<hr>
+											</div>
+										
 										<div class="row justify-content-center">
 											<h4 class="">INGREDIENTES</h4>
-				
-				
-											<div class="col-12 justify-content-center" ng-repeat="i in r.ingredientLines">
+											<div class="container mb-3 mt-1"></div>
+											
+											<div class="col-12 justify-content-center " ng-repeat="i in r.ingredientLines">
 												- {{i}}
 												</p>
 											</div>
 				
-				
+			<!--
 											<div class="col-12 justify-content-center">
 												<hr>
 												<h6>Cantidad de porciones: {{r.yield}} </h6>
@@ -192,12 +198,13 @@
 												<h6>Total de Calorias: {{r.calories |number:2}} </h6>
 												<hr>
 											</div>
-				
-											<hr>
+
+			-->
+										<hr>
 											<a href={{r.url}} target="blank">Ver Procedimiento</a>
 										</div>
 									</div>
-									<!--revisar-->
+								
 									<div class="container mt-3">
 				
 										<a href="#demo" class="btn btn-info" data-toggle="collapse">Ver Informacion
@@ -212,7 +219,7 @@
 														<thead>
 															<tr>
 																<th> </th>
-																<th>Cantidad por pocion</th>
+																<th>Cantidad por porcion</th>
 															</tr>
 														</thead>
 														<tbody>
@@ -299,7 +306,7 @@
 														<thead>
 															<tr>
 																<th> </th>
-																<th>Cantidad por pocion</th>
+																<th>Cantidad por porcion</th>
 															</tr>
 														</thead>
 														<tbody>
@@ -364,7 +371,7 @@
 							</div>
 							<!-- Footer modal -->
 							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 							</div>
 						</div>
 					</div>
