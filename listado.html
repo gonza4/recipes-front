@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 
 <head>
 	<meta charset="UTF-8">
@@ -20,8 +19,33 @@
 	<title>RecipesClub</title>
 </head>
 
-<body class="body body-lighten" ng-app="myApp" ng-controller="myController">
+<body class="body body-lighten" ng-app="myApp" ng-controller="myController" style="margin-top:0px;">
 
+	<!-- NAV -->
+	<!-- navbar top fixed -->
+	<nav class="navbar navbar-expand-sm bg-white-2">
+
+		<!-- navbar title -->
+		<a class="navbar-brand navbar-link" href="index.html">RecipesClub</a>
+
+		<!-- BUSCADOR -->
+		<div class="container-fluid">
+			<form class="form-inline" ng-submit="buscarRecetas(null,null,null,1,entrada)">
+				<input class=" form-control mr-sm-2" ng-model="entrada" name="entrada" id="entrada" type="search"
+					required minlength="3" pattern="[a-zA-ZñÑuÜáÁéÉíÍóÓúÚ\s]+" title="Solo letras">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+			</form>
+		</div>
+
+
+		<!-- navbar sidebar menu toggle -->
+		<span class="navbar-text">
+			<a href="#" id="sidebar-toggle" class="navbar-bars">
+				<i class="fa fa-bars" aria-hidden="true"></i>
+			</a>
+		</span>
+
+	</nav>
 
 	<div class="d-flex" id="wrapper">
 		<!-- MENU -->
@@ -38,32 +62,61 @@
 					<li class="list-item">
 						<p class="list-title">CATEGORÍAS</p>
 						<ul class="list-unstyled">
-							<li><a href="#" class="list-link" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en carbohidratos',1)">Baja en carbohidratos</a></li>
-							<li><a href="#" class="list-link" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Balanceado',1)">Equilibrada</a></li>
-							<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegana',1)">Vegana</a></li>
-							<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Lacteos',1)">Libre de lácteos</a></li>
-							<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegetariana',1)">Vegetariana</a></li>							
-							<li><a href="#" class="list-link link-arrow"><i class="fa" aria-hidden="true"></i>OTRAS</a>
-								<ul class="list-unstyled list-hidden">
-									<li><a href="#" class="list-link" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Alta en proteina',1)">Alta en proteina</a></li>
-									<li><a href="#" class="list-link" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en grasas',1)">Baja en grasas</a></li>
-									<li><a href="#" class="list-link" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en sodio',1)">Baja en sodio</a></li>
-									<li><a href="#" class="list-link" ng-click="buscarRecetas('DietLabels','DIET_LABELS','Alta en fibra',1)">Alta en fibra</a></li>
-									<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de mani',1)">Libre de mani</a></li>
-									<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de soja',1)">Libre de soja</a></li>
-									<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Pescado',1)">Libre de Pescado</a></li>
-									<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de mariscos',1)">Libre de mariscos</a></li>
-									<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de huevos',1)">Libre de huevos</a></li>
-									<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de nueces',1)">Libre de nueces</a></li>
-									<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Paleo',1)">Paleo</a></li>
-									<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Gluten',1)">Libre de Gluten</a></li>
-									<li><a href="#" class="list-link" ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Low Sugar',1)">Low Sugar</a></li>
-								</ul>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en carbohidratos',1)">Baja
+									en carbohidratos</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('DietLabels','DIET_LABELS','Balanceado',1)">Equilibrada</a>
 							</li>
-							
-						</ul>
-					</li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegana',1)">Vegana</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Lacteos',1)">Libre
+									de lácteos</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegetariana',1)">Vegetariana</a>
+							</li>
 
+
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('DietLabels','DIET_LABELS','Alta en proteina',1)">Alta en
+									proteina</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en grasas',1)">Baja en
+									grasas</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en sodio',1)">Baja en
+									sodio</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('DietLabels','DIET_LABELS','Alta en fibra',1)">Alta en
+									fibra</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de mani',1)">Libre de
+									mani</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de soja',1)">Libre de
+									soja</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Pescado',1)">Libre
+									de Pescado</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de mariscos',1)">Libre
+									de mariscos</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de huevos',1)">Libre
+									de huevos</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de nueces',1)">Libre
+									de nueces</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Paleo',1)">Paleo</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Gluten',1)">Libre
+									de Gluten</a></li>
+							<li><a href="#" class="list-link"
+									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Low Sugar',1)">Low Sugar</a>
+							</li>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -72,30 +125,16 @@
 		<!-- website content -->
 		<div class="content">
 
-			<!-- NAV -->
-			<!-- navbar top fixed -->
-			<nav class="navbar navbar-expand-lg fixed-top bg-white-2">
-
-				<!-- navbar title -->
-				<a class="navbar-brand navbar-link" href="index.html">RecipesClub</a>
-
-				<!-- navbar sidebar menu toggle -->
-				<span class="navbar-text">
-					<a href="#" id="sidebar-toggle" class="navbar-bars">
-						<i class="fa fa-bars" aria-hidden="true"></i>
-					</a>
-				</span>
-
-			</nav>
-
-
 
 			<!-- LISTADO -->
 			<!-- content container -->
 			<div class="container-fluid" ng-show="pantalla=='listado'">
 
-				<h1>Listado de Recetas</h1>
-				<h5 ng-hide="procesando">Categoría: {{value}} - Página: {{from}} </h5>
+				<div class="content-box mb-3 content-lighten">
+					<h1>Listado de Recetas</h1>
+					<h5 ng-hide="procesando">{{dondeEstoy}} - Página: {{from}} </h5>
+				</div>
+
 
 				<div class="progress" ng-model="barra" ng-show="procesando">
 					<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
@@ -103,28 +142,30 @@
 				</div>
 
 				<!-- one box -->
-				<div class="content-box mb-3 content-lighten"
+				<div ng-hide="procesando" class="content-box mb-3 content-lighten"
 					ng-repeat="r in recetas | orderBy: orden_crit : orden_rev">
 					<div class="row">
 						<div class="col-auto">
 							<img src="{{r.image}}" class="rounded" width="100" height="100">
 						</div>
 						<div class="col-auto">
-							<a href="#" ng-click="buscarReceta(r.id)" data-toggle="modal" data-target="#modalDetalle"><h3>{{r.label}}</h3></a>
-							<p>Ingredientes: 
+							<a href="#" ng-click="buscarReceta(r.id)" data-toggle="modal" data-target="#modalDetalle">
+								<h3>{{r.label}}</h3>
+							</a>
+							<p>Ingredientes:
 								<p ng-repeat="il in r.ingredientLines | limitTo:3">
 									- {{il}}
 								</p>
 							</p>
-							<p>Categorías: 
+							<p>Categorías:
 								<span ng-repeat="cat in r.dietLabels">
 									<a href=# ng-click="buscarRecetas('DietLabels','DIET_LABELS',cat,1)">{{cat}}</a>
-									-																		
+									-
 								</span>
 								<span ng-repeat="cat in r.healthLabels">
 									<a href=# ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS',cat,1)">{{cat}}</a>
 									<font ng-show="!$last"> - </font>
-								</span>						
+								</span>
 							</p>
 						</div>
 					</div>
@@ -134,11 +175,12 @@
 				<nav>
 					<ul class="pagination justify-content-center">
 						<li class="page-item {{from === 1 ? 'disabled' : ''}}">
-							<a class="page-link" href="#" tabindex="-1" ng-show="!procesando" ng-click="anteriorPag()">Anterior</a>
+							<a class="page-link" href="#" tabindex="-1" ng-show="!procesando"
+								ng-click="anteriorPag()">Anterior</a>
 						</li>
-				
+
 						<li class="page-item">
-							<a class="page-link" href="#" ng-show="!procesando" ng-click="siguientePag()" >Siguiente</a>
+							<a class="page-link" href="#" ng-show="!procesando" ng-click="siguientePag()">Siguiente</a>
 						</li>
 					</ul>
 				</nav>
@@ -149,18 +191,18 @@
 			<!-- content container -->
 			<div class="container-fluid">
 
-				<!-- MODAL DETALLE-->				
+				<!-- MODAL DETALLE-->
 				<!-- Modal -->
-				<div class="modal fade fuid" id="modalDetalle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-					aria-hidden="true">
+				<div class="modal fade fuid" id="modalDetalle" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog modal-xl" role="document">
 						<div class="modal-content" ng-repeat="r in receta">
-				
+
 							<!-- Header modal -->
 							<div class="modal-header">
 								<h3 class="modal-title" id="exampleModalLabel" class="text-justify pt-3">{{r.label}}
 								</h3>
-				
+
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -174,21 +216,23 @@
 									<div class="col-6">
 
 										<div class="col-12 justify-content-center">
-											
-												<h6>Cantidad de porciones: {{r.yield}}  -  Total de calorías: {{r.calories |number:2}} </h6>
-												<hr>
-											</div>
-										
+
+											<h6>Cantidad de porciones: {{r.yield}} - Total de calorías:
+												{{r.calories |number:2}} </h6>
+											<hr>
+										</div>
+
 										<div class="row justify-content-center">
 											<h4 class="">INGREDIENTES</h4>
 											<div class="container mb-3 mt-1"></div>
-											
-											<div class="col-12 justify-content-center " ng-repeat="i in r.ingredientLines">
+
+											<div class="col-12 justify-content-center "
+												ng-repeat="i in r.ingredientLines">
 												- {{i}}
 												</p>
 											</div>
-				
-			<!--
+
+											<!--
 											<div class="col-12 justify-content-center">
 												<hr>
 												<h6>Cantidad de porciones: {{r.yield}} </h6>
@@ -200,21 +244,21 @@
 											</div>
 
 			-->
-										<hr>
+											<hr>
 											<a href={{r.url}} target="blank">Ver Procedimiento</a>
 										</div>
 									</div>
-								
+
 									<div class="container mt-3">
-				
+
 										<a href="#demo" class="btn btn-info" data-toggle="collapse">Ver Informacion
 											Nutricional</a>
-				
-										<div id="demo" class="collapse mt-3" >
+
+										<div id="demo" class="collapse mt-3">
 											<div class="row">
 												<!-- TABLA DE LA IZQUIERDA-->
 												<div class="col-12 col-md-6 ">
-												
+
 													<table class="table table-striped fluid">
 														<thead>
 															<tr>
@@ -223,79 +267,94 @@
 															</tr>
 														</thead>
 														<tbody>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITK1'} " >
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'VITK1'} ">
 																<td>Vitamina K</td>
-																<td > {{n.quantity |number:2}} {{n.unit}}</td>
+																<td> {{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'TOCPHA'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'TOCPHA'} ">
 																<td>Vitamina E</td>
-																<td >
-																{{n.quantity |number:2}} {{n.unit}}</td>
+																<td>
+																	{{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITD'}" > 
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'VITD'}">
 																<td>Vitamina D</td>
-																<td  > 
-																{{n.quantity |number:2}} {{n.unit}}</td>
+																<td>
+																	{{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITB12'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'VITB12'} ">
 																<td>Vitamina B12</td>
-																<td > 
-																{{n.quantity |number:2}} {{n.unit}}</td>
+																<td>
+																	{{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FOL'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'FOL'} ">
 																<td>Vitamina B9</td>
-																<td > 
-																{{n.quantity |number:2}} {{n.unit}}</td>
+																<td>
+																	{{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITB6A'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'VITB6A'} ">
 																<td>Vitamina B6</td>
-																<td > 
-																{{n.quantity |number:2}} {{n.unit}}</td>
+																<td>
+																	{{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'NIA'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'NIA'} ">
 																<td>Vitamina B3</td>
-																<td > 
-																{{n.quantity |number:2}} {{n.unit}}</td>
+																<td>
+																	{{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr  ng-repeat="n in r.totalNutrients | filter:{label:'RIBF'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'RIBF'} ">
 																<td>Vitamina B2</td>
-																<td> 
-																{{n.quantity |number:2}} {{n.unit}}</td>
+																<td>
+																	{{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'THIA'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'THIA'} ">
 																<td>Vitamina B1</td>
-																<td > 
-																{{n.quantity |number:2}} {{n.unit}}</td>
+																<td>
+																	{{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITC'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'VITC'} ">
 																<td>Vitamina C</td>
-																<td > 
-																{{n.quantity |number:2}} {{n.unit}}</td>
+																<td>
+																	{{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITA_RAE'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'VITA_RAE'} ">
 																<td>Vitamina A</td>
-																<td > 
-																{{n.quantity |number:2}} {{n.unit}}</td>
+																<td>
+																	{{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label: 'P'}:true ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label: 'P'}:true ">
 																<td>Fosforo</td>
-																<td > 
-																{{n.quantity |number:2}} {{n.unit}}</td>
+																<td>
+																	{{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'ZN'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'ZN'} ">
 																<td>Zinc</td>
-																<td > 
-																{{n.quantity |number:2}} {{n.unit}}</td>
+																<td>
+																	{{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FE'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'FE'} ">
 																<td>Hierro</td>
-																<td > 
-																{{n.quantity |number:2}} {{n.unit}}</td>
+																<td>
+																	{{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'K'}:true ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'K'}:true ">
 																<td>Potasio</td>
-																<td > 
-																{{n.quantity |number:2}} {{n.unit}}</td>
+																<td>
+																	{{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
 														</tbody>
 													</table>
@@ -310,61 +369,73 @@
 															</tr>
 														</thead>
 														<tbody>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'MG'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'MG'} ">
 																<td>Magnesio</td>
 																<td> {{n.quantity  |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'CA'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'CA'} ">
 																<td>Calcio</td>
 																<td> {{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'NA'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'NA'} ">
 																<td>Sodio</td>
 																<td> {{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'PROCNT'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'PROCNT'} ">
 																<td>Proteina</td>
 																<td> {{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'SUGAR'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'SUGAR'} ">
 																<td>Azucar</td>
 																<td> {{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FIBTG'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'FIBTG'} ">
 																<td>Fibra</td>
 																<td> {{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'CHOCDF'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'CHOCDF'} ">
 																<td>Carbohidratos</td>
 																<td> {{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FAPU'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'FAPU'} ">
 																<td>Grasas Poliinsaturadas</td>
 																<td> {{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FAMS'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'FAMS'} ">
 																<td>Grasas Monosaturadas</td>
 																<td> {{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FATRN'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'FATRN'} ">
 																<td>Grasas Trans</td>
 																<td> {{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FASAT'} ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'FASAT'} ">
 																<td>Grasas Saturadas </td>
 																<td> {{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
+															<tr
+																ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 																<td>Grasas</td>
 																<td> {{n.quantity |number:2}} {{n.unit}}</td>
 															</tr>
-															
-															
+
+
 														</tbody>
 													</table>
 												</div>
 											</div>
-				
+
 										</div>
 									</div>
 								</div>
@@ -378,16 +449,16 @@
 				</div>
 				<!--FIN MODAL -->
 
-			</div>					
+			</div>
 
 		</div>
 	</div>
 
 
 
-<footer class="mt-5 mb-2">
-	Copyright Recipes Club 2019
-</footer>
+	<footer class="mt-5 mb-2">
+		Copyright Recipes Club 2019
+	</footer>
 
 
 	<!-- SCRIPTS -->
