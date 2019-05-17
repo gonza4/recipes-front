@@ -24,7 +24,7 @@ app.controller("myController", function ($scope, $http, $location) {
     $scope.value = "Vegana";
     $scope.from = 1;
     $scope.categoria;
-    $scope.texto = "Buñuelos";
+    $scope.texto = "";
     $scope.dondeEstoy = "";
 
     // funciones
@@ -35,6 +35,8 @@ app.controller("myController", function ($scope, $http, $location) {
         $scope.from = $location.search()['from'];
         $scope.relation = $location.search()['relation'];
         $scope.value = $location.search()['value'];
+        $scope.texto = $location.search()['texto'];
+
     }
 
     $scope.buscarCategorias = function () {
@@ -173,6 +175,6 @@ app.controller("myController", function ($scope, $http, $location) {
 
     // al inicio
     $scope.leerParametros();
-    setTimeout($scope.buscarRecetas($scope.category, $scope.relation, $scope.value, $scope.from, null), 3000);
+    setTimeout($scope.buscarRecetas($scope.category, $scope.relation, $scope.value, $scope.from, $scope.texto), 3000);
 
 });
