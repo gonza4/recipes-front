@@ -23,7 +23,7 @@ app.controller("myController", function ($scope, $http, $location) {
     $scope.relation = "HEALTH_LABELS";
     $scope.value = "Vegana";
     $scope.from = 1;
-    $scope.categoria;
+    $scope.categorias = "hola";
     $scope.texto = "";
     $scope.dondeEstoy = "";
 
@@ -40,21 +40,18 @@ app.controller("myController", function ($scope, $http, $location) {
     }
 
     $scope.buscarCategorias = function () {
-        $scope.pantalla = "listado" //aqui va home
+
         $scope.procesando++;
         $http({
             url: $scope.url + "/api/categories",
-            method: 'GET',
+            method: 'GET'
 
         }).then(function exito(respose) {
-            $scope.categoria = respose.data;
+            $scope.categorias = respose.data;
             $scope.procesando--;
-            console.log($scope.categoria);
         }, function fracaso(respose) {
-            $scope.categoria = "error get en buscarCategoria()";
+            $scope.categorias = "error get en buscarCategoria()";
             $scope.procesando--;
-
-            console.log($scope.categoria);
         });
     }
 
@@ -174,7 +171,7 @@ app.controller("myController", function ($scope, $http, $location) {
 
 
     // al inicio
+    $scope.buscarCategorias();
     $scope.leerParametros();
     setTimeout($scope.buscarRecetas($scope.category, $scope.relation, $scope.value, $scope.from, $scope.texto), 3000);
-
 });

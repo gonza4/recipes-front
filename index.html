@@ -76,7 +76,7 @@
 
 			<div class="row mt-30">
 				<!--CATEGORIAS PRINCIPALES-->
-				<div class="container fluid row" ng-repeat="c in categoria">
+				<div class="container fluid row" ng-repeat="c in categorias">
 
 					<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Vegana'}">
 						<div class="box16">
@@ -153,7 +153,7 @@
 
 			<div class="row mt-30 " id="mb">
 				<!--CATEGORIAS OCULTAS-->
-				<div class="container fluid row" ng-repeat="c in categoria">
+				<div class="container fluid row" ng-repeat="c in categorias">
 
 
 					<div class="col-md-4 col-sm-6"
