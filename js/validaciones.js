@@ -32,6 +32,7 @@ function validar(frm) {
 
 	return true;
 } 
+
 function validarSoloTexto(parametro){
 	var patron=/^[a-zA-Z\s]*$/;
 	if (parametro.search(patron)) {

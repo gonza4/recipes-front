@@ -71,238 +71,42 @@
 
 		<!--CATEGORIAS-->
 
-		<div class="container mt-4" ng-init="buscarCategorias()">
+
+		<div class="container mt-4" ng-init="buscarCategorias()" >
 			<h2 class="text-center">CATEGORIAS</h2>
-
-			<div class="row mt-30">
-				<!--CATEGORIAS PRINCIPALES-->
-				<div class="container fluid row" ng-repeat="c in categorias">
-
-					<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Vegana'}">
-						<div class="box16">
-							<img src="http://cdn.kiwilimon.com/recetaimagen/10921/thumb120x90-1402.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegana',1)">{{cv}}</a>
-								</h3>
-							</div>
+			<div class="row mt-30" ng-repeat="c in categoria">
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.DietLabels.values" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html">  {{cv}}</a></h3>
 						</div>
 					</div>
-					<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Vegetariana'}">
-						<div class="box16">
-							<img src="http://img.recetascomidas.com/recetas/640_480/tortilla-francesa.jpg">
-							<div class="box-content">
-								<h3 class="title">
-									<a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegetariana',1)">
-										{{cv}}</a>
-								</h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6"
-						ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de Lacteos'}">
-						<div class="box16">
-							<img
-								src="http://cocinayrecetas-static.hola.com/hoycomemos/files/2015/06/Tortilla-de-esparragos.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Lacteos',1)">
-										{{cv}}</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6" ng-repeat="cv in c.DietLabels.values | filter:{ $:'Balanceado'}">
-						<div class="box16">
-							<img
-								src="http://cocinayrecetas-static.hola.com/lacocinaperfecta/files/2014/11/IMG_0243.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('DietLabels','DIET_LABELS','Balanceado',1)"> {{cv}}</a>
-								</h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6"
-						ng-repeat="cv in c.DietLabels.values | filter:{ $:'Baja en carbohidratos'}">
-						<div class="box16">
-							<img
-								src="https://img-global.cpcdn.com/002_recipes/1985530_ab1a80660ec48ac4/664x470cq70/photo.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en carbohidratos',1)">
-										{{cv}}</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6" ng-repeat="cv in c.DietLabels.values | filter:{ $:'Alta en fibra'}">
-						<div class="box16">
-							<img src="http://mxcdn.ar-cdn.com/recipes/xlarge/9cd65849-8cda-4060-8d0b-e328705461c3.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('DietLabels','DIET_LABELS','Alta en fibra',1)">
-										{{cv}}</a></h3>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-
-
-			<div class="row mt-30 " id="mb">
-				<!--CATEGORIAS OCULTAS-->
-				<div class="container fluid row" ng-repeat="c in categorias">
-
-
-					<div class="col-md-4 col-sm-6"
-						ng-repeat="cv in c.DietLabels.values | filter:{ $:'Alta en proteina'}">
-						<div class="box16">
-							<img src="http://mxcdn.ar-cdn.com/recipes/xlarge/f68db92b-2161-4a81-a4bb-e75685dbe778.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('DietLabels','DIET_LABELS','Alta en proteina',1)">
-										{{cv}}</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6" ng-repeat="cv in c.DietLabels.values | filter:{ $:'Baja en grasas'}">
-						<div class="box16">
-							<img src="https://img-global.cpcdn.com/002_recipes/143b674952100fec/664x470cq70/photo.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en grasas',1)">
-										{{cv}}</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6" ng-repeat="cv in c.DietLabels.values | filter:{ $:'Baja en sodio'}">
-						<div class="box16">
-							<img src="http://cdn.kiwilimon.com/recetaimagen/22988/thumb120x90-15536.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en sodio',1)">
-										{{cv}}</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6"
-						ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de mani'}">
-						<div class="box16">
-							<img
-								src="http://canalcocina.es/medias/_cache/zoom-e3a4ec6c189c82422f253da8cf6c0283-920-518.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de mani',1)">
-										{{cv}}</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6"
-						ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de soja'}">
-						<div class="box16">
-							<img src="https://img-global.cpcdn.com/002_recipes/48ad2961971e1594/664x470cq70/photo.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de soja',1)">
-										{{cv}}</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6"
-						ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de Pescado'}">
-						<div class="box16">
-							<img
-								src="http://canalcocina.es/medias/_cache/zoom-4c16a02016ac32561dc75805f8c19d33-920-518.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Pescado',1)">
-										{{cv}}</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6"
-						ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de mariscos'}">
-						<div class="box16">
-							<img src="http://img.recetascomidas.com/recetas/640_480/tortilla.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de mariscos',1)">
-										{{cv}}</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6"
-						ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de huevos'}">
-						<div class="box16">
-							<img
-								src="http://s3.amazonaws.com/gmi-digital-library/49d54068-783d-4720-ba9f-461849ab4f82.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de huevos',1)">
-										{{cv}}</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6"
-						ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de nueces'}">
-						<div class="box16">
-							<img src="http://img.recetascomidas.com/recetas/640_480/tortillas.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de nueces',1)">
-										{{cv}}</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Paleo'}">
-						<div class="box16">
-							<img src="http://www.biencasero.com/advf/imagenes/4b7af134aec0a_200x200.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Paleo',1)"> {{cv}}</a>
-								</h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6"
-						ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Libre de Gluten'}">
-						<div class="box16">
-							<img src="https://img-global.cpcdn.com/002_recipes/be6d1b5bd3e767e1/664x470cq70/photo.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Gluten',1)">
-										{{cv}}</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values | filter:{ $:'Low Sugar'}">
-						<div class="box16">
-							<img
-								src="https://img-global.cpcdn.com/002_recipes/recipes_82501_v1415337086_receta_foto_00082501-ziepj7bj8eo871islavt/664x470cq70/photo.jpg">
-							<div class="box-content">
-								<h3 class="title"><a class="non-underline-link" href="listado.html"
-										ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Low Sugar',1)">
-										{{cv}}</a></h3>
-							</div>
-						</div>
-					</div>
-
 				</div>
 
+				<div class="col-md-4 col-sm-6" ng-repeat="cv in c.HealthLabels.values" >
+					<div class="box16">
+						<img src="img/logo-Solo.png">
+						<div class="box-content" >
+							<h3 class="title"><a class="non-underline-link" href="listado.html">  {{cv}}</a></h3>
+						</div>
+					</div>
+				</div>
+
+
+				
 			</div>
-			<!--
+			<!-- BOTON PARA CULTAR CATEGORIAS
 			<div  class="container fluid mt-3">
 				<button id="bmb" class="btn btn-lg btn-primary" type="submit" 
 				onclick="mostrarOtrasCategorias('mb')">VER MAS</button>				
 			</div>
-		
+		-->
 		</div>
 	</div>
 
--->
-			<!-- FIN HOME PAGE-->
+
+<!-- FIN HOME PAGE-->
 
 
 
