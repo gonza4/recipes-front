@@ -26,6 +26,7 @@ app.controller("myController", function ($scope, $http, $location) {
     $scope.categorias = "hola";
     $scope.texto = "";
     $scope.dondeEstoy = "";
+    $scope.totalPages;
 
     // funciones
 
@@ -78,6 +79,20 @@ app.controller("myController", function ($scope, $http, $location) {
                 }
             }).then(function exito(respose) {
                 $scope.recetas = respose.data;
+                console.log($scope.recetas);
+                if ($scope.recetas.length <1) {
+                    $scope.totalPages=0;
+                }
+
+
+               var aux=0;
+                for (var i = 0; i <  $scope.recetas.length; i++) {
+                   aux=  $scope.recetas[i].totalPages;
+
+                   break;
+                }
+             $scope.totalPages = aux;
+             console.log("paginas "+$scope.totalPages);
                 $scope.procesando--;
 
             }, function fracaso(respose) {
@@ -94,6 +109,21 @@ app.controller("myController", function ($scope, $http, $location) {
                 }
             }).then(function exito(respose) {
                 $scope.recetas = respose.data;
+                console.log($scope.recetas);
+                     if ($scope.recetas.length <1) {
+                    $scope.totalPages=0;
+                }
+
+
+
+
+               var aux=0;
+                for (var i = 0; i <  $scope.recetas.length; i++) {
+                   aux=  $scope.recetas[i].totalPages;
+                   break;
+                }
+             $scope.totalPages = aux;
+             console.log("paginas "+$scope.totalPages);
                 $scope.procesando--;
 
             }, function fracaso(respose) {
