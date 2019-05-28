@@ -1,3 +1,30 @@
+
+
+function vistaPrevia(){
+document.getElementById("file").onchange = function(e) {
+	
+	
+	let reader = new FileReader();
+  
+  reader.onload = function(){
+    let preview = document.getElementById('preview'),
+    		image = document.createElement('img');
+
+    image.src = reader.result;
+    
+    preview.innerHTML = '';
+    preview.append(image);
+  };
+ 
+  reader.readAsDataURL(e.target.files[0]);
+}
+}
+
+function limpiarCampos(){
+	document.getElementById("file").value="";
+	document.getElementById("preview").innerHTML="";
+}
+
 function validar(frm) { 
 
 	if (frm.txtBuscar.value.length<3 || frm.txtBuscar.value.length ==0) { 
@@ -41,7 +68,7 @@ function validarSoloTexto(parametro){
 		return true;
 	}
 }
-
+/*
 function mostrarOtrasCategorias(id){
 
 	if(document.getElementById(id).style.display == 'block'){
@@ -56,3 +83,4 @@ function mostrarOtrasCategorias(id){
 		}
 	}
 }
+*/

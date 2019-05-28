@@ -4,10 +4,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/css/perfect-scrollbar.min.css">
+	href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/css/perfect-scrollbar.min.css">
 
 	<link rel="stylesheet" href="node_modules/open-sans-fontface/open-sans.css">
 	<link rel="stylesheet" href="css/sidebar.css">
@@ -15,6 +15,12 @@
 	<link rel="stylesheet" href="css/sidebar.menu.css">
 	<link rel="stylesheet" href="css/sidebar.menu.white.css">
 	<link rel="stylesheet" href="css/sidebar.menu.dark.css">
+
+	<link rel="stylesheet" href="css/styles.css">
+	<!--Para el selector multiple-->
+	<link rel="stylesheet" href="https://unpkg.com/multiple-select@1.3.1/dist/multiple-select.min.css">
+	<link rel="stylesheet" href="css/multiple-select.min.css">
+	<<!---->
 
 	<title>RecipesClub</title>
 </head>
@@ -32,7 +38,7 @@
 		<div class="container-fluid justify-content-center mt-2">
 			<form class="form-inline" ng-submit="buscarRecetas(null,null,null,1,entrada)">
 				<input class=" form-control mr-sm-2" ng-model="entrada" name="entrada" id="entrada" type="search"
-					required minlength="3" pattern="[a-zA-ZñÑuÜáÁéÉíÍóÓúÚ\s]+" title="Solo letras">
+				required minlength="3" pattern="[a-zA-ZñÑuÜáÁéÉíÍóÓúÚ\s]+" title="Solo letras">
 				<button class="btn btn-md btn-primary content-center"  type="submit">Buscar</button>
 			</form>
 		</div>
@@ -63,432 +69,745 @@
 						<p class="list-title">CATEGORÍAS</p>
 						<ul class="list-unstyled">
 							<li><a href="#" class="list-link"
-									ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en carbohidratos',1)">Baja
-									en carbohidratos</a></li>
+								ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en carbohidratos',1)">Baja
+							en carbohidratos</a></li>
 							<li><a href="#" class="list-link"
-									ng-click="buscarRecetas('DietLabels','DIET_LABELS','Equilibrado',1)">Equilibrada</a>
+								ng-click="buscarRecetas('DietLabels','DIET_LABELS','Equilibrado',1)">Equilibrada</a>
 							</li>
 							<li><a href="#" class="list-link"
-									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegana',1)">Vegana</a></li>
-							<li><a href="#" class="list-link"
+								ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegana',1)">Vegana</a></li>
+								<li><a href="#" class="list-link"
 									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Lacteos',1)">Libre
-									de lácteos</a></li>
-							<li><a href="#" class="list-link"
+								de lácteos</a></li>
+								<li><a href="#" class="list-link"
 									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Vegetariana',1)">Vegetariana</a>
-							</li>
+								</li>
 
 
-							<li><a href="#" class="list-link"
+								<li><a href="#" class="list-link"
 									ng-click="buscarRecetas('DietLabels','DIET_LABELS','Alta en proteina',1)">Alta en
-									proteina</a></li>
-							<li><a href="#" class="list-link"
+								proteina</a></li>
+								<li><a href="#" class="list-link"
 									ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en grasas',1)">Baja en
-									grasas</a></li>
-							<li><a href="#" class="list-link"
+								grasas</a></li>
+								<li><a href="#" class="list-link"
 									ng-click="buscarRecetas('DietLabels','DIET_LABELS','Baja en sodio',1)">Baja en
-									sodio</a></li>
-							<li><a href="#" class="list-link"
+								sodio</a></li>
+								<li><a href="#" class="list-link"
 									ng-click="buscarRecetas('DietLabels','DIET_LABELS','Alta en fibra',1)">Alta en
-									fibra</a></li>
-							<li><a href="#" class="list-link"
+								fibra</a></li>
+								<li><a href="#" class="list-link"
 									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de mani',1)">Libre de
-									mani</a></li>
-							<li><a href="#" class="list-link"
+								mani</a></li>
+								<li><a href="#" class="list-link"
 									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de soja',1)">Libre de
-									soja</a></li>
-							<li><a href="#" class="list-link"
+								soja</a></li>
+								<li><a href="#" class="list-link"
 									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Pescado',1)">Libre
-									de Pescado</a></li>
-							<li><a href="#" class="list-link"
+								de Pescado</a></li>
+								<li><a href="#" class="list-link"
 									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de mariscos',1)">Libre
-									de mariscos</a></li>
-							<li><a href="#" class="list-link"
+								de mariscos</a></li>
+								<li><a href="#" class="list-link"
 									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de huevos',1)">Libre
-									de huevos</a></li>
-							<li><a href="#" class="list-link"
+								de huevos</a></li>
+								<li><a href="#" class="list-link"
 									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de nueces',1)">Libre
-									de nueces</a></li>
-							<li><a href="#" class="list-link"
+								de nueces</a></li>
+								<li><a href="#" class="list-link"
 									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Paleo',1)">Paleo</a></li>
-							<li><a href="#" class="list-link"
-									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Gluten',1)">Libre
+									<li><a href="#" class="list-link"
+										ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Libre de Gluten',1)">Libre
 									de Gluten</a></li>
-							<li><a href="#" class="list-link"
-									ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Low Sugar',1)">Baja en azucar</a>
-							</li>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<!-- CONTENIDO -->
-		<!-- website content -->
-		<div class="content">
-
-
-			<!-- LISTADO -->
-			<!-- content container -->
-			<div class="container-fluid" ng-show="pantalla=='listado'">
-
-				<div class="content-box mb-3 content-lighten">
-					<h1>Listado de Recetas</h1>
-					<h5 ng-hide="procesando || recetas.length==0">{{dondeEstoy}} - Página: {{from}} </h5>
-					<h5 ng-show="recetas.length == 0"> Sin resultados </h5>
-				</div>
-
-
-				<div class="progress" ng-model="barra" ng-show="procesando">
-					<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-						aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-				</div>
-
-				<!-- one box -->
-				<div ng-hide="procesando" class="content-box mb-3 content-lighten"
-					ng-repeat="r in recetas | orderBy: orden_crit : orden_rev">
-					<div class="row">
-						<div class="col-auto">
-							<img src="{{r.image}}" class="rounded" width="100" height="100">
-						</div>
-						<div class="col-auto">
-							<a href="#" ng-click="buscarReceta(r.id)" data-toggle="modal" data-target="#modalDetalle">
-								<h3>{{r.label}}</h3>
-							</a>
-							<p>Ingredientes:
-								<p ng-repeat="il in r.ingredientLines | limitTo:3">
-									- {{il}}
-								</p>
-							</p>
-							<p>Categorías:
-								<span class="fluid"ng-repeat="cat in r.dietLabels">
-									<a href='listado.html?category=DietLabels&from=1&relation=DIET_LABELS&value={{cat}}'
-										target="_blank">{{cat}}</a>
-									-
-								</span>
-								<span class="fluid"ng-repeat="cat in r.healthLabels">
-									<a href='listado.html?category=HealthLabels&from=1&relation=HEALTH_LABELS&value={{cat}}'
-										target="_blank">{{cat}}</a>
-									<font ng-show="!$last"> - </font>
-								</span>
-							</p>
+									<li><a href="#" class="list-link"
+										ng-click="buscarRecetas('HealthLabels','HEALTH_LABELS','Low Sugar',1)">Baja en azucar</a>
+									</li>
+								</li>
+							</ul>
 						</div>
 					</div>
-				</div>
 
-				<!-- PAGINACION -->
-				<nav>
-					<ul class="pagination justify-content-center">
-						<li class="page-item {{(from == 1 || totalPages==0 ) ? 'disabled' : ''}}">
-							<a class="page-link" href="#" tabindex="-1" ng-show="!procesando"
-								ng-click="anteriorPag()">Anterior</a>
-						</li>
+					<!-- CONTENIDO -->
+					<!-- website content -->
+					<div class="content">
 
-						<li class="page-item {{(from == totalPages || totalPages==0 ) ? 'disabled' : ''}}">
-							<a class="page-link " href="#" ng-show="!procesando"
-								ng-click="siguientePag()">Siguiente</a>
-						</li>
-					</ul>
-				</nav>
 
-			</div>
+						<!-- LISTADO -->
+						<!-- content container -->
+						<div class="container-fluid" ng-show="pantalla=='listado'">
 
-			<!-- DETALLE -->
-			<!-- content container -->
-			<div class="container-fluid">
-
-				<!-- MODAL DETALLE-->
-				<!-- Modal -->
-				<div class="modal fade fuid" id="modalDetalle" tabindex="-1" role="dialog"
-					aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-xl" role="document">
-						<div class="modal-content" ng-repeat="r in receta">
-
-							<!-- Header modal -->
-							<div class="modal-header">
-								<h3 class="modal-title" id="exampleModalLabel" class="text-justify pt-3">{{r.label}}
-								</h3>
-
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
+							<div class="content-box mb-3 content-lighten">
+								<h1>Listado de Recetas</h1>
+								<h5 ng-hide="procesando || recetas.length==0">{{dondeEstoy}} - Página: {{from}} </h5>
+								<h5 ng-show="recetas.length == 0"> Sin resultados </h5>
 							</div>
-							<!-- Body modal -->
-							<div class="modal-body">
-								<div class="row">
-									<div class="col-6">
-										<img class="img-fluid" src={{r.image}} height="664" width="470">
-									</div>
-									<div class="col-6">
-
-										<div class="col-12 justify-content-center">
-
-											<h6>Cantidad de porciones: {{r.yield}} - Total de calorías:
-												{{r.calories |number:2}} </h6>
-											<hr>
-										</div>
-
-										<div class="row justify-content-center">
-											<h4 class="">INGREDIENTES</h4>
-											<div class="container mb-3 mt-1"></div>
-
-											<div class="col-12 justify-content-center "
-												ng-repeat="i in r.ingredientLines">
-												- {{i}}
-												</p>
-											</div>
-
-											<!--
-											<div class="col-12 justify-content-center">
-												<hr>
-												<h6>Cantidad de porciones: {{r.yield}} </h6>
-												<hr>
-											</div>
-											<div class="col-12 justify-content-center">
-												<h6>Total de Calorias: {{r.calories |number:2}} </h6>
-												<hr>
-											</div>
-
-			-->
-											<hr>
-											<a href={{r.url}} target="blank">Ver Procedimiento</a>
-										</div>
-									</div>
-
-									<div class="container mt-3">
-
-										<a href="#demo" class="btn btn-info" data-toggle="collapse">Ver Informacion
-											Nutricional</a>
-
-										<div id="demo" class="collapse mt-3">
-											<div class="row">
-												<!-- TABLA DE LA IZQUIERDA-->
-												<div class="col-12 col-md-6 ">
-
-													<table class="table table-striped fluid">
-														<thead>
-															<tr>
-																<th> </th>
-																<th>Cantidad por porcion</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'VITK1'} ">
-																<td>Vitamina K</td>
-																<td> {{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'TOCPHA'} ">
-																<td>Vitamina E</td>
-																<td>
-																	{{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'VITD'}">
-																<td>Vitamina D</td>
-																<td>
-																	{{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'VITB12'} ">
-																<td>Vitamina B12</td>
-																<td>
-																	{{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'FOL'} ">
-																<td>Vitamina B9</td>
-																<td>
-																	{{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'VITB6A'} ">
-																<td>Vitamina B6</td>
-																<td>
-																	{{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'NIA'} ">
-																<td>Vitamina B3</td>
-																<td>
-																	{{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'RIBF'} ">
-																<td>Vitamina B2</td>
-																<td>
-																	{{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'THIA'} ">
-																<td>Vitamina B1</td>
-																<td>
-																	{{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'VITC'} ">
-																<td>Vitamina C</td>
-																<td>
-																	{{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'VITA_RAE'} ">
-																<td>Vitamina A</td>
-																<td>
-																	{{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label: 'P'}:true ">
-																<td>Fosforo</td>
-																<td>
-																	{{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'ZN'} ">
-																<td>Zinc</td>
-																<td>
-																	{{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'FE'} ">
-																<td>Hierro</td>
-																<td>
-																	{{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'K'}:true ">
-																<td>Potasio</td>
-																<td>
-																	{{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-												<!-- TABLA DE LA DERECHA-->
-												<div class="col-12 col-md-6 mg-l-0">
-													<table class="table table-striped fluid">
-														<thead>
-															<tr>
-																<th> </th>
-																<th>Cantidad por porcion</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'MG'} ">
-																<td>Magnesio</td>
-																<td> {{n.quantity  |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'CA'} ">
-																<td>Calcio</td>
-																<td> {{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'NA'} ">
-																<td>Sodio</td>
-																<td> {{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'PROCNT'} ">
-																<td>Proteina</td>
-																<td> {{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'SUGAR'} ">
-																<td>Azucar</td>
-																<td> {{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'FIBTG'} ">
-																<td>Fibra</td>
-																<td> {{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'CHOCDF'} ">
-																<td>Carbohidratos</td>
-																<td> {{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'FAPU'} ">
-																<td>Grasas Poliinsaturadas</td>
-																<td> {{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'FAMS'} ">
-																<td>Grasas Monosaturadas</td>
-																<td> {{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'FATRN'} ">
-																<td>Grasas Trans</td>
-																<td> {{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'FASAT'} ">
-																<td>Grasas Saturadas </td>
-																<td> {{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
-															<tr
-																ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
-																<td>Grasas</td>
-																<td> {{n.quantity |number:2}} {{n.unit}}</td>
-															</tr>
 
 
-														</tbody>
-													</table>
-												</div>
-											</div>
+							<div class="progress" ng-model="barra" ng-show="procesando">
+								<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+								aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+							</div>
 
-										</div>
-									</div>
+							<!-- one box -->
+							<div ng-hide="procesando" class="content-box mb-3 content-lighten"
+							ng-repeat="r in recetas | orderBy: orden_crit : orden_rev">
+							<div class="row">
+								<div class="col-auto">
+									<img src="{{r.image}}" class="rounded" width="100" height="100">
+								</div>
+								<div class="col-auto">
+									<a href="#" ng-click="buscarReceta(r.id)" data-toggle="modal" data-target="#modalDetalle">
+										<h3>{{r.label}}</h3>
+									</a>
+									<p>Ingredientes:
+										<p ng-repeat="il in r.ingredientLines | limitTo:3">
+											- {{il}}
+										</p>
+									</p>
+									<p>Categorías:
+										<span class="fluid"ng-repeat="cat in r.dietLabels">
+											<a href='listado.html?category=DietLabels&from=1&relation=DIET_LABELS&value={{cat}}'
+											target="_blank">{{cat}}</a>
+											-
+										</span>
+										<span class="fluid"ng-repeat="cat in r.healthLabels">
+											<a href='listado.html?category=HealthLabels&from=1&relation=HEALTH_LABELS&value={{cat}}'
+											target="_blank">{{cat}}</a>
+											<font ng-show="!$last"> - </font>
+										</span>
+									</p>
 								</div>
 							</div>
-							<!-- Footer modal -->
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+						</div>
+
+						<!-- PAGINACION -->
+						<nav>
+							<ul class="pagination justify-content-center">
+								<li class="page-item {{(from == 1 || totalPages==0 ) ? 'disabled' : ''}}">
+									<a class="page-link" href="#" tabindex="-1" ng-show="!procesando"
+									ng-click="anteriorPag()">Anterior</a>
+								</li>
+
+								<li class="page-item {{(from == totalPages || totalPages==0 ) ? 'disabled' : ''}}">
+									<a class="page-link " href="#" ng-show="!procesando"
+									ng-click="siguientePag()">Siguiente</a>
+								</li>
+							</ul>
+						</nav>
+
+					</div>
+
+					<!-- DETALLE -->
+					<!-- content container -->
+					<div class="container-fluid">
+
+						<!-- MODAL DETALLE-->
+						<!-- Modal -->
+						<div class="modal fade fuid" id="modalDetalle" tabindex="-1" role="dialog"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-xl" role="document">
+							<div class="modal-content" ng-repeat="r in receta">
+
+								<!-- Header modal -->
+								<div class="modal-header">
+									<h3 class="modal-title" id="exampleModalLabel" class="text-justify pt-3">{{r.label}}
+									</h3>
+
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<!-- Body modal -->
+								<div class="modal-body">
+									<div class="row">
+										<div class="col-6">
+											<img class="img-fluid" src={{r.image}} height="664" width="470">
+										</div>
+										<div class="col-6">
+
+											<div class="col-12 justify-content-center">
+
+												<h6>Cantidad de porciones: {{r.yield}} - Total de calorías:
+												{{r.calories |number:2}} </h6>
+												<hr>
+											</div>
+
+											<div class="row justify-content-center">
+												<h4 class="">INGREDIENTES</h4>
+												<div class="container mb-3 mt-1"></div>
+
+												<div class="col-12 justify-content-center "
+												ng-repeat="i in r.ingredientLines">
+												- {{i}}
+											</p>
+										</div>
+
+
+										<hr>
+										<a href={{r.url}} target="blank">Ver Procedimiento</a>
+									</div>
+								</div>
+
+								<div class="container mt-3">
+
+									<a href="#demo" class="btn btn-info" data-toggle="collapse">Ver Informacion
+									Nutricional</a>
+
+									<div id="demo" class="collapse mt-3">
+										<div class="row">
+											<!-- TABLA DE LA IZQUIERDA-->
+											<div class="col-12 col-md-6 ">
+
+												<table class="table table-striped fluid">
+													<thead>
+														<tr>
+															<th> </th>
+															<th>Cantidad por porcion</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr
+														ng-repeat="n in r.totalNutrients | filter:{label:'VITK1'} ">
+														<td>Vitamina K</td>
+														<td> {{n.quantity |number:2}} {{n.unit}}</td>
+													</tr>
+													<tr
+													ng-repeat="n in r.totalNutrients | filter:{label:'TOCPHA'} ">
+													<td>Vitamina E</td>
+													<td>
+													{{n.quantity |number:2}} {{n.unit}}</td>
+												</tr>
+												<tr
+												ng-repeat="n in r.totalNutrients | filter:{label:'VITD'}">
+												<td>Vitamina D</td>
+												<td>
+												{{n.quantity |number:2}} {{n.unit}}</td>
+											</tr>
+											<tr
+											ng-repeat="n in r.totalNutrients | filter:{label:'VITB12'} ">
+											<td>Vitamina B12</td>
+											<td>
+											{{n.quantity |number:2}} {{n.unit}}</td>
+										</tr>
+										<tr
+										ng-repeat="n in r.totalNutrients | filter:{label:'FOL'} ">
+										<td>Vitamina B9</td>
+										<td>
+										{{n.quantity |number:2}} {{n.unit}}</td>
+									</tr>
+									<tr
+									ng-repeat="n in r.totalNutrients | filter:{label:'VITB6A'} ">
+									<td>Vitamina B6</td>
+									<td>
+									{{n.quantity |number:2}} {{n.unit}}</td>
+								</tr>
+								<tr
+								ng-repeat="n in r.totalNutrients | filter:{label:'NIA'} ">
+								<td>Vitamina B3</td>
+								<td>
+								{{n.quantity |number:2}} {{n.unit}}</td>
+							</tr>
+							<tr
+							ng-repeat="n in r.totalNutrients | filter:{label:'RIBF'} ">
+							<td>Vitamina B2</td>
+							<td>
+							{{n.quantity |number:2}} {{n.unit}}</td>
+						</tr>
+						<tr
+						ng-repeat="n in r.totalNutrients | filter:{label:'THIA'} ">
+						<td>Vitamina B1</td>
+						<td>
+						{{n.quantity |number:2}} {{n.unit}}</td>
+					</tr>
+					<tr
+					ng-repeat="n in r.totalNutrients | filter:{label:'VITC'} ">
+					<td>Vitamina C</td>
+					<td>
+					{{n.quantity |number:2}} {{n.unit}}</td>
+				</tr>
+				<tr
+				ng-repeat="n in r.totalNutrients | filter:{label:'VITA_RAE'} ">
+				<td>Vitamina A</td>
+				<td>
+				{{n.quantity |number:2}} {{n.unit}}</td>
+			</tr>
+			<tr
+			ng-repeat="n in r.totalNutrients | filter:{label: 'P'}:true ">
+			<td>Fosforo</td>
+			<td>
+			{{n.quantity |number:2}} {{n.unit}}</td>
+		</tr>
+		<tr
+		ng-repeat="n in r.totalNutrients | filter:{label:'ZN'} ">
+		<td>Zinc</td>
+		<td>
+		{{n.quantity |number:2}} {{n.unit}}</td>
+	</tr>
+	<tr
+	ng-repeat="n in r.totalNutrients | filter:{label:'FE'} ">
+	<td>Hierro</td>
+	<td>
+	{{n.quantity |number:2}} {{n.unit}}</td>
+</tr>
+<tr
+ng-repeat="n in r.totalNutrients | filter:{label:'K'}:true ">
+<td>Potasio</td>
+<td>
+{{n.quantity |number:2}} {{n.unit}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- TABLA DE LA DERECHA-->
+<div class="col-12 col-md-6 mg-l-0">
+	<table class="table table-striped fluid">
+		<thead>
+			<tr>
+				<th> </th>
+				<th>Cantidad por porcion</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr
+			ng-repeat="n in r.totalNutrients | filter:{label:'MG'} ">
+			<td>Magnesio</td>
+			<td> {{n.quantity  |number:2}} {{n.unit}}</td>
+		</tr>
+		<tr
+		ng-repeat="n in r.totalNutrients | filter:{label:'CA'} ">
+		<td>Calcio</td>
+		<td> {{n.quantity |number:2}} {{n.unit}}</td>
+	</tr>
+	<tr
+	ng-repeat="n in r.totalNutrients | filter:{label:'NA'} ">
+	<td>Sodio</td>
+	<td> {{n.quantity |number:2}} {{n.unit}}</td>
+</tr>
+<tr
+ng-repeat="n in r.totalNutrients | filter:{label:'PROCNT'} ">
+<td>Proteina</td>
+<td> {{n.quantity |number:2}} {{n.unit}}</td>
+</tr>
+<tr
+ng-repeat="n in r.totalNutrients | filter:{label:'SUGAR'} ">
+<td>Azucar</td>
+<td> {{n.quantity |number:2}} {{n.unit}}</td>
+</tr>
+<tr
+ng-repeat="n in r.totalNutrients | filter:{label:'FIBTG'} ">
+<td>Fibra</td>
+<td> {{n.quantity |number:2}} {{n.unit}}</td>
+</tr>
+<tr
+ng-repeat="n in r.totalNutrients | filter:{label:'CHOCDF'} ">
+<td>Carbohidratos</td>
+<td> {{n.quantity |number:2}} {{n.unit}}</td>
+</tr>
+<tr
+ng-repeat="n in r.totalNutrients | filter:{label:'FAPU'} ">
+<td>Grasas Poliinsaturadas</td>
+<td> {{n.quantity |number:2}} {{n.unit}}</td>
+</tr>
+<tr
+ng-repeat="n in r.totalNutrients | filter:{label:'FAMS'} ">
+<td>Grasas Monosaturadas</td>
+<td> {{n.quantity |number:2}} {{n.unit}}</td>
+</tr>
+<tr
+ng-repeat="n in r.totalNutrients | filter:{label:'FATRN'} ">
+<td>Grasas Trans</td>
+<td> {{n.quantity |number:2}} {{n.unit}}</td>
+</tr>
+<tr
+ng-repeat="n in r.totalNutrients | filter:{label:'FASAT'} ">
+<td>Grasas Saturadas </td>
+<td> {{n.quantity |number:2}} {{n.unit}}</td>
+</tr>
+<tr
+ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
+<td>Grasas</td>
+<td> {{n.quantity |number:2}} {{n.unit}}</td>
+</tr>
+
+
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<!-- Footer modal -->
+<div class="modal-footer">
+	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+</div>
+</div>
+</div>
+</div>
+<!--FIN MODAL -->
+
+</div>
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNuevaReceta" data-whatever="@mdo">Prueba Modal</button>
+<!-- MODAL NUEVA RECETA -->
+<div class="container-fluid" ng-init="buscarCategorias()">
+
+	<!-- MODAL -->
+
+	<div class="modal fade fluid" id="modalNuevaReceta" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+
+			<!-- Header modal -->
+			<div class="modal-header">
+				<h3 class="modal-title" id="exampleModalLabel" class="text-justify pt-3">NUEVA RECETA
+
+				</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+
+			</div>
+			<!-- Body modal -->
+			<form class="card card-sm" method="get"  >
+				<div class="form-group">
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-12">
+								<h6>Título: <input type="text" class="form-control col-xs-2" id="titulo"></h6>
+							</div>
+
+
+							<div class="col-12 mb-3">
+								<select id="select" multiple="multiple" placeholder="SELECCIONE CATEGORIAS" style="width: 100%;height: 20px;">
+									<option value="1">January</option>
+									<option value="2">February</option>
+									<option value="3">March</option>
+									<option value="4">April</option>
+									<option value="5">May</option>
+									<option value="6">June</option>
+									<option value="7">July</option>
+									<option value="8">August</option>
+									<option value="9">September</option>
+									<option value="10">October</option>
+									<option value="11">November</option>
+									<option value="12">December</option>
+									<option>{{c.HealthLabels.values}}</option>
+									<option>{{c.DietLabels.values}}</option>
+
+								</select>
+								<br>
+
+							</div>
+
+							<div class="col-6">
+								<input id="file" type="file" onclick="vistaPrevia()" />
+								<hr>
+								<div id="preview" class="fluid">
+
+								</div>
+
+
+
+
+							</div>
+
+
+
+
+							<div class="col-6">
+								<div class="row fluid">
+									<div class="col-6">
+
+										<label>Cantidad de Porciones: </label>
+										<input type="text" class="form-control " id="cantPorciones">
+									</div>
+									<div class="col-6">
+										<label>Total de Calorías: </label>
+										<input type="text" class="form-control " id="totalCalorias"> </h6>
+										<hr>
+									</div>
+								</div>
+								<div class="row justify-content-center">
+									<h4 class="">INGREDIENTES</h4>
+									<div class="container mb-3 mt-1"></div>
+
+									<div class="col-12 justify-content-center ">
+										<textarea class="form-control" rows="3" id="ingredientes"></textarea>
+									</p>
+								</div>
+
+
+								<hr>
+								<div class="col-12 justify-content-center ">
+									<div class="radio">
+										<label><input type="radio" name="optradio" checked> Agregar Link de Procedimiento</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="optradio"> Cargar Procedimiento</label>
+									</div>
+									<textarea class="form-control" rows="3" id="procedimiento"></textarea>
+
+									<input type="text" class="form-control col-xs-2" id="linkProcedimiento">
+
+
+								</div>
+
+
+							</div>
+						</div>
+
+						<div class="container mt-3">
+
+							<a href="#demo" class="btn btn-info" data-toggle="collapse">Cargar Informacion
+							Nutricional</a>
+
+							<div id="demo" class="collapse mt-3">
+								<div class="row">
+									<!-- TABLA DE LA IZQUIERDA-->
+									<div class="col-12 col-md-6 ">
+
+										<table class="table table-striped fluid">
+											<thead>
+												<tr>
+													<th> </th>
+													<th>Cantidad por porcion</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Vitamina K</td>
+													<td> <input type="text" class="form-control " id="VK"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Vitamina E</td>
+													<td> <input type="text" class="form-control " id="VE"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Vitamina D</td>
+													<td> <input type="text" class="form-control " id="VD"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Vitamina B12</td>
+													<td> <input type="text" class="form-control " id="B12"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Vitamina B9</td>
+													<td> <input type="text" class="form-control " id="B9"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Vitamina B6</td>
+													<td> <input type="text" class="form-control " id="B6"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Vitamina B3</td>
+													<td> <input type="text" class="form-control " id="B3"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Vitamina B2</td>
+													<td> <input type="text" class="form-control " id="B2"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Vitamina B1</td>
+													<td> <input type="text" class="form-control " id="B1"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Vitamina C</td>
+													<td> <input type="text" class="form-control " id="VC"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Vitamina A</td>
+													<td> <input type="text" class="form-control " id="VA"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Fosforo</td>
+													<td> <input type="text" class="form-control " id="P"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Zinc</td>
+													<td> <input type="text" class="form-control " id="Zn"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Hierro</td>
+													<td> <input type="text" class="form-control " id="Fe"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Potasio</td>
+													<td> <input type="text" class="form-control " id="K"> </td>
+													<td>Kg</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!-- TABLA DE LA DERECHA-->
+									<div class="col-12 col-md-6 mg-l-0">
+										<table class="table table-striped fluid">
+											<thead>
+												<tr>
+													<th> </th>
+													<th>Cantidad por porcion</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Magnesio</td>
+													<td> <input type="text" class="form-control " id="MG"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Calcio</td>
+													<td> <input type="text" class="form-control " id="CA"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Sodio</td>
+													<td> <input type="text" class="form-control " id="NA"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Proteina</td>
+													<td> <input type="text" class="form-control " id="PROCNT"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Azucar</td>
+													<td> <input type="text" class="form-control " id="SUGAR"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Fibra</td>
+													<td> <input type="text" class="form-control " id="FIBTG"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Carbohidratos</td>
+													<td> <input type="text" class="form-control " id="CHOCDF"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Grasas Poliinsaturadas</td>
+													<td> <input type="text" class="form-control " id="FAPU"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Grasas Monosaturadas</td>
+													<td> <input type="text" class="form-control " id="FAMS"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Grasas Trans</td>
+													<td> <input type="text" class="form-control " id="FATRN"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Grasas Saturadas </td>
+													<td> <input type="text" class="form-control " id="FASAT"> </td>
+													<td>Kg</td>
+												</tr>
+												<tr>
+													<td>Grasas</td>
+													<td> <input type="text" class="form-control " id="FAT"> </td>
+													<td>Kg</td>
+												</tr>
+
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+
 							</div>
 						</div>
 					</div>
 				</div>
-				<!--FIN MODAL -->
+			</form>
+		</div>
+		<!-- Footer modal -->
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="limpiarCampos()">Cerrar</button>
 
-			</div>
-
+			<button class="btn btn-md btn-primary content-center" type="submit">Guardar</button>
 		</div>
 	</div>
+</div>
+</div>
+<!--FIN MODAL -->
+
+</div>
 
 
 
-	<footer class="mt-5 mb-2">
-		Copyright Recipes Club 2019
-	</footer>
 
 
-	<!-- SCRIPTS -->
-	<!-- javascript library -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-		crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.min.js">
-	</script>
-	<script src="js/nanobar.js"></script>
-	<script src="js/sidebar.menu.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-	<script src="js/app.js"></script>
-	<script>
-		$(function () {
-			new PerfectScrollbar('.list-scrollbar');
-			var nanobar = new Nanobar();
-			nanobar.go(100);
-		});
-	</script>
+
+
+
+
+
+</div>
+</div>
+
+
+
+<footer class="mt-5 mb-2">
+	Copyright Recipes Club 2019
+</footer>
+
+
+<!-- SCRIPTS -->
+<!-- javascript library -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.min.js">
+</script>
+<script src="js/nanobar.js"></script>
+<script src="js/sidebar.menu.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+<script src="js/app.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/multiple-select@1.3.1/dist/multiple-select.min.js"></script>
+<script src="js/multiple-select-es.min.js"></script>
+<script type="text/javascript" src="js/validaciones.js"></script>
+<script>
+	$(function () {
+		new PerfectScrollbar('.list-scrollbar');
+		var nanobar = new Nanobar();
+		nanobar.go(100);
+	});
+</script>
+<script>
+	$(function () {
+		$('#select').multipleSelect({
+			selectAll: false
+
+		})
+	})
+</script>
 </body>
 
 </html>
