@@ -29,4 +29,12 @@
 .box16:hover .post,.box16:hover .title{transform:translateY(-110px)}
 .non-underline-link, .non-underline-link:hover{text-decoration: none; color: white;}
 
+#preview {
+  border:1px solid #ddd;
+  padding:5px;
+  border-radius:2px;
+  background:#fff;
+ 
+}
 
+#preview img {width:100%;display:block;}
