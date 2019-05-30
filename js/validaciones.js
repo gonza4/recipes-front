@@ -4,17 +4,29 @@ function limpiarCampos(){
 	document.getElementById("preview").innerHTML="";
 	//falta agregar q las categorias seleccionadas dejen de estarlo
 }
-
-function validar(frm) { 
-
-	if (frm.txtBuscar.value.length<3 || frm.txtBuscar.value.length ==0) { 
-
-		toastr.options = {
+function toastOptions(){
+	toastr.options = {
 			
 			"positionClass": "toast-top-center",
 			"preventDuplicates": true
 		}
 
+}
+
+function validar(frm) { 
+	//validar titulo nueva Receta	
+	if (frm.titulo.value.length==0) {
+		toastOptions();
+		toastr["error"]("Este campo es requerido", "Error")
+		
+		frm.titulo.focus(); 
+
+		return false;
+	}
+
+	if (frm.txtBuscar.value.length<3 || frm.txtBuscar.value.length ==0) { 
+
+		
 		toastr["error"]("Minimo 3 caracteres", "Error")
 		
 		frm.txtBuscar.focus(); 
@@ -139,7 +151,7 @@ window.obtenerTipoMIME = function obtenerTipoMIME(cabecera) {
 jQuery(document).ready(function() {
 
     //Cargamos la imagen "vacía" que actuará como Placeholder
-    jQuery('#vistaPrevia').attr('src', "img/logo-Solo.png");
+    jQuery('#vistaPrevia').attr('src', "http://recipes-club.s3-website.us-east-2.amazonaws.com/img/imagen_no_disponible.jpeg");
 
     //El input del archivo lo vigilamos con un "delegado"
     jQuery('#botonera').on('change', '#archivo', function(e) {
@@ -157,11 +169,14 @@ jQuery(document).ready(function() {
     //});
 
 });
+
 function imgPorDefecto(){
 
-	jQuery('#vistaPrevia').attr('src', "img/logo-Solo.png");
+	jQuery('#vistaPrevia').attr('src', "http://recipes-club.s3-website.us-east-2.amazonaws.com/img/imagen_no_disponible.jpeg");
 	document.getElementById("linkProcedimiento").style.display = "block";
     document.getElementById("procedimiento").style.display = "none";
+    document.getElementById("procedimiento").value=" ";
+  
 }
 
 	 function mostrar(dato){
@@ -169,10 +184,16 @@ function imgPorDefecto(){
             document.getElementById("linkProcedimiento").style.display = "block";
             document.getElementById("procedimiento").style.display = "none";
             document.getElementById("procedimiento").value=" ";
+            document.getElementById("linkProcedimiento").value="";
             
           }else{
           	document.getElementById("linkProcedimiento").style.display = "none";
           	document.getElementById("linkProcedimiento").value=" ";
             document.getElementById("procedimiento").style.display = "block";
+             document.getElementById("procedimiento").value="";
           }
+}
+
+function confirmacionGuardado(){
+	show.alert("Receta agregada con exito");
 }
