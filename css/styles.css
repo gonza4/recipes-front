@@ -37,4 +37,13 @@
  
 }
 
-#preview img {width:100%;display:block;}
+  .titulo{ font-size: 12pt; font-weight: bold; height: 30pt;}
+#marcoVistaPrevia{
+  
+    width: 470px;
+    height: auto;
+}
+#vistaPrevia{
+    max-width: 470px;
+    max-height: auto;            
+}
