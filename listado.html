@@ -266,97 +266,83 @@
 														</tr>
 													</thead>
 													<tbody>
-														<tr
-														ng-repeat="n in r.totalNutrients | filter:{label:'VITK1'} ">
+														<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITK1'} ">
 														<td>Vitamina K</td>
 														<td> {{n.quantity |number:2}} {{n.unit}}</td>
 													</tr>
-													<tr
-													ng-repeat="n in r.totalNutrients | filter:{label:'TOCPHA'} ">
+													<tr ng-repeat="n in r.totalNutrients | filter:{label:'TOCPHA'} ">
 													<td>Vitamina E</td>
 													<td>
 													{{n.quantity |number:2}} {{n.unit}}</td>
 												</tr>
-												<tr
-												ng-repeat="n in r.totalNutrients | filter:{label:'VITD'}">
+												<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITD'}">
 												<td>Vitamina D</td>
 												<td>
 												{{n.quantity |number:2}} {{n.unit}}</td>
 											</tr>
-											<tr
-											ng-repeat="n in r.totalNutrients | filter:{label:'VITB12'} ">
+											<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITB12'} ">
 											<td>Vitamina B12</td>
 											<td>
 											{{n.quantity |number:2}} {{n.unit}}</td>
 										</tr>
-										<tr
-										ng-repeat="n in r.totalNutrients | filter:{label:'FOL'} ">
+										<tr ng-repeat="n in r.totalNutrients | filter:{label:'FOL'} ">
 										<td>Vitamina B9</td>
 										<td>
 										{{n.quantity |number:2}} {{n.unit}}</td>
 									</tr>
-									<tr
-									ng-repeat="n in r.totalNutrients | filter:{label:'VITB6A'} ">
+									<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITB6A'} ">
 									<td>Vitamina B6</td>
 									<td>
 									{{n.quantity |number:2}} {{n.unit}}</td>
 								</tr>
-								<tr
-								ng-repeat="n in r.totalNutrients | filter:{label:'NIA'} ">
+								<tr ng-repeat="n in r.totalNutrients | filter:{label:'NIA'} ">
 								<td>Vitamina B3</td>
 								<td>
 								{{n.quantity |number:2}} {{n.unit}}</td>
 							</tr>
-							<tr
-							ng-repeat="n in r.totalNutrients | filter:{label:'RIBF'} ">
+							<tr ng-repeat="n in r.totalNutrients | filter:{label:'RIBF'} ">
 							<td>Vitamina B2</td>
 							<td>
 							{{n.quantity |number:2}} {{n.unit}}</td>
 						</tr>
-						<tr
-						ng-repeat="n in r.totalNutrients | filter:{label:'THIA'} ">
+						<tr ng-repeat="n in r.totalNutrients | filter:{label:'THIA'} ">
 						<td>Vitamina B1</td>
 						<td>
 						{{n.quantity |number:2}} {{n.unit}}</td>
 					</tr>
-					<tr
-					ng-repeat="n in r.totalNutrients | filter:{label:'VITC'} ">
+					<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITC'} ">
 					<td>Vitamina C</td>
 					<td>
 					{{n.quantity |number:2}} {{n.unit}}</td>
 				</tr>
-				<tr
-				ng-repeat="n in r.totalNutrients | filter:{label:'VITA_RAE'} ">
+				<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITA_RAE'} ">
 				<td>Vitamina A</td>
 				<td>
 				{{n.quantity |number:2}} {{n.unit}}</td>
 			</tr>
-			<tr
-			ng-repeat="n in r.totalNutrients | filter:{label: 'P'}:true ">
+			<tr ng-repeat="n in r.totalNutrients | filter:{label: 'P'}:true ">
 			<td>Fosforo</td>
 			<td>
 			{{n.quantity |number:2}} {{n.unit}}</td>
 		</tr>
-		<tr
-		ng-repeat="n in r.totalNutrients | filter:{label:'ZN'} ">
+		<tr ng-repeat="n in r.totalNutrients | filter:{label:'ZN'} ">
 		<td>Zinc</td>
 		<td>
 		{{n.quantity |number:2}} {{n.unit}}</td>
 	</tr>
-	<tr
-	ng-repeat="n in r.totalNutrients | filter:{label:'FE'} ">
+	<tr ng-repeat="n in r.totalNutrients | filter:{label:'FE'} ">
 	<td>Hierro</td>
 	<td>
 	{{n.quantity |number:2}} {{n.unit}}</td>
 </tr>
-<tr
-ng-repeat="n in r.totalNutrients | filter:{label:'K'}:true ">
+<tr ng-repeat="n in r.totalNutrients | filter:{label:'K'}:true ">
 <td>Potasio</td>
 <td>
 {{n.quantity |number:2}} {{n.unit}}</td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <!-- TABLA DE LA DERECHA-->
 <div class="col-12 col-md-6 mg-l-0">
@@ -478,24 +464,24 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-12">
-								<h6>Título: <input type="text" class="form-control col-xs-2" id="titulo" name="titulo" required></h6>
+								<h6>Título: <input type="text" class="form-control col-xs-2" id="titulo" name="label" required></h6>
 							</div>
 							<div class="col-12 mb-3">
 								<h6>Categorías</h6>
 								<select id="select"  name="categorias" multiple="multiple" placeholder="SELECCIONE CATEGORIAS" style="width: 100%;height: 20px;" required>
 									
-									<option value="1">January</option>
-									<option value="2">February</option>
-									<option value="3">March</option>
-									<option value="4">April</option>
-									<option value="5">May</option>
-									<option value="6">June</option>
-									<option value="7">July</option>
-									<option value="8">August</option>
-									<option value="9">September</option>
-									<option value="10">October</option>
-									<option value="11">November</option>
-									<option value="12">December</option>
+									<option value="1">Categoria 1</option>
+									<option value="2">Categoria 2</option>
+									<option value="3">Categoria 3</option>
+									<option value="4">Categoria 4</option>
+									<option value="5">Categoria 5</option>
+									<option value="6">Categoria 6</option>
+									<option value="7">Categoria 7</option>
+									<option value="8">Categoria 8</option>
+									<option value="9">Categoria 9</option>
+									<option value="10">Categoria 10</option>
+									<option value="11">Categoria 11</option>
+									<option value="12">Categoria 12</option>
 									
 					
 									<option name="HealthLabels" value="{{c.HealthLabels.values}}">{{c.HealthLabels.values}}</option>
@@ -510,7 +496,7 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 							<div class="col-6 fluid justify-content-center">
 								
 								<div id='botonera' class="mb-3">
-									<input id="archivo" type="file" accept="image/*" name="imagenCargada"required></input>
+									<input id="archivo" type="file" accept="image/*" name="image"required></input>
 								</div>
 								<div class="row justify-content-center">
 								<div class="contenedor fluid">
@@ -526,11 +512,11 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 									<div class="col-6">
 
 										<label>Cantidad de Porciones: </label>
-										<input type="text" class="form-control " id="cantPorciones" name="Porciones" required pattern="[1234567890]+" title="Solo números">
+										<input type="text" class="form-control " id="cantPorciones" name="yield" required pattern="[1234567890]+" title="Solo números">
 									</div>
 									<div class="col-6">
 										<label>Total de Calorías (Kcal): </label>
-										<input type="text" class="form-control " id="totalCalorias" name="Calorias" required pattern="[1234567890]+" title="Solo números"> </h6>
+										<input type="text" class="form-control " id="totalCalorias" name="calories" required pattern="[1234567890]+" title="Solo números"> </h6>
 										
 									</div>
 								</div>
@@ -539,7 +525,7 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 									<div class="container mb-3 mt-1"></div>
 
 									<div class="col-12 justify-content-center ">
-										<textarea class="form-control" rows="3" id="ingredientes" name="ingredientes"></textarea>
+										<textarea class="form-control" rows="3" id="ingredientes" name="ingredientLines"></textarea>
 									</p>
 								</div>
 
@@ -554,9 +540,9 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 										<label><input id="rbtprocedimiento" type="radio" name="optradio" 
 											value="2" onchange="mostrar(this.value);" > Cargar Procedimiento</label>
 									</div>
-									<textarea class="form-control" rows="3" id="procedimiento" name="procedimientoCargado"required></textarea>
+									<textarea class="form-control" rows="3" id="procedimiento" name="procedure"required></textarea>
 
-									<input type="text" class="form-control col-xs-2" id="linkProcedimiento" name="linkprocedimiento" required onchange="isValidUrl();">
+									<input type="text" class="form-control col-xs-2" id="linkProcedimiento" name="url" required onchange="isValidUrl();">
 
 
 								</div>
@@ -584,79 +570,79 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 											</thead>
 											<tbody>
 												<tr>
-													<td>Vitamina K</td>
-													<td> <input type="text" class="form-control " id="VK"> </td>
-													<td>Kg</td>
+													<td>Vitamina K <input type="hidden" name="label" value="VITK1"></td>
+													<td> <input type="text" class="form-control " id="VK" name="quantity"> </td>
+													<td>µg <input type="hidden" name="unit" value="µg"></td>
 												</tr>
 												<tr>
-													<td>Vitamina E</td>
+													<td>Vitamina E  <input type="hidden" name="label" value="TOCPHA"></td>
 													<td> <input type="text" class="form-control " id="VE"> </td>
-													<td>Kg</td>
+													<td>mg <input type="hidden" name="unit" value="mg"></td>
 												</tr>
 												<tr>
-													<td>Vitamina D</td>
+													<td>Vitamina D <input type="hidden" name="label" value="VITD"></td>
 													<td> <input type="text" class="form-control " id="VD"> </td>
-													<td>Kg</td>
+													<td>µg <input type="hidden" name="unit" value="µg"></td>
 												</tr>
 												<tr>
-													<td>Vitamina B12</td>
+													<td>Vitamina B12 <input type="hidden" name="label" value="VITB12"></td>
 													<td> <input type="text" class="form-control " id="B12"> </td>
-													<td>Kg</td>
+													<td>µg <input type="hidden" name="unit" value="µg"></td>
 												</tr>
 												<tr>
-													<td>Vitamina B9</td>
+													<td>Vitamina B9 <input type="hidden" name="label" value="FOL"></td>
 													<td> <input type="text" class="form-control " id="B9"> </td>
-													<td>Kg</td>
+													<td>µg <input type="hidden" name="unit" value="µg"></td>
 												</tr>
 												<tr>
-													<td>Vitamina B6</td>
+													<td>Vitamina B6 <input type="hidden" name="label" value="VITB6A"></td>
 													<td> <input type="text" class="form-control " id="B6"> </td>
-													<td>Kg</td>
+													<td>mg <input type="hidden" name="unit" value="mg"></td>
 												</tr>
 												<tr>
-													<td>Vitamina B3</td>
+													<td>Vitamina B3 <input type="hidden" name="label" value="NIA"></td>
 													<td> <input type="text" class="form-control " id="B3"> </td>
-													<td>Kg</td>
+													<td>mg <input type="hidden" name="unit" value="mg"></td>
 												</tr>
 												<tr>
-													<td>Vitamina B2</td>
+													<td>Vitamina B2 <input type="hidden" name="label" value="RIBF"></td>
 													<td> <input type="text" class="form-control " id="B2"> </td>
-													<td>Kg</td>
+													<td>mg <input type="hidden" name="unit" value="mg"></td>
 												</tr>
 												<tr>
-													<td>Vitamina B1</td>
+													<td>Vitamina B1 <input type="hidden" name="label" value="THIA"></td>
 													<td> <input type="text" class="form-control " id="B1"> </td>
-													<td>Kg</td>
+													<td>mg <input type="hidden" name="unit" value="mg"></td>
 												</tr>
 												<tr>
-													<td>Vitamina C</td>
+													<td>Vitamina C <input type="hidden" name="label" value="VITC"></td>
 													<td> <input type="text" class="form-control " id="VC"> </td>
-													<td>Kg</td>
+													<td>mg <input type="hidden" name="unit" value="mg"></td>
 												</tr>
 												<tr>
-													<td>Vitamina A</td>
+													<td>Vitamina A <input type="hidden" name="label" value="VITA_RAE"></td>
 													<td> <input type="text" class="form-control " id="VA"> </td>
-													<td>Kg</td>
+													<td>µg <input type="hidden" name="unit" value="µg"></td>
 												</tr>
 												<tr>
-													<td>Fosforo</td>
+													<td>Fosforo <input type="hidden" name="label" value="P"></td>
 													<td> <input type="text" class="form-control " id="P"> </td>
-													<td>Kg</td>
+													<td>mg <input type="hidden" name="unit" value="mg"></td>
 												</tr>
 												<tr>
-													<td>Zinc</td>
+													<td>Zinc <input type="hidden" name="label" value="ZN"></td>
 													<td> <input type="text" class="form-control " id="Zn"> </td>
-													<td>Kg</td>
+													<td>mg <input type="hidden" name="unit" value="mg"></td>
 												</tr>
 												<tr>
-													<td>Hierro</td>
+													<td>Hierro <input type="hidden" name="label" value="FE"></td>
 													<td> <input type="text" class="form-control " id="Fe"> </td>
-													<td>Kg</td>
+													<td>mg <input type="hidden" name="unit" value="mg"></td>
 												</tr>
 												<tr>
-													<td>Potasio</td>
+													<td>Potasio <input type="hidden" name="label" value="K"></td>
 													<td> <input type="text" class="form-control " id="K"> </td>
-													<td>Kg</td>
+													<td>mg <input type="hidden" name="unit" value="mg"></td>
 												</tr>
 											</tbody>
 										</table>
@@ -672,67 +658,65 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 											</thead>
 											<tbody>
 												<tr>
-													<td>Magnesio</td>
+													<td>Magnesio <input type="hidden" name="label" value="MG"></td>
 													<td> <input type="text" class="form-control " id="MG"> </td>
-													<td>Kg</td>
+													<td>mg <input type="hidden" name="unit" value="mg"></td>
 												</tr>
 												<tr>
-													<td>Calcio</td>
+													<td>Calcio <input type="hidden" name="label" value="CA"></td>
 													<td> <input type="text" class="form-control " id="CA"> </td>
-													<td>Kg</td>
+													<td>mg <input type="hidden" name="unit" value="mg"></td>
 												</tr>
 												<tr>
-													<td>Sodio</td>
+													<td>Sodio <input type="hidden" name="label" value="NA"></td>
 													<td> <input type="text" class="form-control " id="NA"> </td>
-													<td>Kg</td>
+													<td>mg <input type="hidden" name="unit" value="mg"></td>
 												</tr>
 												<tr>
-													<td>Proteina</td>
+													<td>Proteina <input type="hidden" name="label" value="PROCNT"></td>
 													<td> <input type="text" class="form-control " id="PROCNT"> </td>
-													<td>Kg</td>
+													<td>g <input type="hidden" name="unit" value="g"></td>
 												</tr>
 												<tr>
-													<td>Azucar</td>
+													<td>Azucar <input type="hidden" name="label" value="SUGAR"></td>
 													<td> <input type="text" class="form-control " id="SUGAR"> </td>
-													<td>Kg</td>
+													<td>g <input type="hidden" name="unit" value="g"></td>
 												</tr>
 												<tr>
-													<td>Fibra</td>
+													<td>Fibra <input type="hidden" name="label" value="FIBTG"></td>
 													<td> <input type="text" class="form-control " id="FIBTG"> </td>
-													<td>Kg</td>
+													<td>g <input type="hidden" name="unit" value="g"></td>
 												</tr>
 												<tr>
-													<td>Carbohidratos</td>
+													<td>Carbohidratos <input type="hidden" name="label" value="CHOCDF"></td>
 													<td> <input type="text" class="form-control " id="CHOCDF"> </td>
-													<td>Kg</td>
+													<td>g <input type="hidden" name="unit" value="g"></td>
 												</tr>
 												<tr>
-													<td>Grasas Poliinsaturadas</td>
+													<td>Grasas Poliinsaturadas <input type="hidden" name="label" value="FAPU"></td>
 													<td> <input type="text" class="form-control " id="FAPU"> </td>
-													<td>Kg</td>
+													<td>g <input type="hidden" name="unit" value="g"></td>
 												</tr>
 												<tr>
-													<td>Grasas Monosaturadas</td>
+													<td>Grasas Monosaturadas <input type="hidden" name="label" value="FAMS"></td>
 													<td> <input type="text" class="form-control " id="FAMS"> </td>
-													<td>Kg</td>
+													<td>g <input type="hidden" name="unit" value="g"></td>
 												</tr>
 												<tr>
-													<td>Grasas Trans</td>
+													<td>Grasas Trans <input type="hidden" name="label" value="FATRN"></td>
 													<td> <input type="text" class="form-control " id="FATRN"> </td>
-													<td>Kg</td>
+													<td>g <input type="hidden" name="unit" value="g"></td>
 												</tr>
 												<tr>
-													<td>Grasas Saturadas </td>
+													<td>Grasas Saturadas <input type="hidden" name="label" value="FASAT"> </td>
 													<td> <input type="text" class="form-control " id="FASAT"> </td>
-													<td>Kg</td>
+													<td>g <input type="hidden" name="unit" value="g"></td>
 												</tr>
 												<tr>
-													<td>Grasas</td>
+													<td>Grasas <input type="hidden" name="label" value="FAT"></td>
 													<td> <input type="text" class="form-control " id="FAT"> </td>
-													<td>Kg</td>
+													<td> g <input type="hidden" name="unit" value="g"></td>
 												</tr>
-
-
 											</tbody>
 										</table>
 									</div>
@@ -749,7 +733,7 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="limpiarCampos()">Cerrar</button>
 
-			<button class="btn btn-md btn-primary content-center" type="submit" onclick="confirmacionGuardado()">Guardar</button>
+			<button class="btn btn-md btn-primary content-center" type="submit">Guardar</button>
 		</div>
 	</div>
 	</form>
