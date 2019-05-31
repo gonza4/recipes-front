@@ -195,5 +195,5 @@ function imgPorDefecto(){
 }
 
 function confirmacionGuardado(){
-	show.alert("Receta agregada con exito");
+	alert("Receta agregada con exito");
 }
