@@ -265,170 +265,171 @@
 															<th>Cantidad por porcion</th>
 														</tr>
 													</thead>
-													<tbody>
-														<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITK1'} ">
-														<td>Vitamina K</td>
-														<td> {{n.quantity |number:2}} {{n.unit}}</td>
-													</tr>
-													<tr ng-repeat="n in r.totalNutrients | filter:{label:'TOCPHA'} ">
-													<td>Vitamina E</td>
-													<td>
-													{{n.quantity |number:2}} {{n.unit}}</td>
-												</tr>
-												<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITD'}">
-												<td>Vitamina D</td>
-												<td>
-												{{n.quantity |number:2}} {{n.unit}}</td>
-											</tr>
-											<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITB12'} ">
-											<td>Vitamina B12</td>
-											<td>
-											{{n.quantity |number:2}} {{n.unit}}</td>
-										</tr>
-										<tr ng-repeat="n in r.totalNutrients | filter:{label:'FOL'} ">
-										<td>Vitamina B9</td>
-										<td>
-										{{n.quantity |number:2}} {{n.unit}}</td>
-									</tr>
-									<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITB6A'} ">
-									<td>Vitamina B6</td>
-									<td>
-									{{n.quantity |number:2}} {{n.unit}}</td>
-								</tr>
-								<tr ng-repeat="n in r.totalNutrients | filter:{label:'NIA'} ">
-								<td>Vitamina B3</td>
-								<td>
-								{{n.quantity |number:2}} {{n.unit}}</td>
-							</tr>
-							<tr ng-repeat="n in r.totalNutrients | filter:{label:'RIBF'} ">
-							<td>Vitamina B2</td>
-							<td>
-							{{n.quantity |number:2}} {{n.unit}}</td>
-						</tr>
-						<tr ng-repeat="n in r.totalNutrients | filter:{label:'THIA'} ">
-						<td>Vitamina B1</td>
-						<td>
-						{{n.quantity |number:2}} {{n.unit}}</td>
-					</tr>
-					<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITC'} ">
-					<td>Vitamina C</td>
-					<td>
-					{{n.quantity |number:2}} {{n.unit}}</td>
-				</tr>
-				<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITA_RAE'} ">
-				<td>Vitamina A</td>
-				<td>
-				{{n.quantity |number:2}} {{n.unit}}</td>
-			</tr>
-			<tr ng-repeat="n in r.totalNutrients | filter:{label: 'P'}:true ">
-			<td>Fosforo</td>
-			<td>
-			{{n.quantity |number:2}} {{n.unit}}</td>
-		</tr>
-		<tr ng-repeat="n in r.totalNutrients | filter:{label:'ZN'} ">
-		<td>Zinc</td>
-		<td>
-		{{n.quantity |number:2}} {{n.unit}}</td>
-	</tr>
-	<tr ng-repeat="n in r.totalNutrients | filter:{label:'FE'} ">
-	<td>Hierro</td>
-	<td>
-	{{n.quantity |number:2}} {{n.unit}}</td>
-</tr>
-<tr ng-repeat="n in r.totalNutrients | filter:{label:'K'}:true ">
-<td>Potasio</td>
-<td>
-{{n.quantity |number:2}} {{n.unit}}</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<!-- TABLA DE LA DERECHA-->
-<div class="col-12 col-md-6 mg-l-0">
-	<table class="table table-striped fluid">
-		<thead>
-			<tr>
-				<th> </th>
-				<th>Cantidad por porcion</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr
-			ng-repeat="n in r.totalNutrients | filter:{label:'MG'} ">
-			<td>Magnesio</td>
-			<td> {{n.quantity  |number:2}} {{n.unit}}</td>
-		</tr>
-		<tr
-		ng-repeat="n in r.totalNutrients | filter:{label:'CA'} ">
-		<td>Calcio</td>
-		<td> {{n.quantity |number:2}} {{n.unit}}</td>
-	</tr>
-	<tr
-	ng-repeat="n in r.totalNutrients | filter:{label:'NA'} ">
-	<td>Sodio</td>
-	<td> {{n.quantity |number:2}} {{n.unit}}</td>
-</tr>
-<tr
-ng-repeat="n in r.totalNutrients | filter:{label:'PROCNT'} ">
-<td>Proteina</td>
-<td> {{n.quantity |number:2}} {{n.unit}}</td>
-</tr>
-<tr
-ng-repeat="n in r.totalNutrients | filter:{label:'SUGAR'} ">
-<td>Azucar</td>
-<td> {{n.quantity |number:2}} {{n.unit}}</td>
-</tr>
-<tr
-ng-repeat="n in r.totalNutrients | filter:{label:'FIBTG'} ">
-<td>Fibra</td>
-<td> {{n.quantity |number:2}} {{n.unit}}</td>
-</tr>
-<tr
-ng-repeat="n in r.totalNutrients | filter:{label:'CHOCDF'} ">
-<td>Carbohidratos</td>
-<td> {{n.quantity |number:2}} {{n.unit}}</td>
-</tr>
-<tr
-ng-repeat="n in r.totalNutrients | filter:{label:'FAPU'} ">
-<td>Grasas Poliinsaturadas</td>
-<td> {{n.quantity |number:2}} {{n.unit}}</td>
-</tr>
-<tr
-ng-repeat="n in r.totalNutrients | filter:{label:'FAMS'} ">
-<td>Grasas Monosaturadas</td>
-<td> {{n.quantity |number:2}} {{n.unit}}</td>
-</tr>
-<tr
-ng-repeat="n in r.totalNutrients | filter:{label:'FATRN'} ">
-<td>Grasas Trans</td>
-<td> {{n.quantity |number:2}} {{n.unit}}</td>
-</tr>
-<tr
-ng-repeat="n in r.totalNutrients | filter:{label:'FASAT'} ">
-<td>Grasas Saturadas </td>
-<td> {{n.quantity |number:2}} {{n.unit}}</td>
-</tr>
-<tr
-ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
-<td>Grasas</td>
-<td> {{n.quantity |number:2}} {{n.unit}}</td>
-</tr>
+														<tbody>
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITK1'} ">
+															<td>Vitamina K</td>
+															<td> {{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'TOCPHA'} ">
+															<td>Vitamina E</td>
+															<td>{{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITD'}">
+															<td>Vitamina D</td>
+															<td>{{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITB12'} ">
+															<td>Vitamina B12</td>
+															<td>{{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FOL'} ">
+															<td>Vitamina B9</td>
+															<td>{{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITB6A'} ">
+															<td>Vitamina B6</td>
+															<td> {{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'NIA'} ">
+															<td>Vitamina B3</td>
+															<td>{{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'RIBF'} ">
+															<td>Vitamina B2</td>
+															<td>{{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'THIA'} ">
+															<td>Vitamina B1</td>
+															<td>{{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITC'} ">
+															<td>Vitamina C</td>
+															<td>{{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'VITA_RAE'} ">
+															<td>Vitamina A</td>
+															<td>{{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label: 'P'}:true ">
+															<td>Fosforo</td>
+															<td>{{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'ZN'} ">
+															<td>Zinc</td>
+															<td>{{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FE'} ">
+															<td>Hierro</td>
+															<td>{{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'K'}:true ">
+															<td>Potasio</td>
+															<td>{{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+	
+													</tbody>
+												</table>
+											</div>
+
+														<!-- TABLA DE LA DERECHA-->
+											<div class="col-12 col-md-6 mg-l-0">
+												<table class="table table-striped fluid">
+													<thead>
+														<tr>
+														<th> </th>
+														<th>Cantidad por porcion</th>
+														</tr>
+													</thead>
+														<tbody>
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'MG'} ">
+																<td>Magnesio</td>
+																<td> {{n.quantity  |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'CA'} ">
+																<td>Calcio</td>
+																<td> {{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+															
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'NA'} ">
+																<td>Sodio</td>
+																<td> {{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'PROCNT'} ">
+																<td>Proteina</td>
+																<td> {{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'SUGAR'} ">
+																<td>Azucar</td>
+																<td> {{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+															
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FIBTG'} ">
+																<td>Fibra</td>
+																<td> {{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+															
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'CHOCDF'} ">
+																<td>Carbohidratos</td>
+																<td> {{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+															
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FAPU'} ">
+																<td>Grasas Poliinsaturadas</td>
+																<td> {{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FAMS'} ">
+																<td>Grasas Monosaturadas</td>
+																<td> {{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FATRN'} ">
+																<td>Grasas Trans</td>
+																<td> {{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FASAT'} ">
+																<td>Grasas Saturadas </td>
+																<td> {{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
+
+															<tr ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
+																<td>Grasas</td>
+																<td> {{n.quantity |number:2}} {{n.unit}}</td>
+															</tr>
 
 
-</tbody>
-</table>
-</div>
-</div>
+														</tbody>
+												</table>
+											</div>
+										</div>
 
-</div>
-</div>
-</div>
-</div>
+									</div>
+								</div>
+							</div>
+						</div>
 <!-- Footer modal -->
 <div class="modal-footer">
 	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 </div>
+
 </div>
 </div>
 </div>
@@ -450,7 +451,7 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 
 			<!-- Header modal -->
 			<div class="modal-header">
-				<h3 class="modal-title" id="exampleModalLabel" class="text-justify pt-3">NUEVA RECETA
+				<h3 class="modal-title" id="exampleModalLabel" class="text-justify pt-3">Nueva Receta
 
 				</h3>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampos()">
@@ -468,7 +469,7 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 							</div>
 							<div class="col-12 mb-3">
 								<h6>Categorías</h6>
-								<select id="select"  name="categorias" multiple="multiple" placeholder="SELECCIONE CATEGORIAS" style="width: 100%;height: 20px;" required>
+								<select class=""  id="select"  name="categorias" multiple="multiple" placeholder="SELECCIONE CATEGORIAS" style="width: 100%;" required>
 									
 									<option value="1">Categoria 1</option>
 									<option value="2">Categoria 2</option>
@@ -493,35 +494,39 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 
 							</div>
 							<!--IMAGEN-->
-							<div class="col-6 fluid justify-content-center">
-								
-								<div id='botonera' class="mb-3">
-									<input id="archivo" type="file" accept="image/*" name="image"required></input>
-								</div>
-								<div class="row justify-content-center">
-								<div class="contenedor fluid">
+							<div class="col-6 fluid justify-content-left">
+								<div class="row fluid" >
+									<div class="contenedor container fluid" >
 
-									<div id="marcoVistaPrevia" class="justify-content-center">
-										<img class="img-fluid justify-content-center" id="vistaPrevia" src="" alt="" height="664" width="470"/>
+										<div id="marcoVistaPrevia" class=" fluid contenedor">
+											<img class="img-fluid " id="vistaPrevia" src="" alt="" width="537"/>
+										</div>
 									</div>
 								</div>
+
+								<div id='botonera' class="mt-3">
+									<label class="btn-bs-file btn btn-md btn-info">
+										Cargar imagen
+									<input id="archivo" type="file" accept="image/*" name="image"required></input>
+									</label>
 								</div>
 							</div>
+
 							<div class="col-6">
 								<div class="row fluid">
 									<div class="col-6">
 
-										<label>Cantidad de Porciones: </label>
+										<label>Cantidad de porciones: </label>
 										<input type="text" class="form-control " id="cantPorciones" name="yield" required pattern="[1234567890]+" title="Solo números">
 									</div>
 									<div class="col-6">
-										<label>Total de Calorías (Kcal): </label>
+										<label>Total de calorías (Kcal): </label>
 										<input type="text" class="form-control " id="totalCalorias" name="calories" required pattern="[1234567890]+" title="Solo números"> </h6>
 										
 									</div>
 								</div>
 								<div class="row justify-content-center">
-									<h4 class="mt-3">INGREDIENTES</h4>
+									<h4 class="mt-3">Ingredientes</h4>
 									<div class="container mb-3 mt-1"></div>
 
 									<div class="col-12 justify-content-center ">
@@ -534,11 +539,11 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 								<div class="col-12 justify-content-center ">
 									<div class="radio">
 										<label><input id="rbtlink" type="radio" name="optradio" checked 
-											value="1" onchange="mostrar(this.value);" > Agregar Link de Procedimiento</label>
+											value="1" onchange="mostrar(this.value);" > Agregar link de procedimiento</label>
 									</div>
 									<div class="radio">
 										<label><input id="rbtprocedimiento" type="radio" name="optradio" 
-											value="2" onchange="mostrar(this.value);" > Cargar Procedimiento</label>
+											value="2" onchange="mostrar(this.value);" > Cargar procedimiento</label>
 									</div>
 									<textarea class="form-control" rows="3" id="procedimiento" name="procedure"required></textarea>
 
@@ -553,8 +558,8 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 
 						<div class="container mt-3">
 
-							<a href="#demo" class="btn btn-info" data-toggle="collapse">Cargar Informacion
-							Nutricional</a>
+							<a href="#demo" class="btn btn-info" data-toggle="collapse">Cargar información
+							nutricional</a>
 
 							<div id="demo" class="collapse mt-3">
 								<div class="row">
@@ -565,7 +570,7 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 											<thead>
 												<tr>
 													<th> </th>
-													<th>Cantidad por porcion</th>
+													<th>Cantidad por porción</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -731,9 +736,10 @@ ng-repeat="n in r.totalNutrients | filter:{label:'FAT'}:true ">
 		</div>
 		<!-- Footer modal -->
 		<div class="modal-footer">
+			<button class="btn btn-md btn-primary content-center" type="submit">Guardar</button>
 			<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="limpiarCampos()">Cerrar</button>
 
-			<button class="btn btn-md btn-primary content-center" type="submit">Guardar</button>
+			
 		</div>
 	</div>
 	</form>
