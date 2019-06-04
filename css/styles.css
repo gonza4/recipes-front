@@ -29,23 +29,17 @@
 .box16:hover .post,.box16:hover .title{transform:translateY(-110px)}
 .non-underline-link, .non-underline-link:hover{text-decoration: none; color: white;}
 
-#preview {
-  border:1px solid #ddd;
-  padding:5px;
-  border-radius:2px;
-  background:#fff;
- 
-}
 
-  .titulo{ font-size: 12pt; font-weight: bold; height: 30pt;}
-#marcoVistaPrevia{
+  #marcoVistaPrevia{
   
     width: 470px;
-    height: auto;
+    height: 500px;
+   
 }
 #vistaPrevia{
     max-width: 470px;
-    max-height: auto;            
+    max-height: 500px;      
+
 }
 
 .btn-bs-file{
