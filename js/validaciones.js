@@ -1,8 +1,16 @@
 
 function limpiarCampos(){
 	document.getElementById("archivo").value="";
-	document.getElementById("preview").innerHTML="";
+	//document.getElementById("tokens").select.selectedIndex = -1;;
 	//falta agregar q las categorias seleccionadas dejen de estarlo
+console.log(document.getElementById("tokens").length);
+    for (i=0; i < document.getElementById("tokens").length; i++){ 
+        if (document.getElementById("tokens").length[i].selected == true) {
+document.getElementById("tokens").length[i].selected = false; 
+}
+} 
+
+
 }
 function toastOptions(){
 	toastr.options = {
@@ -179,18 +187,20 @@ function imgPorDefecto(){
   
 }
 
-	 function mostrar(dato){
-        if(dato=="1"){
+	 function mostrar(opcion){
+        if(opcion=="1"){
             document.getElementById("linkProcedimiento").style.display = "block";
             document.getElementById("procedimiento").style.display = "none";
-            document.getElementById("procedimiento").value=" ";
-            document.getElementById("linkProcedimiento").value="";
+         //   document.getElementById("procedimiento").value=" ";
+   //         document.getElementById("linkProcedimiento").value="";
             
           }else{
           	document.getElementById("linkProcedimiento").style.display = "none";
-          	document.getElementById("linkProcedimiento").value=" ";
+        //  	document.getElementById("linkProcedimiento").value=" ";
             document.getElementById("procedimiento").style.display = "block";
-             document.getElementById("procedimiento").value="";
+        //    document.getElementById("procedimiento").value="";
+
+            
           }
 }
 

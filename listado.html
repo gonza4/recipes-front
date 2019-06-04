@@ -18,8 +18,9 @@
 
 	<link rel="stylesheet" href="css/styles.css">
 	<!--Para el selector multiple-->
-	<link rel="stylesheet" href="https://unpkg.com/multiple-select@1.3.1/dist/multiple-select.min.css">
-	<link rel="stylesheet" href="css/multiple-select.min.css">
+	 
+ 	 <link rel="stylesheet" href="css/bootstrap-select.css">
+
 	<!---->
 
 	<title>RecipesClub</title>
@@ -465,11 +466,13 @@
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-12">
-								<h6>Título: <input type="text" class="form-control col-xs-2" id="titulo" name="label" required></h6>
+								<h6>Título * <input type="text" class="form-control col-xs-2" id="titulo" name="label" required></h6>
 							</div>
-							<div class="col-12 mb-3">
-								<h6>Categorías</h6>
-								<select class=""  id="select"  name="categorias" multiple="multiple" placeholder="SELECCIONE CATEGORIAS" style="width: 100%;" required>
+
+							<div class="col-12 mb-3 form-group">
+								<h6 >Categorías *</h6>
+								<select id="tokens" class="selectpicker form-control" multiple data-live-search="true" 
+								name="categorias" placeholder="SELECCIONE CATEGORIAS" style="width: 100%;" required>
 									
 									<option value="1">Categoria 1</option>
 									<option value="2">Categoria 2</option>
@@ -499,7 +502,7 @@
 									<div class="contenedor container fluid" >
 
 										<div id="marcoVistaPrevia" class=" fluid contenedor">
-											<img class="img-fluid " id="vistaPrevia" src="" alt="" width="537"/>
+											<img class="img-fluid " id="vistaPrevia" src="" alt="" max-width="537" />
 										</div>
 									</div>
 								</div>
@@ -507,7 +510,7 @@
 								<div id='botonera' class="mt-3">
 									<label class="btn-bs-file btn btn-md btn-info">
 										Cargar imagen
-									<input id="archivo" type="file" accept="image/*" name="image"required></input>
+									<input id="archivo" type="file" accept="image/*" name="image"required> *</input>
 									</label>
 								</div>
 							</div>
@@ -516,11 +519,11 @@
 								<div class="row fluid">
 									<div class="col-6">
 
-										<label>Cantidad de porciones: </label>
+										<label>Cantidad de porciones * </label>
 										<input type="text" class="form-control " id="cantPorciones" name="yield" required pattern="[1234567890]+" title="Solo números">
 									</div>
 									<div class="col-6">
-										<label>Total de calorías (Kcal): </label>
+										<label>Total de calorías (Kcal) * </label>
 										<input type="text" class="form-control " id="totalCalorias" name="calories" required pattern="[1234567890]+" title="Solo números"> </h6>
 										
 									</div>
@@ -530,13 +533,15 @@
 									<div class="container mb-3 mt-1"></div>
 
 									<div class="col-12 justify-content-center ">
-										<textarea class="form-control" rows="3" id="ingredientes" name="ingredientLines"></textarea>
+										<textarea class="form-control" rows="8" id="ingredientes" name="ingredientLines"></textarea>
 									</p>
 								</div>
 
 
 								<hr>
 								<div class="col-12 justify-content-center ">
+									<fieldset>
+										<h5>Procedimiento *</h5>
 									<div class="radio">
 										<label><input id="rbtlink" type="radio" name="optradio" checked 
 											value="1" onchange="mostrar(this.value);" > Agregar link de procedimiento</label>
@@ -545,11 +550,11 @@
 										<label><input id="rbtprocedimiento" type="radio" name="optradio" 
 											value="2" onchange="mostrar(this.value);" > Cargar procedimiento</label>
 									</div>
-									<textarea class="form-control" rows="3" id="procedimiento" name="procedure"required></textarea>
+									<textarea class="form-control" rows="3" id="procedimiento" name="procedure" required></textarea>
 
-									<input type="text" class="form-control col-xs-2" id="linkProcedimiento" name="url" required onchange="isValidUrl();">
+									<input type="text" value="http://" class="form-control col-xs-2" id="linkProcedimiento" name="url" required >
 
-
+									</fieldset>
 								</div>
 
 
@@ -773,6 +778,16 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
 integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
 crossorigin="anonymous"></script>
+
+
+<!-- Para el select Multiple-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
+<script src="js/bootstrap-select.js"></script>
+<!---->
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 crossorigin="anonymous"></script>
