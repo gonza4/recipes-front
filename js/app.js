@@ -18,7 +18,7 @@ app.controller("myController", function ($scope, $http, $location) {
     $scope.recetas;
     $scope.receta;
     $scope.r = "";
-    $scope.url = "http://ec2-18-219-208-158.us-east-2.compute.amazonaws.com:5000";
+    $scope.url = "http://ec2-18-221-188-151.us-east-2.compute.amazonaws.com:5000";
     $scope.category = "HealthLabels";
     $scope.relation = "HEALTH_LABELS";
     $scope.value = "Vegana";
