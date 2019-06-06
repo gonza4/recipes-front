@@ -80,19 +80,19 @@ app.controller("myController", function ($scope, $http, $location) {
             }).then(function exito(respose) {
                 $scope.recetas = respose.data;
                 console.log($scope.recetas);
-                if ($scope.recetas.length <1) {
-                    $scope.totalPages=0;
+                if ($scope.recetas.length < 1) {
+                    $scope.totalPages = 0;
                 }
 
 
-               var aux=0;
-                for (var i = 0; i <  $scope.recetas.length; i++) {
-                   aux=  $scope.recetas[i].totalPages;
+                var aux = 0;
+                for (var i = 0; i < $scope.recetas.length; i++) {
+                    aux = $scope.recetas[i].totalPages;
 
-                   break;
+                    break;
                 }
-             $scope.totalPages = aux;
-             console.log("paginas "+$scope.totalPages);
+                $scope.totalPages = aux;
+                console.log("paginas " + $scope.totalPages);
                 $scope.procesando--;
 
             }, function fracaso(respose) {
@@ -110,20 +110,17 @@ app.controller("myController", function ($scope, $http, $location) {
             }).then(function exito(respose) {
                 $scope.recetas = respose.data;
                 console.log($scope.recetas);
-                     if ($scope.recetas.length <1) {
-                    $scope.totalPages=0;
+                if ($scope.recetas.length < 1) {
+                    $scope.totalPages = 0;
                 }
 
-
-
-
-               var aux=0;
-                for (var i = 0; i <  $scope.recetas.length; i++) {
-                   aux=  $scope.recetas[i].totalPages;
-                   break;
+                var aux = 0;
+                for (var i = 0; i < $scope.recetas.length; i++) {
+                    aux = $scope.recetas[i].totalPages;
+                    break;
                 }
-             $scope.totalPages = aux;
-             console.log("paginas "+$scope.totalPages);
+                $scope.totalPages = aux;
+                console.log("paginas " + $scope.totalPages);
                 $scope.procesando--;
 
             }, function fracaso(respose) {
@@ -199,6 +196,38 @@ app.controller("myController", function ($scope, $http, $location) {
         });
     }
 
+    $scope.guardarReceta = function (image, yield_, calories, label, url, procedure, dietLabels, healthLabels, ingredientLines, totalNutrients) {
+
+        var recetaNva = {
+            "image": image,
+            "yield": yield_,
+            "calories": calories,
+            "label": label,
+            "url": url,
+            "procedure": procedure,
+            "dietLabels": dietLabels,
+            "healthLabels": healthLabels,
+            "ingredientLines": ingredientLines,
+            "totalNutrients": totalNutrients
+        }
+
+        $scope.procesando++;
+
+        $http({
+            url: $scope.url + "/api/recipe",
+            method: 'POST',
+            data: recetaNva
+
+        }).then(function exito(respose) {
+            $scope.receta = respose.data;
+            $scope.procesando--;
+            console.log(recetaNva);
+
+        }, function fracaso(respose) {
+            $scope.procesando--;
+            console.log(recetaNva);
+        });
+    }
 
     // al inicio
     $scope.buscarCategorias();

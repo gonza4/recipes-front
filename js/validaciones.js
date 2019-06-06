@@ -1,72 +1,71 @@
 
-function limpiarCampos(){
-	document.getElementById("archivo").value="";
-	//document.getElementById("tokens").select.selectedIndex = -1;;
-	//falta agregar q las categorias seleccionadas dejen de estarlo
-console.log(document.getElementById("tokens").length);
-    for (i=0; i < document.getElementById("tokens").length; i++){ 
+function limpiarCampos() {
+    document.getElementById("archivo").value = "";
+    //document.getElementById("tokens").select.selectedIndex = -1;;
+    //falta agregar q las categorias seleccionadas dejen de estarlo
+    console.log(document.getElementById("tokens").length);
+    for (i = 0; i < document.getElementById("tokens").length; i++) {
         if (document.getElementById("tokens").length[i].selected == true) {
-document.getElementById("tokens").length[i].selected = false; 
-}
-} 
-
-
-}
-function toastOptions(){
-	toastr.options = {
-			
-			"positionClass": "toast-top-center",
-			"preventDuplicates": true
-		}
-
+            document.getElementById("tokens").length[i].selected = false;
+        }
+    }
 }
 
-function validar(frm) { 
-	//validar titulo nueva Receta	
-	if (frm.titulo.value.length==0) {
-		toastOptions();
-		toastr["error"]("Este campo es requerido", "Error")
-		
-		frm.titulo.focus(); 
+function toastOptions() {
+    toastr.options = {
 
-		return false;
-	}
+        "positionClass": "toast-top-center",
+        "preventDuplicates": true
+    }
 
-	if (frm.txtBuscar.value.length<3 || frm.txtBuscar.value.length ==0) { 
+}
 
-		
-		toastr["error"]("Minimo 3 caracteres", "Error")
-		
-		frm.txtBuscar.focus(); 
+function validar(frm) {
+    //validar titulo nueva Receta	
+    if (frm.titulo.value.length == 0) {
+        toastOptions();
+        toastr["error"]("Este campo es requerido", "Error")
 
-		return false;
-	} 
-	
-	if (validarSoloTexto(frm.txtBuscar.value)==false) {
+        frm.titulo.focus();
 
-		toastr.options = {
-			
-			"positionClass": "toast-top-center",
-			"preventDuplicates": true
-		}
+        return false;
+    }
 
-		toastr["error"]("No se permiten valores numericos en la busqueda", "Error")
-		
-		frm.txtBuscar.focus(); 
+    if (frm.txtBuscar.value.length < 3 || frm.txtBuscar.value.length == 0) {
 
-		return false;
-	}
 
-	return true;
-} 
+        toastr["error"]("Minimo 3 caracteres", "Error")
 
-function validarSoloTexto(parametro){
-	var patron=/^[a-zA-Z\s]*$/;
-	if (parametro.search(patron)) {
-		return false;
-	}else{
-		return true;
-	}
+        frm.txtBuscar.focus();
+
+        return false;
+    }
+
+    if (validarSoloTexto(frm.txtBuscar.value) == false) {
+
+        toastr.options = {
+
+            "positionClass": "toast-top-center",
+            "preventDuplicates": true
+        }
+
+        toastr["error"]("No se permiten valores numericos en la busqueda", "Error")
+
+        frm.txtBuscar.focus();
+
+        return false;
+    }
+
+    return true;
+}
+
+function validarSoloTexto(parametro) {
+    var patron = /^[a-zA-Z\s]*$/;
+    if (parametro.search(patron)) {
+        return false;
+    } else {
+        return true;
+    }
 }
 /*
 function mostrarOtrasCategorias(id){
@@ -102,7 +101,7 @@ window.mostrarVistaPrevia = function mostrarVistaPrevia() {
     if (Archivos.length > 0) {
 
         Lector = new FileReader();
-        Lector.onloadend = function(e) {
+        Lector.onloadend = function (e) {
             var origen, tipo;
 
             //Envia la imagen a la pantalla
@@ -110,8 +109,8 @@ window.mostrarVistaPrevia = function mostrarVistaPrevia() {
             //Prepara la información sobre la imagen
             tipo = window.obtenerTipoMIME(origen.result.substring(0, 30));
 
-        //    jQuery('#infoNombre').text(Archivos[0].name + ' (Tipo: ' + tipo + ')');
-          //  jQuery('#infoTamaño').text('Tamaño: ' + e.total + ' bytes');
+            //    jQuery('#infoNombre').text(Archivos[0].name + ' (Tipo: ' + tipo + ')');
+            //  jQuery('#infoTamaño').text('Tamaño: ' + e.total + ' bytes');
             //Si el tipo de archivo es válido lo muestra, 
             //sino muestra un mensaje 
             if (tipo !== 'image/jpeg' && tipo !== 'image/png' && tipo !== 'image/gif') {
@@ -119,11 +118,11 @@ window.mostrarVistaPrevia = function mostrarVistaPrevia() {
                 alert('El formato de imagen no es válido: debe seleccionar una imagen JPG, PNG o GIF.');
             } else {
                 jQuery('#vistaPrevia').attr('src', origen.result);
-            //    window.obtenerMedidas();
+                //    window.obtenerMedidas();
             }
 
         };
-        Lector.onerror = function(e) {
+        Lector.onerror = function (e) {
             console.log(e)
         }
         Lector.readAsDataURL(Archivos[0]);
@@ -151,59 +150,59 @@ window.obtenerTipoMIME = function obtenerTipoMIME(cabecera) {
 //
 //        var tamaño = jQuery('#infoTamaño').text() + '; Medidas: ' + this.width + 'x' + this.height;
 //
-  //      jQuery('#infoTamaño').text(tamaño);
+//      jQuery('#infoTamaño').text(tamaño);
 
-    //}).attr('src', jQuery('#vistaPrevia').attr('src'));
+//}).attr('src', jQuery('#vistaPrevia').attr('src'));
 //}
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
 
     //Cargamos la imagen "vacía" que actuará como Placeholder
     jQuery('#vistaPrevia').attr('src', "http://recipes-club.s3-website.us-east-2.amazonaws.com/img/imagen_no_disponible.jpeg");
 
     //El input del archivo lo vigilamos con un "delegado"
-    jQuery('#botonera').on('change', '#archivo', function(e) {
+    jQuery('#botonera').on('change', '#archivo', function (e) {
         window.mostrarVistaPrevia();
     });
 
     //El botón Cancelar lo vigilamos normalmente
-  //  jQuery('#cancelar').on('click', function(e) {
+    //  jQuery('#cancelar').on('click', function(e) {
     //    var objeto = jQuery('#archivo');
-     //   objeto.replaceWith(objeto.val('').clone());
+    //   objeto.replaceWith(objeto.val('').clone());
 
-       // jQuery('#vistaPrevia').attr('src', window.imagenVacia);
-      //  jQuery('#infoNombre').text('[Seleccione una imagen]');
-       // jQuery('#infoTamaño').text('');
+    // jQuery('#vistaPrevia').attr('src', window.imagenVacia);
+    //  jQuery('#infoNombre').text('[Seleccione una imagen]');
+    // jQuery('#infoTamaño').text('');
     //});
 
 });
 
-function imgPorDefecto(){
+function imgPorDefecto() {
 
-	jQuery('#vistaPrevia').attr('src', "http://recipes-club.s3-website.us-east-2.amazonaws.com/img/imagen_no_disponible.jpeg");
-	document.getElementById("linkProcedimiento").style.display = "block";
+    jQuery('#vistaPrevia').attr('src', "http://recipes-club.s3-website.us-east-2.amazonaws.com/img/imagen_no_disponible.jpeg");
+    document.getElementById("linkProcedimiento").style.display = "block";
     document.getElementById("procedimiento").style.display = "none";
-    document.getElementById("procedimiento").value=" ";
-  
+    document.getElementById("procedimiento").value = " ";
+
 }
 
-	 function mostrar(opcion){
-        if(opcion=="1"){
-            document.getElementById("linkProcedimiento").style.display = "block";
-            document.getElementById("procedimiento").style.display = "none";
-         //   document.getElementById("procedimiento").value=" ";
-   //         document.getElementById("linkProcedimiento").value="";
-            
-          }else{
-          	document.getElementById("linkProcedimiento").style.display = "none";
+function mostrar(opcion) {
+    if (opcion == "1") {
+        document.getElementById("linkProcedimiento").style.display = "block";
+        document.getElementById("procedimiento").style.display = "none";
+        //   document.getElementById("procedimiento").value=" ";
+        //         document.getElementById("linkProcedimiento").value="";
+
+    } else {
+        document.getElementById("linkProcedimiento").style.display = "none";
         //  	document.getElementById("linkProcedimiento").value=" ";
-            document.getElementById("procedimiento").style.display = "block";
+        document.getElementById("procedimiento").style.display = "block";
         //    document.getElementById("procedimiento").value="";
 
-            
-          }
+
+    }
 }
 
-function confirmacionGuardado(){
-	alert("Receta agregada con exito");
+function confirmacionGuardado() {
+    alert("Receta agregada con exito");
 }
