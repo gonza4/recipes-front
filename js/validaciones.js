@@ -26,7 +26,6 @@ $(document).ready(function(){
         //Clear input field when add button is pressed
        // $('input').val('');
        document.getElementById("nuevoIngrediente").value = "";
-        
     });
     //Checks off items as they are pressed
     $(document).on('click', '.item', function() {

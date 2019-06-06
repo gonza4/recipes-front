@@ -79,7 +79,6 @@ app.controller("myController", function ($scope, $http, $location) {
                 }
             }).then(function exito(respose) {
                 $scope.recetas = respose.data;
-                console.log($scope.recetas);
                 if ($scope.recetas.length < 1) {
                     $scope.totalPages = 0;
                 }
@@ -92,7 +91,6 @@ app.controller("myController", function ($scope, $http, $location) {
                     break;
                 }
                 $scope.totalPages = aux;
-                console.log("paginas " + $scope.totalPages);
                 $scope.procesando--;
 
             }, function fracaso(respose) {
@@ -109,7 +107,6 @@ app.controller("myController", function ($scope, $http, $location) {
                 }
             }).then(function exito(respose) {
                 $scope.recetas = respose.data;
-                console.log($scope.recetas);
                 if ($scope.recetas.length < 1) {
                     $scope.totalPages = 0;
                 }
@@ -120,7 +117,6 @@ app.controller("myController", function ($scope, $http, $location) {
                     break;
                 }
                 $scope.totalPages = aux;
-                console.log("paginas " + $scope.totalPages);
                 $scope.procesando--;
 
             }, function fracaso(respose) {
@@ -184,32 +180,44 @@ app.controller("myController", function ($scope, $http, $location) {
         }).then(function exito(respose) {
             $scope.receta = respose.data;
             $scope.procesando--;
-            console.log($scope.receta);
 
 
         }, function fracaso(respose) {
             $scope.receta = "error get en buscarReceta()";
             $scope.procesando--;
-
-            console.log($scope.receta);
-
         });
     }
 
-    $scope.guardarReceta = function (image, yield_, calories, label, url, procedure, dietLabels, healthLabels, ingredientLines, totalNutrients) {
+    $scope.guardarReceta = function (formTitulo, formCategorias, formImagen, formPorciones, formCalorias, formTextProcedimiento, formLinkProcedimiento) {
+
+        var ingreds = [];
+        var objChl  = document.getElementById('formIngredientes').children; 
+        for (i = 0; i <= objChl.length - 1; i++) {
+          	ingreds.push(objChl[i].innerHTML);
+        }
+
+        var dietLabels = [];
+        var healthLabels = [];
+
+        formCategorias.forEach(element => {
+            if($scope.categorias[0].DietLabels.values.includes(element)) { dietLabels.push(element) }
+            if($scope.categorias[1].HealthLabels.values.includes(element)) { healthLabels.push(element) }
+        });
 
         var recetaNva = {
-            "image": image,
-            "yield": yield_,
-            "calories": calories,
-            "label": label,
-            "url": url,
-            "procedure": procedure,
+            "image": formImagen,
+            "yield": formPorciones,
+            "calories": formCalorias,
+            "label": formTitulo,
+            "url": formLinkProcedimiento,
+            "procedure": formTextProcedimiento,
             "dietLabels": dietLabels,
             "healthLabels": healthLabels,
-            "ingredientLines": ingredientLines,
-            "totalNutrients": totalNutrients
+            "ingredientLines": ingreds,
+            "totalNutrients": null
         }
+
+        console.log(recetaNva);
 
         $scope.procesando++;
 
@@ -219,14 +227,11 @@ app.controller("myController", function ($scope, $http, $location) {
             data: recetaNva
 
         }).then(function exito(respose) {
-            $scope.receta = respose.data;
             $scope.procesando--;
-            console.log(recetaNva);
             alert("Receta guardada con exito");
 
         }, function fracaso(respose) {
             $scope.procesando--;
-            console.log(recetaNva);
             alert("Algo falló");
         });
     }
