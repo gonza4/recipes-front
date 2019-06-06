@@ -55,3 +55,19 @@
     outline: none;
     cursor: inherit;
 }
+
+
+h2 {
+    font-family:arial;
+}
+
+form {
+    display: inline-block;
+}
+
+.listIng {
+    font-family:"Trebuchet MS";
+    font-size:20px;
+    color:#000000;
+    cursor:pointer;
+}
