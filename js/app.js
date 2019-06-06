@@ -222,10 +222,12 @@ app.controller("myController", function ($scope, $http, $location) {
             $scope.receta = respose.data;
             $scope.procesando--;
             console.log(recetaNva);
+            alert("Receta guardada con exito");
 
         }, function fracaso(respose) {
             $scope.procesando--;
             console.log(recetaNva);
+            alert("Algo falló");
         });
     }
 

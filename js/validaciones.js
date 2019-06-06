@@ -11,78 +11,42 @@ function limpiarCampos() {
     }
 }
 
-function toastOptions() {
-    toastr.options = {
+$(document).ready(function(){
+    //Hide clear btn on page load
+    $('#clear').hide();
+    //Add text input to list on button press
+    $('#add').click(function(){
+        //var toAdd gets the value of the input field
+        var toAdd = $("input[name=checkListItem]").val();
+        //Append list item in its own div with a class of item into the list div
+        //It also changes the cursor on hover of the appended item 
+        $('.listIng').append('<div class="item">' + toAdd + '</div>');
+        //fade in clear button when the add button is clicked
+        $('#clear').fadeIn('fast');
+        //Clear input field when add button is pressed
+       // $('input').val('');
+       document.getElementById("nuevoIngrediente").value = "";
+        
+    });
+    //Checks off items as they are pressed
+    $(document).on('click', '.item', function() {
+        //Chamge list item to red
+        $(this).css("color", "#cc0000");
+        //Change cursor for checked item
+        $(this).css("cursor","default");
+        //Strike through clicked item while giving it a class of done so it will be affected by the clear
+        $(this).wrapInner('<strike class="done"></strike>');
+        //Add the X glyphicon
+        $(this).append(" " + '<span class="glyphicon glyphicon-remove done" aria-hidden="true"></span>');
+        //Stops checked off items from being clicked again
+        $(this).prop('disabled', true);
+    });
+    //Removes list items with the class done
+    $('#clear').click(function(){
+        $('.done').remove('.done');
+    });
+});
 
-        "positionClass": "toast-top-center",
-        "preventDuplicates": true
-    }
-
-}
-
-function validar(frm) {
-    //validar titulo nueva Receta	
-    if (frm.titulo.value.length == 0) {
-        toastOptions();
-        toastr["error"]("Este campo es requerido", "Error")
-
-        frm.titulo.focus();
-
-        return false;
-    }
-
-    if (frm.txtBuscar.value.length < 3 || frm.txtBuscar.value.length == 0) {
-
-
-        toastr["error"]("Minimo 3 caracteres", "Error")
-
-        frm.txtBuscar.focus();
-
-        return false;
-    }
-
-    if (validarSoloTexto(frm.txtBuscar.value) == false) {
-
-        toastr.options = {
-
-            "positionClass": "toast-top-center",
-            "preventDuplicates": true
-        }
-
-        toastr["error"]("No se permiten valores numericos en la busqueda", "Error")
-
-        frm.txtBuscar.focus();
-
-        return false;
-    }
-
-    return true;
-}
-
-function validarSoloTexto(parametro) {
-    var patron = /^[a-zA-Z\s]*$/;
-    if (parametro.search(patron)) {
-        return false;
-    } else {
-        return true;
-    }
-}
-/*
-function mostrarOtrasCategorias(id){
-
-	if(document.getElementById(id).style.display == 'block'){
-		document.getElementById(id).style.display ='none';
-		if (document.getElementById('bmb').innerText="VER MENOS") {
-			document.getElementById('bmb').innerText="VER MAS"
-		}
-	}else{
-		document.getElementById(id).style.display = 'block';
-		if (document.getElementById('bmb').innerText="VER MAS") {
-			document.getElementById('bmb').innerText="VER MENOS"
-		}
-	}
-}
-*/
 /*CODIGO PARA LA VISTA PREVIA DE LA IMAGEN*/
 window.imagenVacia = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 
