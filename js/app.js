@@ -191,19 +191,26 @@ app.controller("myController", function ($scope, $http, $location) {
     $scope.guardarReceta = function (formTitulo, formCategorias, formImagen, formPorciones, formCalorias, formTextProcedimiento, formLinkProcedimiento) {
 
         var ingreds = [];
-        var objChl  = document.getElementById('formIngredientes').children; 
+        var objChl = document.getElementById('formIngredientes').children;
         for (i = 0; i <= objChl.length - 1; i++) {
-          	ingreds.push(objChl[i].innerHTML);
+            if (objChl[i].innerHTML != " ") {
+                ingreds.push(objChl[i].innerHTML);
+            }
         }
 
         var dietLabels = [];
         var healthLabels = [];
 
+        formCategorias = $('#select').val();        
         formCategorias.forEach(element => {
             if($scope.categorias[0].DietLabels.values.includes(element)) { dietLabels.push(element) }
             if($scope.categorias[1].HealthLabels.values.includes(element)) { healthLabels.push(element) }
         });
-        /****para borrar el procedimiento q no esta visible******/
+        
+
+        /*
+        // NO ESTABA FUNCIONANDO !!!!!!
+        // para borrar el procedimiento q no esta visible
         var link= document.getElementById('linkProcedimiento').value;
         var proce=document.getElementById('procedimiento').value;
         if (link.style.display == "block") {
@@ -213,8 +220,10 @@ app.controller("myController", function ($scope, $http, $location) {
             console.log(formTextProcedimiento);
         }else{
             formLinkProcedimiento =" ";
-        }
-        /****************************************************/
+        }        
+        */
+
+
         var recetaNva = {
             "image": formImagen,
             "yield": formPorciones,
@@ -230,9 +239,11 @@ app.controller("myController", function ($scope, $http, $location) {
 
         var formData = new FormData();
         formData.append('data', angular.toJson(recetaNva));
-        formData.append('RecipesClub', $('input[type=file]')[0].files[0]); 
-        
+        formData.append('RecipesClub', $('input[type=file]')[0].files[0]);
+
         $scope.procesando++;
+
+        console.log(recetaNva);
 
         $http({
             url: $scope.url + "/api/recipe",
