@@ -217,14 +217,16 @@ app.controller("myController", function ($scope, $http, $location) {
             "totalNutrients": null
         }
 
-        console.log(recetaNva);
-
+        var formData = new FormData();
+        formData.append('data', angular.toJson(recetaNva));
+        formData.append('RecipesClub', $('input[type=file]')[0].files[0]); 
+        
         $scope.procesando++;
 
         $http({
             url: $scope.url + "/api/recipe",
             method: 'POST',
-            data: recetaNva
+            data: formData
 
         }).then(function exito(respose) {
             $scope.procesando--;
