@@ -201,28 +201,25 @@ app.controller("myController", function ($scope, $http, $location) {
         var dietLabels = [];
         var healthLabels = [];
 
-        formCategorias = $('#select').val();        
+        formCategorias = $('#select').val();
         formCategorias.forEach(element => {
-            if($scope.categorias[0].DietLabels.values.includes(element)) { dietLabels.push(element) }
-            if($scope.categorias[1].HealthLabels.values.includes(element)) { healthLabels.push(element) }
+            if ($scope.categorias[0].DietLabels.values.includes(element)) { dietLabels.push(element) }
+            if ($scope.categorias[1].HealthLabels.values.includes(element)) { healthLabels.push(element) }
         });
-        
 
-        /*
-        // NO ESTABA FUNCIONANDO !!!!!!
+
+
         // para borrar el procedimiento q no esta visible
-        var link= document.getElementById('linkProcedimiento').value;
-        var proce=document.getElementById('procedimiento').value;
+        var link = document.getElementById('linkProcedimiento');
+        var proce = document.getElementById('procedimiento');
         if (link.style.display == "block") {
-            formTextProcedimiento=" ";
+            formTextProcedimiento = "";
             console.log("link del procedimiento");
             console.log(formLinkProcedimiento);
             console.log(formTextProcedimiento);
-        }else{
-            formLinkProcedimiento =" ";
-        }        
-        */
-
+        } else {
+            formLinkProcedimiento = "";
+        }
 
         var recetaNva = {
             "image": formImagen,
