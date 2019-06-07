@@ -207,19 +207,28 @@ app.controller("myController", function ($scope, $http, $location) {
             if ($scope.categorias[1].HealthLabels.values.includes(element)) { healthLabels.push(element) }
         });
 
-
-
         // para borrar el procedimiento q no esta visible
         var link = document.getElementById('linkProcedimiento');
         var proce = document.getElementById('procedimiento');
         if (link.style.display == "block") {
             formTextProcedimiento = "";
-            console.log("link del procedimiento");
-            console.log(formLinkProcedimiento);
-            console.log(formTextProcedimiento);
         } else {
             formLinkProcedimiento = "";
         }
+
+        // carga de info nutricional
+        var nutri_dom = document.getElementsByClassName("nutri");
+        var nutri = [];
+        for (i = 0; i < nutri_dom.length; i++) {
+            var obj = { label: "", quantity: "", unit: "" };
+            obj.label = nutri_dom[i].id;
+            obj.quantity = nutri_dom[i].value.trim();
+            if (obj.quantity != "") {
+                nutri.push(obj);
+            }
+        }
+
+        console.log(nutri);
 
         var recetaNva = {
             "image": formImagen,
@@ -231,7 +240,7 @@ app.controller("myController", function ($scope, $http, $location) {
             "dietLabels": dietLabels,
             "healthLabels": healthLabels,
             "ingredientLines": ingreds,
-            "totalNutrients": null
+            "totalNutrients": nutri
         }
 
         var formData = new FormData();
@@ -245,7 +254,7 @@ app.controller("myController", function ($scope, $http, $location) {
         $http({
             url: $scope.url + "/api/recipe",
             method: 'POST',
-            data: formData
+            data: recetaNva // recetaNva -> sin imagen // formData -> con imagen
 
         }).then(function exito(respose) {
             $scope.procesando--;

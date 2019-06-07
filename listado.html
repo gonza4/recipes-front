@@ -247,7 +247,8 @@
 											<hr>
 											<label for="" ng-hide="r.procedure.length = 0"> {{r.procedure}} </label>
 											<br>
-											<a ng-hide ="r.url.length <= 7" href="{{r.url}}" target="blank" value="Ver Procedimiento">Ver Procedimiento</a>
+											<a ng-hide="r.url.length <= 7" href="{{r.url}}" target="blank"
+												value="Ver Procedimiento">Ver Procedimiento</a>
 										</div>
 									</div>
 									<div class="container mt-3">
@@ -590,16 +591,20 @@
 													<option value="Baja en azucar">Baja en azucar</option>
 												</select><br>
 												-->
-												<select id="select" ng-model="formCategorias" class="multipleSelect form-control " multiple name="categorias" placeholder="SELECCIONE CATEGORIAS" style="width: 100%;" required>
-														<optgroup ng-repeat="c in categorias">
-															<option ng-repeat="cv in c.HealthLabels.values " value="{{cv}}"> {{cv}}</option>
-															<option ng-repeat="cv in c.DietLabels.values" value="{{cv}}">{{cv}}</option>
-														</optgroup>
-													</select>
-													<script>
-														$('.multipleSelect').fastselect();
-													</script>
-													<br>
+												<select id="select" ng-model="formCategorias"
+													class="multipleSelect form-control " multiple name="categorias"
+													placeholder="SELECCIONE CATEGORIAS" style="width: 100%;" required>
+													<optgroup ng-repeat="c in categorias">
+														<option ng-repeat="cv in c.HealthLabels.values " value="{{cv}}">
+															{{cv}}</option>
+														<option ng-repeat="cv in c.DietLabels.values" value="{{cv}}">
+															{{cv}}</option>
+													</optgroup>
+												</select>
+												<script>
+													$('.multipleSelect').fastselect();
+												</script>
+												<br>
 											</div>
 											<!--IMAGEN-->
 											<div class="col-6 fluid justify-content-left">
@@ -614,7 +619,7 @@
 												<div id='botonera' class="mt-3">
 													<label class="btn-bs-file btn btn-md btn-info">Cargar imagen <input
 															id="RecipesClub" ng-model="formImagen" type="file"
-															accept="image/*" name="image" required="" > *</label>
+															accept="image/*" name="image" required=""> *</label>
 												</div>
 											</div>
 											<div class="col-6">
@@ -647,7 +652,7 @@
 															<div class="input-group-append">
 																<button type="button" id="add"
 																	class="btn btn-outline-info">Agregar</button>
-																
+
 
 															</div>
 
@@ -707,7 +712,7 @@
 																				value="VITK1">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="VK" name="quantity">
 																		</td>
 																		<td>
@@ -721,7 +726,7 @@
 																				value="TOCPHA">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="VE">
 																		</td>
 																		<td>
@@ -735,7 +740,7 @@
 																				value="VITD">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="VD">
 																		</td>
 																		<td>
@@ -749,7 +754,7 @@
 																				name="label" value="VITB12">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="B12">
 																		</td>
 																		<td>
@@ -763,7 +768,7 @@
 																				name="label" value="FOL">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="B9">
 																		</td>
 																		<td>
@@ -777,7 +782,7 @@
 																				name="label" value="VITB6A">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="B6">
 																		</td>
 																		<td>
@@ -791,7 +796,7 @@
 																				name="label" value="NIA">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="B3">
 																		</td>
 																		<td>
@@ -805,7 +810,7 @@
 																				name="label" value="RIBF">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="B2">
 																		</td>
 																		<td>
@@ -819,7 +824,7 @@
 																				name="label" value="THIA">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="B1">
 																		</td>
 																		<td>
@@ -833,7 +838,7 @@
 																				value="VITC">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="VC">
 																		</td>
 																		<td>
@@ -847,7 +852,7 @@
 																				value="VITA_RAE">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="VA">
 																		</td>
 																		<td>
@@ -861,7 +866,7 @@
 																				value="P">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="P">
 																		</td>
 																		<td>
@@ -875,7 +880,7 @@
 																				value="ZN">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="Zn">
 																		</td>
 																		<td>
@@ -889,7 +894,7 @@
 																				value="FE">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="Fe">
 																		</td>
 																		<td>
@@ -903,7 +908,7 @@
 																				value="K">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="K">
 																		</td>
 																		<td>
@@ -931,7 +936,7 @@
 																				value="MG">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="MG">
 																		</td>
 																		<td>
@@ -945,7 +950,7 @@
 																				value="CA">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="CA">
 																		</td>
 																		<td>
@@ -959,7 +964,7 @@
 																				value="NA">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="NA">
 																		</td>
 																		<td>
@@ -973,7 +978,7 @@
 																				value="PROCNT">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="PROCNT">
 																		</td>
 																		<td>
@@ -987,7 +992,7 @@
 																				value="SUGAR">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="SUGAR">
 																		</td>
 																		<td>
@@ -1001,7 +1006,7 @@
 																				value="FIBTG">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="FIBTG">
 																		</td>
 																		<td>
@@ -1015,7 +1020,7 @@
 																				name="label" value="CHOCDF">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="CHOCDF">
 																		</td>
 																		<td>
@@ -1029,7 +1034,7 @@
 																				name="label" value="FAPU">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="FAPU">
 																		</td>
 																		<td>
@@ -1043,7 +1048,7 @@
 																				name="label" value="FAMS">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="FAMS">
 																		</td>
 																		<td>
@@ -1057,7 +1062,7 @@
 																				name="label" value="FATRN">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="FATRN">
 																		</td>
 																		<td>
@@ -1071,7 +1076,7 @@
 																				name="label" value="FASAT">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="FASAT">
 																		</td>
 																		<td>
@@ -1085,7 +1090,7 @@
 																				value="FAT">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
+																			<input type="text" class="form-control nutri"
 																				id="FAT">
 																		</td>
 																		<td>
