@@ -221,8 +221,9 @@ app.controller("myController", function ($scope, $http, $location) {
         var nutri = [];
         for (i = 0; i < nutri_dom.length; i++) {
             var obj = { label: "", quantity: "", unit: "" };
-            obj.label = nutri_dom[i].id;
-            obj.quantity = nutri_dom[i].value.trim();
+            obj.label = nutri_dom[i].children[0].children[0].value;
+            obj.unit = nutri_dom[i].children[2].children[0].value;
+            obj.quantity = nutri_dom[i].children[1].children[0].value;
             if (obj.quantity != "") {
                 nutri.push(obj);
             }
