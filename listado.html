@@ -22,6 +22,11 @@
 
 	<link rel="stylesheet" href="css/bootstrap-select.css">
 
+	<script src="https://rawgit.com/dbrekalo/attire/master/dist/js/build.min.js"></script>
+
+	<link rel="stylesheet" href="css/fastselect.min.css">
+	<script src="js/fastselect.standalone.js"></script>
+
 	<!---->
 
 	<title>RecipesClub</title>
@@ -225,7 +230,7 @@
 									<div class="col-6">
 										<div class="col-12 justify-content-center">
 											<h6>
-												Cantidad de porciones: {{r.yield}} - Total de calorÃ­as:
+												Cantidad de porciones: {{r.yield}} - Total de calorí­as:
 												{{r.calories |number:2}}
 											</h6>
 											<hr>
@@ -240,9 +245,9 @@
 												- {{i}}
 											</div>
 											<hr>
-											<label for="" ng-show="r.procedure != ''"> {{r.procedure}} </label>
-											<a ng-show="r.url != http://" href="{{r.url}}" target="blank">Ver
-												Procedimiento</a>
+											<label for="" ng-hide="r.procedure.length = 0"> {{r.procedure}} </label>
+											<br>
+											<a ng-hide ="r.url.length <= 7" href="{{r.url}}" target="blank" value="Ver Procedimiento">Ver Procedimiento</a>
 										</div>
 									</div>
 									<div class="container mt-3">
@@ -561,6 +566,7 @@
 												<h6>
 													Categorías *
 												</h6>
+												<!--
 												<select id="tokens" ng-model="formCategorias"
 													class="selectpicker form-control" multiple data-live-search="true"
 													name="categorias" placeholder="SELECCIONE CATEGORIAS"
@@ -582,7 +588,18 @@
 													<option value="Libre de mariscos">Libre de mariscos</option>
 													<option value="Vegana">Vegana</option>
 													<option value="Baja en azucar">Baja en azucar</option>
-												</select><br>												
+												</select><br>
+												-->
+												<select id="select" ng-model="formCategorias" class="multipleSelect form-control " multiple name="categorias" placeholder="SELECCIONE CATEGORIAS" style="width: 100%;" required>
+														<optgroup ng-repeat="c in categorias">
+															<option ng-repeat="cv in c.HealthLabels.values " value="{{cv}}"> {{cv}}</option>
+															<option ng-repeat="cv in c.DietLabels.values" value="{{cv}}">{{cv}}</option>
+														</optgroup>
+													</select>
+													<script>
+														$('.multipleSelect').fastselect();
+													</script>
+													<br>
 											</div>
 											<!--IMAGEN-->
 											<div class="col-6 fluid justify-content-left">
@@ -630,9 +647,7 @@
 															<div class="input-group-append">
 																<button type="button" id="add"
 																	class="btn btn-outline-info">Agregar</button>
-																<button type="button" id="clear"
-																	title="Clear checked items"
-																	class="btn btn-outline-default">Quitar</button>
+																
 
 															</div>
 
@@ -659,7 +674,7 @@
 																	procedimiento</label>
 															</div>
 															<textarea class="form-control"
-																ng-model="formTextProcedimiento" rows="3"
+																ng-model="formTextProcedimiento" rows="5"
 																id="procedimiento" name="procedure" required="">
 															</textarea>
 															<input type="text" ng-model="formLinkProcedimiento"

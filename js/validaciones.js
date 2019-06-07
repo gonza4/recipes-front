@@ -1,16 +1,12 @@
 
 function limpiarCampos() {
-    document.getElementById("archivo").value = "";
-    //document.getElementById("tokens").select.selectedIndex = -1;;
-    //falta agregar q las categorias seleccionadas dejen de estarlo
-    console.log(document.getElementById("tokens").length);
-    for (i = 0; i < document.getElementById("tokens").length; i++) {
-        if (document.getElementById("tokens").length[i].selected == true) {
-            document.getElementById("tokens").length[i].selected = false;
-        }
-    }
+    document.getElementById("RecipesClub").value = "";
+  
+     $('#frm').trigger("reset"); 
+  
 }
 
+/*PARA AGREGAR Y QUITAR INGREDIENTES*/
 $(document).ready(function(){
     //Hide clear btn on page load
     $('#clear').hide();
@@ -20,12 +16,13 @@ $(document).ready(function(){
         var toAdd = $("input[name=checkListItem]").val();
         //Append list item in its own div with a class of item into the list div
         //It also changes the cursor on hover of the appended item 
-        $('.listIng').append('<div class="item">' + toAdd + '</div>');
+        $('.listIng').append('<div class="item">' + toAdd + ' </div>');
         //fade in clear button when the add button is clicked
         $('#clear').fadeIn('fast');
         //Clear input field when add button is pressed
        // $('input').val('');
        document.getElementById("nuevoIngrediente").value = "";
+        
     });
     //Checks off items as they are pressed
     $(document).on('click', '.item', function() {
@@ -39,11 +36,12 @@ $(document).ready(function(){
         $(this).append(" " + '<span class="glyphicon glyphicon-remove done" aria-hidden="true"></span>');
         //Stops checked off items from being clicked again
         $(this).prop('disabled', true);
+         $('.done').remove('.done');
     });
     //Removes list items with the class done
-    $('#clear').click(function(){
-        $('.done').remove('.done');
-    });
+  //  $('#clear').click(function(){
+   //     $('.done').remove('.done');
+   // });
 });
 
 /*CODIGO PARA LA VISTA PREVIA DE LA IMAGEN*/
@@ -60,7 +58,7 @@ window.mostrarVistaPrevia = function mostrarVistaPrevia() {
         return;
     }
 
-    Archivos = jQuery('#archivo')[0].files;
+    Archivos = jQuery('#RecipesClub')[0].files;
     if (Archivos.length > 0) {
 
         Lector = new FileReader();
@@ -91,7 +89,7 @@ window.mostrarVistaPrevia = function mostrarVistaPrevia() {
         Lector.readAsDataURL(Archivos[0]);
 
     } else {
-        var objeto = jQuery('#archivo');
+        var objeto = jQuery('#RecipesClub');
         objeto.replaceWith(objeto.val('').clone());
         jQuery('#vistaPrevia').attr('src', window.imagenVacia);
         jQuery('#infoNombre').text('[Seleccione una imagen]');
@@ -124,7 +122,7 @@ jQuery(document).ready(function () {
     jQuery('#vistaPrevia').attr('src', "http://recipes-club.s3-website.us-east-2.amazonaws.com/img/imagen_no_disponible.jpeg");
 
     //El input del archivo lo vigilamos con un "delegado"
-    jQuery('#botonera').on('change', '#archivo', function (e) {
+    jQuery('#botonera').on('change', '#RecipesClub', function (e) {
         window.mostrarVistaPrevia();
     });
 
@@ -158,7 +156,7 @@ function mostrar(opcion) {
 
     } else {
         document.getElementById("linkProcedimiento").style.display = "none";
-        //  	document.getElementById("linkProcedimiento").value=" ";
+        //      document.getElementById("linkProcedimiento").value=" ";
         document.getElementById("procedimiento").style.display = "block";
         //    document.getElementById("procedimiento").value="";
 
@@ -169,3 +167,4 @@ function mostrar(opcion) {
 function confirmacionGuardado() {
     alert("Receta agregada con exito");
 }
+

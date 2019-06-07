@@ -203,7 +203,18 @@ app.controller("myController", function ($scope, $http, $location) {
             if($scope.categorias[0].DietLabels.values.includes(element)) { dietLabels.push(element) }
             if($scope.categorias[1].HealthLabels.values.includes(element)) { healthLabels.push(element) }
         });
-
+        /****para borrar el procedimiento q no esta visible******/
+        var link= document.getElementById('linkProcedimiento').value;
+        var proce=document.getElementById('procedimiento').value;
+        if (link.style.display == "block") {
+            formTextProcedimiento=" ";
+            console.log("link del procedimiento");
+            console.log(formLinkProcedimiento);
+            console.log(formTextProcedimiento);
+        }else{
+            formLinkProcedimiento =" ";
+        }
+        /****************************************************/
         var recetaNva = {
             "image": formImagen,
             "yield": formPorciones,
