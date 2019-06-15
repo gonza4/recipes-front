@@ -1,10 +1,11 @@
 
 function limpiarCampos() {
     document.getElementById("RecipesClub").value = "";
-  
+    document.getElementById("formIngredientes").innerHTML="";
      $('#frm').trigger("reset"); 
   
 }
+
 
 /*PARA AGREGAR Y QUITAR INGREDIENTES*/
 $(document).ready(function(){
@@ -144,6 +145,7 @@ function imgPorDefecto() {
     document.getElementById("linkProcedimiento").style.display = "block";
     document.getElementById("procedimiento").style.display = "none";
     document.getElementById("procedimiento").value = " ";
+   
 
 }
 
@@ -151,20 +153,39 @@ function mostrar(opcion) {
     if (opcion == "1") {
         document.getElementById("linkProcedimiento").style.display = "block";
         document.getElementById("procedimiento").style.display = "none";
-        //   document.getElementById("procedimiento").value=" ";
-        //         document.getElementById("linkProcedimiento").value="";
-
     } else {
         document.getElementById("linkProcedimiento").style.display = "none";
-        //      document.getElementById("linkProcedimiento").value=" ";
         document.getElementById("procedimiento").style.display = "block";
-        //    document.getElementById("procedimiento").value="";
-
-
     }
 }
 
-function confirmacionGuardado() {
-    alert("Receta agregada con exito");
+
+function nospaces(t){
+    texto = document.getElementById("entrada").value;
+     if (texto.length <= 3) {
+        if(t.value.match(/\s/g)){
+          t.value=t.value.replace(/\s/g,'');
+     }
+  }
 }
 
+function nospaces2(t){
+    texto = document.getElementById("texto").value;
+     if (texto.length <= 3) {
+        if(t.value.match(/\s/g)){
+          t.value=t.value.replace(/\s/g,'');
+     }
+  }
+}
+function validarUrl(url){
+var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+var regex = new RegExp(expression);
+var t = url.value;
+
+if (t.match(regex)) {
+    
+    document.getElementById("lbllinkprocedimiento").innerHTML = '';
+  } else {
+    document.getElementById("lbllinkprocedimiento").innerHTML = 'Formato incorrecto';
+}
+}
