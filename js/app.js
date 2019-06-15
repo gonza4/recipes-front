@@ -210,6 +210,8 @@ app.controller("myController", function ($scope, $http, $location) {
         // para borrar el procedimiento q no esta visible
         var link = document.getElementById('linkProcedimiento');
         var proce = document.getElementById('procedimiento');
+
+         
         if (link.style.display == "block") {
             formTextProcedimiento = "";
         } else {
@@ -259,11 +261,13 @@ app.controller("myController", function ($scope, $http, $location) {
 
         }).then(function exito(respose) {
             $scope.procesando--;
+             $('#frm').trigger("reset");
+             document.getElementById("formIngredientes").innerHTML="";
             alert("Receta guardada con exito");
-
+            $('#btnGuardar').modal('hide');
         }, function fracaso(respose) {
             $scope.procesando--;
-            alert("Algo falló");
+           // alert("Algo falló");
         });
     }
 

@@ -80,3 +80,7 @@ form {
 .fstElement .fstMultipleMode .fstNoneSelected .fstResultsOpened .fstActive{
     width: 100%;
 }
+
+#lbllinkprocedimiento{
+    color: red;
+}
