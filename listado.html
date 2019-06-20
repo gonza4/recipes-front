@@ -35,24 +35,28 @@
 <body class="ng-cloak" class="body body-lighten" ng-app="myApp" ng-controller="myController" style="margin-top:0px;">
 
 	<!-- NAV -->
-	<!-- navbar top fixed -->
+	<!-- navbar top fixed-->
 	<nav class="navbar navbar-expand-sm bg-white-2">
 
 		<!-- navbar title -->
-		<a class="navbar-brand navbar-link" href="index.html" target="_self">RecipesClub</a>
+		<a class="navbar-brand navbar-link mb-5" href="index.html" target="_self">RecipesClub</a>
 
 		<!-- BUSCADOR -->
-		<div class="container-fluid justify-content-center mt-2">
-			<form class="form-inline" ng-submit="buscarRecetas(null,null,null,1,entrada)">
-				<input class=" form-control mr-sm-2" ng-model="entrada" name="entrada" id="entrada" type="search"
-					required minlength="3" pattern="[a-zA-ZñÑuÜáÁéÉíÍóÓúÚ\s]+" title="Solo letras" onkeyup="nospaces(this)">
-				<button id="txtBuscar" class="btn btn-md btn-primary content-center" type="submit">Buscar</button>
-				<button onclick="imgPorDefecto()" type="button" class="btn btn-primary ml-2" data-toggle="modal"
-					data-target="#modalNuevaReceta" data-whatever="@mdo">Agregar receta</button>
+		<div class="container-fluid justify-content-center mt-2 col-12 col-md-10 col-lg-10 ">
+			<form class="form-inline card card-sm" style="width: 88%;" ng-submit="buscarRecetas(null,null,null,1,entrada)">
+				<div class="card-body row no-gutters align-items-center" style="width: 100%;" >
+					<div class="col">
+					<input class="form-control form-control-lg form-control-borderless buscador" ng-model="entrada" name="entrada" id="entrada" type="search" required minlength="3" pattern="[a-zA-ZñÑuÜáÁéÉíÍóÓúÚ\s]+" title="Solo letras" onkeyup="nospaces(this)" style="width: 100%;">
+					</div>
+					<div class="col-auto ml-1">
+					<button id="txtBuscar" class="btn btn-lg btn-primary content-center" type="submit">Buscar</button>
+					<button onclick="imgPorDefecto()" type="button" class="btn btn-lg btn-primary ml-2" data-toggle="modal"
+						data-target="#modalNuevaReceta" data-whatever="@mdo">Agregar receta</button>
+					</div>
+				</div>
 			</form>
 
 		</div>
-
 		<!-- navbar sidebar menu toggle -->
 		<span class="navbar-text">
 			<a href="#" id="sidebar-toggle" class="navbar-bars">
@@ -61,6 +65,7 @@
 		</span>
 
 	</nav>
+
 
 	<div class="d-flex" id="wrapper">
 		<!-- MENU -->
@@ -551,7 +556,8 @@
 									Nueva Receta
 								</h3><button type="button" class="close" data-dismiss="modal" aria-label="Close"
 									onclick="limpiarCampos()"><span aria-hidden="true">×</span></button>
-							</div><!-- Body modal -->
+							</div>
+							<!-- Body modal -->
 							<form id="frm" class="card card-sm" >
 								<div class="form-group">
 									<div class="modal-body">
@@ -568,20 +574,24 @@
 												<h6>
 													Categorías *
 												</h6>
-												
 												<select id="select" ng-model="formCategorias"
 													class="multipleSelect form-control " multiple name="categorias"
 													placeholder="SELECCIONE CATEGORIAS" style="width: 100%;" required>
+													
 													<optgroup ng-repeat="c in categorias">
 														<option ng-repeat="cv in c.HealthLabels.values " value="{{cv}}">
 															{{cv}}</option>
 														<option ng-repeat="cv in c.DietLabels.values" value="{{cv}}">
 															{{cv}}</option>
+															
+
 													</optgroup>
+												
 												</select> <label for=""id=lblSelect></label>
 												<script>
 													$('.multipleSelect').fastselect();
 												</script>
+											
 												<br>
 											</div>
 											<!--IMAGEN-->
@@ -632,8 +642,6 @@
 															<div class="input-group-append">
 																<button type="button" id="add"
 																	class="btn btn-outline-info">Agregar</button>
-
-
 															</div>
 
 														</div>
@@ -728,8 +736,8 @@
 																				id="VD">
 																		</td>
 																		<td>
-																			Âµg <input type="hidden" name="unit"
-																				value="Âµg">
+																			µg <input type="hidden" name="unit"
+																				value="µg">
 																		</td>
 																	</tr>
 																	<tr class="nutri">
@@ -742,8 +750,8 @@
 																				id="B12">
 																		</td>
 																		<td>
-																			Âµg <input type="hidden" name="unit"
-																				value="Âµg">
+																			µg <input type="hidden" name="unit"
+																				value="µg">
 																		</td>
 																	</tr>
 																	<tr class="nutri">
@@ -756,8 +764,8 @@
 																				id="B9">
 																		</td>
 																		<td>
-																			Âµg <input type="hidden" name="unit"
-																				value="Âµg">
+																			µg <input type="hidden" name="unit"
+																				value="µg">
 																		</td>
 																	</tr>
 																	<tr class="nutri">
@@ -840,8 +848,8 @@
 																				id="VA">
 																		</td>
 																		<td>
-																			Âµg <input type="hidden" name="unit"
-																				value="Âµg">
+																			µg <input type="hidden" name="unit"
+																				value="µg">
 																		</td>
 																	</tr>
 																	<tr class="nutri">
@@ -1092,9 +1100,9 @@
 									</div>
 								</div><!-- Footer modal -->
 								<div class="modal-footer">
-									<button id="btnGuardar" class="btn btn-md btn-primary content-center"  
-										ng-click="guardarReceta(formTitulo, formCategorias, formImagen, formPorciones, formCalorias, formTextProcedimiento, formLinkProcedimiento)" >Guardar</button>
-									<button type="button" class="btn btn-secondary" data-dismiss="modal"
+									<button id="btnGuardar" class="btn btn-md btn-primary content-center"
+										ng-click="guardarReceta(formTitulo, formCategorias, formImagen, formPorciones, formCalorias, formTextProcedimiento, formLinkProcedimiento)">Guardar</button>
+									<button id="btnCerrar" type="button" class="btn btn-secondary cerrar" data-dismiss="modal"
 										onclick="limpiarCampos()">Cerrar</button>
 								</div>
 

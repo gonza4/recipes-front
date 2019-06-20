@@ -18,7 +18,7 @@ app.controller("myController", function ($scope, $http, $location) {
     $scope.recetas;
     $scope.receta;
     $scope.r = "";
-    $scope.url = "http://ec2-18-221-188-151.us-east-2.compute.amazonaws.com:5000";
+    $scope.url = "http://ec2-18-220-217-216.us-east-2.compute.amazonaws.com:5000";
     $scope.category = "HealthLabels";
     $scope.relation = "HEALTH_LABELS";
     $scope.value = "Vegana";
@@ -261,10 +261,16 @@ app.controller("myController", function ($scope, $http, $location) {
 
         }).then(function exito(respose) {
             $scope.procesando--;
-             $('#frm').trigger("reset");
-             document.getElementById("formIngredientes").innerHTML="";
+               //  $('#frm').trigger("reset");
+               //  document.getElementById("formIngredientes").innerHTML="";
             alert("Receta guardada con exito");
-            $('#btnGuardar').modal('hide');
+         //   $('.fstChoiceRemove').click();
+            //$('.cerrar').Click();
+           // $('#modalNuevaReceta').modal({'show':false});
+       //    $("[data-dismiss=modal]").trigger({ type: "click" });
+         //   $('#modalNuevaReceta').show();
+            $('#modalNuevaReceta').modal('hide');
+
         }, function fracaso(respose) {
             $scope.procesando--;
            // alert("Algo falló");
