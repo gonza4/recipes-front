@@ -52,7 +52,7 @@
 
 				<!-- MODAL -->
 				<div class="modal  fade fluid" id="modalNuevaReceta" tabindex="-1" role="dialog"
-					aria-labelledby="exampleModalLabel" aria-hidden="true">
+					aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
 					<div class="modal-dialog modal-xl" role="document">
 						<div class="modal-content">
 							<!-- Header modal -->
@@ -83,10 +83,11 @@
 													class="multipleSelect form-control " multiple name="categorias"
 													placeholder="SELECCIONE CATEGORIAS" style="width: 100%;" required>
 													<optgroup ng-repeat="c in categorias">
-														<option ng-repeat="cv in c.HealthLabels.values " value="{{cv}}">
+														<option s ng-repeat="cv in c.HealthLabels.values " value="{{cv}}">
 															{{cv}}</option>
 														<option ng-repeat="cv in c.DietLabels.values" value="{{cv}}">
 															{{cv}}</option>
+
 													</optgroup>
 												</select> <label for=""id=lblSelect></label>
 												<script>
@@ -236,8 +237,8 @@
 																				id="VD">
 																		</td>
 																		<td>
-																			Âµg <input type="hidden" name="unit"
-																				value="Âµg">
+																			µg <input type="hidden" name="unit"
+																				value="µg">
 																		</td>
 																	</tr>
 																	<tr class="nutri">
@@ -250,8 +251,8 @@
 																				id="B12">
 																		</td>
 																		<td>
-																			Âµg <input type="hidden" name="unit"
-																				value="Âµg">
+																			µg <input type="hidden" name="unit"
+																				value="µg">
 																		</td>
 																	</tr>
 																	<tr class="nutri">
@@ -264,8 +265,8 @@
 																				id="B9">
 																		</td>
 																		<td>
-																			Âµg <input type="hidden" name="unit"
-																				value="Âµg">
+																			µg <input type="hidden" name="unit"
+																				value="µg">
 																		</td>
 																	</tr>
 																	<tr class="nutri">
@@ -348,8 +349,8 @@
 																				id="VA">
 																		</td>
 																		<td>
-																			Âµg <input type="hidden" name="unit"
-																				value="Âµg">
+																			µg <input type="hidden" name="unit"
+																				value="µg">
 																		</td>
 																	</tr>
 																	<tr class="nutri">
@@ -625,7 +626,7 @@
 				<form id="frm" class="card card-sm" method="get" action="listado.html">
 					<div class="card-body row no-gutters align-items-center">
 						<div class="col">
-							<input class="form-control form-control-lg form-control-borderless" type="search" id="texto"
+							<input class="form-control form-control-lg form-control-borderless buscador" type="search" id="texto"
 								name="texto" ng-model="txtBuscar" required minlength="3"
 								pattern="[a-zA-ZñÑuÜáÁéÉíÍóÓúÚ\s]+" title="Solo letras" onkeyup="nospaces2(this)">
 

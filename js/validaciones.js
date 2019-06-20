@@ -1,11 +1,12 @@
 
 function limpiarCampos() {
+
+    $('.fstChoiceRemove').click();  
     document.getElementById("RecipesClub").value = "";
     document.getElementById("formIngredientes").innerHTML="";
-     $('#frm').trigger("reset"); 
-  
+    $('#frm').trigger("reset");  
+    $('#multipleSelect').fastselect();
 }
-
 
 /*PARA AGREGAR Y QUITAR INGREDIENTES*/
 $(document).ready(function(){
@@ -44,6 +45,9 @@ $(document).ready(function(){
    //     $('.done').remove('.done');
    // });
 });
+
+
+
 
 /*CODIGO PARA LA VISTA PREVIA DE LA IMAGEN*/
 window.imagenVacia = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
@@ -145,7 +149,7 @@ function imgPorDefecto() {
     document.getElementById("linkProcedimiento").style.display = "block";
     document.getElementById("procedimiento").style.display = "none";
     document.getElementById("procedimiento").value = " ";
-   
+    limpiarCampos();   
 
 }
 
@@ -177,7 +181,9 @@ function nospaces2(t){
      }
   }
 }
+
 function validarUrl(url){
+
 var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
 var regex = new RegExp(expression);
 var t = url.value;
