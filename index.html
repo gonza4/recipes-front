@@ -53,7 +53,7 @@
 				<!-- MODAL -->
 				<div class="modal  fade fluid" id="modalNuevaReceta" tabindex="-1" role="dialog"
 					aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
-					<div class="modal-dialog modal-xl" role="document">
+					<div class="modal-dialog modal-xl" id="MNR"role="document">
 						<div class="modal-content">
 							<!-- Header modal -->
 							<div class="modal-header">
@@ -171,12 +171,12 @@
 															</div>
 															<textarea class="form-control"
 																ng-model="formTextProcedimiento" rows="5"
-																id="procedimiento" name="procedure" >
+																id="procedimiento" name="procedure" required="" >
 															</textarea>
 															<label for=""id=lbltextprocedimiento></label>
 															<input type="text" ng-model="formLinkProcedimiento"
 																value="" class="form-control col-xs-2"
-																id="linkProcedimiento" name="url" required onchange="validarUrl(this);" > 
+																id="linkProcedimiento" name="url" required onchange="validarUrl(this);" required="" > 
 																<label for=""id=lbllinkprocedimiento></label>
 														</fieldset>
 													</div>
@@ -601,7 +601,7 @@
 									</div>
 								</div><!-- Footer modal -->
 								<div class="modal-footer">
-									<button class="btn btn-md btn-primary content-center"  type="submit"
+									<button id="btnGuardar" class="btn btn-md btn-primary content-center"  type="submit"
 										ng-click="guardarReceta(formTitulo, formCategorias, formImagen, formPorciones, formCalorias, formTextProcedimiento, formLinkProcedimiento)" >Guardar</button>
 									<button type="button" class="btn btn-secondary" data-dismiss="modal"
 										onclick="limpiarCampos()">Cerrar</button>

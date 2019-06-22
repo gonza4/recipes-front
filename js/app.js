@@ -204,14 +204,14 @@ app.controller("myController", function ($scope, $http, $location) {
         formCategorias = $('#select').val();
         formCategorias.forEach(element => {
             if ($scope.categorias[0].DietLabels.values.includes(element)) { dietLabels.push(element) }
-            if ($scope.categorias[1].HealthLabels.values.includes(element)) { healthLabels.push(element) }
-        });
+                if ($scope.categorias[1].HealthLabels.values.includes(element)) { healthLabels.push(element) }
+            });
 
         // para borrar el procedimiento q no esta visible
         var link = document.getElementById('linkProcedimiento');
         var proce = document.getElementById('procedimiento');
 
-         
+
         if (link.style.display == "block") {
             formTextProcedimiento = "";
         } else {
@@ -261,24 +261,24 @@ app.controller("myController", function ($scope, $http, $location) {
 
         }).then(function exito(respose) {
             $scope.procesando--;
-               //  $('#frm').trigger("reset");
-               //  document.getElementById("formIngredientes").innerHTML="";
-            alert("Receta guardada con exito");
-         //   $('.fstChoiceRemove').click();
-            //$('.cerrar').Click();
-           // $('#modalNuevaReceta').modal({'show':false});
-       //    $("[data-dismiss=modal]").trigger({ type: "click" });
-         //   $('#modalNuevaReceta').show();
-            $('#modalNuevaReceta').modal('hide');
+            alert('Receta guardada con exito');
+            $("#modalNuevaReceta").modal("hide");
+            $("#modalNuevaReceta").on('hide.bs.modal', function(){
+                console.log("cerro todo bien");
+            });
 
         }, function fracaso(respose) {
             $scope.procesando--;
-           // alert("Algo falló");
+            alert("Algo falló");
         });
     }
+
+
 
     // al inicio
     $scope.buscarCategorias();
     $scope.leerParametros();
     setTimeout($scope.buscarRecetas($scope.category, $scope.relation, $scope.value, $scope.from, $scope.texto), 3000);
 });
+
+ 

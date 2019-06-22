@@ -233,10 +233,10 @@
 										<img class="img-fluid" src="{{r.image}}" height="664" width="470" alt="">
 									</div>
 									<div class="col-6">
-										<div class="col-12 justify-content-center">
+										<div class="col-12 justify-content-center fluid">
 											<h6>
 												Cantidad de porciones: {{r.yield}} - Total de calorí­as:
-												{{r.calories |number:2}}
+												{{r.calories |number:2}} Kcal
 											</h6>
 											<hr>
 										</div>
@@ -540,16 +540,18 @@
 					</div>
 				</div>
 				<!--FIN MODAL -->
+				
 			</div>
 
 			<!-- MODAL NUEVA RECETA -->
 			<div class="container-fluid">
 
 				<!-- MODAL -->
-				<div class="modal hide fade fluid" id="modalNuevaReceta" tabindex="-1" role="dialog"
-					aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+				<div  class="modal  fade fluid" id="modalNuevaReceta" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" >
+
 					<div class="modal-dialog modal-xl" role="document">
-						<div class="modal-content">
+						<div class="modal-content" id="modalNR">
 							<!-- Header modal -->
 							<div class="modal-header">
 								<h3 id="exampleModalLabel" class="text-justify pt-3">
@@ -582,9 +584,7 @@
 														<option ng-repeat="cv in c.HealthLabels.values " value="{{cv}}">
 															{{cv}}</option>
 														<option ng-repeat="cv in c.DietLabels.values" value="{{cv}}">
-															{{cv}}</option>
-															
-
+															{{cv}}</option>													
 													</optgroup>
 												
 												</select> <label for=""id=lblSelect></label>
@@ -666,14 +666,16 @@
 																		onchange="mostrar(this.value);"> Cargar
 																	procedimiento</label>
 															</div>
+															
 															<textarea class="form-control"
 																ng-model="formTextProcedimiento" rows="5"
-																id="procedimiento" name="procedure" >
+																id="procedimiento" name="procedure" required="" >
 															</textarea>
 															<label for=""id=lbltextprocedimiento></label>
+															
 															<input type="text" ng-model="formLinkProcedimiento"
 																value="" class="form-control col-xs-2"
-																id="linkProcedimiento" name="url" required onchange="validarUrl(this);">
+																id="linkProcedimiento" name="url" required onchange="validarUrl(this);" required="">
 
 
 																<label for=""id=lbllinkprocedimiento></label>
@@ -1145,10 +1147,10 @@
 	</script>
 	<script src="js/app.js" type="text/javascript">
 	</script>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript">
-
-	</script>
-	<script type="text/javascript" src="js/validaciones.js">
+	<!--
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+	-->
+		<script type="text/javascript" src="js/validaciones.js">
 	</script>
 	<script type="text/javascript">
 		$(function () {
