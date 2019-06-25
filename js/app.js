@@ -189,7 +189,6 @@ app.controller("myController", function ($scope, $http, $location) {
     }
 
     $scope.guardarReceta = function (formTitulo, formCategorias, formImagen, formPorciones, formCalorias, formTextProcedimiento, formLinkProcedimiento) {
-
         var ingreds = [];
         var objChl = document.getElementById('formIngredientes').children;
         for (i = 0; i <= objChl.length - 1; i++) {
@@ -231,10 +230,7 @@ app.controller("myController", function ($scope, $http, $location) {
             }
         }
 
-        console.log(nutri);
-
-        var recetaNva = {
-            "image": formImagen,
+        recetaNva = {
             "yield": formPorciones,
             "calories": formCalorias,
             "label": formTitulo,
@@ -243,23 +239,28 @@ app.controller("myController", function ($scope, $http, $location) {
             "dietLabels": dietLabels,
             "healthLabels": healthLabels,
             "ingredientLines": ingreds,
-            "totalNutrients": nutri
+            "totalNutrients": nutri   
         }
 
         var formData = new FormData();
-        formData.append('data', angular.toJson(recetaNva));
-        formData.append('RecipesClub', $('input[type=file]')[0].files[0]);
+        var image = $('#RecipesClub')[0].files[0];
+        formData.append('RecipesClub', image);
 
+        for(key in recetaNva){
+            formData.append(key, angular.toJson(recetaNva[key]));
+        }
+        
         $scope.procesando++;
 
-        console.log(recetaNva);
-
-        $http({
-            url: $scope.url + "/api/recipe",
-            method: 'POST',
-            data: recetaNva // recetaNva -> sin imagen // formData -> con imagen
-
-        }).then(function exito(respose) {
+        $http.post(
+            $scope.url + "/api/recipe",
+            formData, {
+                transformRequest: angular.identity, 
+                headers: {
+                    'Content-Type': undefined
+                }
+            }
+        ).then(function exito(respose) {
             $scope.procesando--;
             alert('Receta guardada con exito');
             $("#modalNuevaReceta").modal("hide");
@@ -272,8 +273,6 @@ app.controller("myController", function ($scope, $http, $location) {
             alert("Algo falló");
         });
     }
-
-
 
     // al inicio
     $scope.buscarCategorias();
