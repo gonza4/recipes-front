@@ -189,6 +189,7 @@ app.controller("myController", function ($scope, $http, $location) {
     }
 
     $scope.guardarReceta = function (formTitulo, formCategorias, formImagen, formPorciones, formCalorias, formTextProcedimiento, formLinkProcedimiento) {
+
         var ingreds = [];
         var objChl = document.getElementById('formIngredientes').children;
         for (i = 0; i <= objChl.length - 1; i++) {
@@ -196,11 +197,18 @@ app.controller("myController", function ($scope, $http, $location) {
                 ingreds.push(objChl[i].innerHTML);
             }
         }
+        if (ingreds.length<1) {
+            document.getElementById("lblIngredientes").innerHTML = 'Formato incorrecto';
+            return;
+        }else{
+            document.getElementById("lblIngredientes").innerHTML = "";
+        }
 
         var dietLabels = [];
         var healthLabels = [];
 
         formCategorias = $('#select').val();
+        console.log(formCategorias);
         formCategorias.forEach(element => {
             if ($scope.categorias[0].DietLabels.values.includes(element)) { dietLabels.push(element) }
                 if ($scope.categorias[1].HealthLabels.values.includes(element)) { healthLabels.push(element) }
@@ -208,13 +216,21 @@ app.controller("myController", function ($scope, $http, $location) {
 
         // para borrar el procedimiento q no esta visible
         var link = document.getElementById('linkProcedimiento');
-        var proce = document.getElementById('procedimiento');
-
+        var proce = document.getElementById('procedimiento');      
 
         if (link.style.display == "block") {
-            formTextProcedimiento = "";
-        } else {
-            formLinkProcedimiento = "";
+           
+                    formTextProcedimiento = "";
+                    console.log("texto del link (block) "+formLinkProcedimiento);
+                    console.log("texto del text area"+formTextProcedimiento);
+                 
+        
+        } else {//cuando el text area esta habilitado 
+         
+                    formLinkProcedimiento = "";
+                    console.log("texto del link "+formLinkProcedimiento);
+                    console.log("texto del text area (block)"+formTextProcedimiento);    
+           
         }
 
         // carga de info nutricional
@@ -230,7 +246,9 @@ app.controller("myController", function ($scope, $http, $location) {
             }
         }
 
-        recetaNva = {
+        console.log(nutri);
+console.log("1 creo jason");
+          recetaNva = {
             "yield": formPorciones,
             "calories": formCalorias,
             "label": formTitulo,
@@ -241,17 +259,28 @@ app.controller("myController", function ($scope, $http, $location) {
             "ingredientLines": ingreds,
             "totalNutrients": nutri   
         }
-
+console.log("2 carga la image");
         var formData = new FormData();
         var image = $('#RecipesClub')[0].files[0];
         formData.append('RecipesClub', image);
 
-        for(key in recetaNva){
-            formData.append(key, angular.toJson(recetaNva[key]));
-        }
-        
-        $scope.procesando++;
+  console.log("2.1 hago el if y el return");
+  if (typeof(formLinkProcedimiento) == "undefined" || typeof(formTextProcedimiento) == "undefined"){
+  
+    return;
+  }else{
+  
+console.log("3 cargo el form data para guardar");       
+            for(key in recetaNva){
 
+                formData.append(key, angular.toJson(recetaNva[key]));
+        
+            }
+}
+        $scope.procesando++;
+        console.log(recetaNva);
+
+console.log("4 hago el envio por post");
         $http.post(
             $scope.url + "/api/recipe",
             formData, {
@@ -259,8 +288,7 @@ app.controller("myController", function ($scope, $http, $location) {
                 headers: {
                     'Content-Type': undefined
                 }
-            }
-        ).then(function exito(respose) {
+            }).then(function exito(respose) {
             $scope.procesando--;
             alert('Receta guardada con exito');
             $("#modalNuevaReceta").modal("hide");
@@ -273,6 +301,8 @@ app.controller("myController", function ($scope, $http, $location) {
             alert("Algo falló");
         });
     }
+
+
 
     // al inicio
     $scope.buscarCategorias();

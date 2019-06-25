@@ -5,8 +5,43 @@ function limpiarCampos() {
     document.getElementById("RecipesClub").value = "";
     document.getElementById("formIngredientes").innerHTML="";
     $('#frm').trigger("reset");  
-    $('#multipleSelect').fastselect();
+   document.getElementById("procedimiento").innerHTML="";
+   document.getElementById("procedimiento").value = " ";
+   document.getElementById("linkProcedimiento").innerHTML="";
+   document.getElementById("linkProcedimiento").value = "";
 }
+
+function borrarCategoria(){
+  categorias = $('#select').val();
+  //console.log(categorias);
+
+  cantCategoriasSeleccionadas =  categorias.length;
+ // console.log("Cantidad de categorias seleccionadas: "+ cantCategoriasSeleccionadas);
+  //if ($('.fstQueryInput').focus == true && $('.fstQueryInput').value="") {
+    var ultimaCatSeleccionada;
+  //  totalDeCategorias=categorias[cantCategoriasSeleccionadas];
+  //  console.log("total de categorias seleccionadas: " + totalDeCategorias);
+    
+    for (var i =0; i <= categorias.length; i++) {
+        if (cantCategoriasSeleccionadas=i) {
+        ultimaCatSeleccionada= categorias[i-1];
+   //        console.log("la ultima categoria es:"+ ultimaCatSeleccionada);
+           
+        }
+        for (var j = 0; j < categorias.length; j++) {
+              if(ultimaCatSeleccionada == categorias[j]){
+     //           console.log("Es correcto");
+                $('fstChoiceRemove').click();
+              }
+           }
+        
+    }
+    //fstChoiceRemove la x q se tiene q cerrar
+    //fstChoiceItem itemSeleccionado
+    //data-value  es el valor a comparar para poder borrarlo 
+  }
+ //}
+
 
 /*PARA AGREGAR Y QUITAR INGREDIENTES*/
 $(document).ready(function(){
@@ -49,6 +84,8 @@ $(document).ready(function(){
 
 
 
+
+
 /*CODIGO PARA LA VISTA PREVIA DE LA IMAGEN*/
 window.imagenVacia = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 
@@ -80,7 +117,7 @@ window.mostrarVistaPrevia = function mostrarVistaPrevia() {
             //Si el tipo de archivo es válido lo muestra, 
             //sino muestra un mensaje 
             if (tipo !== 'image/jpeg' && tipo !== 'image/png' && tipo !== 'image/gif') {
-                jQuery('#vistaPrevia').attr('src', window.imagenVacia);
+                jQuery('#vistaPrevia').attr('src', "http://recipes-club.s3-website.us-east-2.amazonaws.com/img/imagen_no_disponible.jpeg");
                 alert('El formato de imagen no es válido: debe seleccionar una imagen JPG, PNG o GIF.');
             } else {
                 jQuery('#vistaPrevia').attr('src', origen.result);
@@ -160,6 +197,7 @@ function mostrar(opcion) {
     } else {
         document.getElementById("linkProcedimiento").style.display = "none";
         document.getElementById("procedimiento").style.display = "block";
+
     }
 }
 
