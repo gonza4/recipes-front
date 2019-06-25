@@ -197,11 +197,18 @@ app.controller("myController", function ($scope, $http, $location) {
                 ingreds.push(objChl[i].innerHTML);
             }
         }
+        if (ingreds.length<1) {
+            document.getElementById("lblIngredientes").innerHTML = 'Se debe ingresar al menos un ingrediente';
+            return;
+        }else{
+            document.getElementById("lblIngredientes").innerHTML = "";
+        }
 
         var dietLabels = [];
         var healthLabels = [];
 
         formCategorias = $('#select').val();
+        console.log(formCategorias);
         formCategorias.forEach(element => {
             if ($scope.categorias[0].DietLabels.values.includes(element)) { dietLabels.push(element) }
                 if ($scope.categorias[1].HealthLabels.values.includes(element)) { healthLabels.push(element) }
@@ -209,13 +216,21 @@ app.controller("myController", function ($scope, $http, $location) {
 
         // para borrar el procedimiento q no esta visible
         var link = document.getElementById('linkProcedimiento');
-        var proce = document.getElementById('procedimiento');
-
+        var proce = document.getElementById('procedimiento');      
 
         if (link.style.display == "block") {
-            formTextProcedimiento = "";
-        } else {
-            formLinkProcedimiento = "";
+           
+                    formTextProcedimiento = "";
+                    console.log("texto del link (block) "+formLinkProcedimiento);
+                    console.log("texto del text area"+formTextProcedimiento);
+                 
+        
+        } else {//cuando el text area esta habilitado 
+         
+                    formLinkProcedimiento = "";
+                    console.log("texto del link "+formLinkProcedimiento);
+                    console.log("texto del text area (block)"+formTextProcedimiento);    
+           
         }
 
         // carga de info nutricional
@@ -232,9 +247,8 @@ app.controller("myController", function ($scope, $http, $location) {
         }
 
         console.log(nutri);
-
-        var recetaNva = {
-            "image": formImagen,
+console.log("1 creo jason");
+          recetaNva = {
             "yield": formPorciones,
             "calories": formCalorias,
             "label": formTitulo,
@@ -243,23 +257,38 @@ app.controller("myController", function ($scope, $http, $location) {
             "dietLabels": dietLabels,
             "healthLabels": healthLabels,
             "ingredientLines": ingreds,
-            "totalNutrients": nutri
+            "totalNutrients": nutri   
         }
-
+console.log("2 carga la image");
         var formData = new FormData();
-        formData.append('data', angular.toJson(recetaNva));
-        formData.append('RecipesClub', $('input[type=file]')[0].files[0]);
+        var image = $('#RecipesClub')[0].files[0];
+        formData.append('RecipesClub', image);
 
+  console.log("2.1 hago el if y el return");
+  if (typeof(formLinkProcedimiento) == "undefined" || typeof(formTextProcedimiento) == "undefined"){
+  
+    return;
+  }else{
+  
+console.log("3 cargo el form data para guardar");       
+            for(key in recetaNva){
+
+                formData.append(key, angular.toJson(recetaNva[key]));
+        
+            }
+}
         $scope.procesando++;
-
         console.log(recetaNva);
 
-        $http({
-            url: $scope.url + "/api/recipe",
-            method: 'POST',
-            data: recetaNva // recetaNva -> sin imagen // formData -> con imagen
-
-        }).then(function exito(respose) {
+console.log("4 hago el envio por post");
+        $http.post(
+            $scope.url + "/api/recipe",
+            formData, {
+                transformRequest: angular.identity, 
+                headers: {
+                    'Content-Type': undefined
+                }
+            }).then(function exito(respose) {
             $scope.procesando--;
             alert('Receta guardada con exito');
             $("#modalNuevaReceta").modal("hide");

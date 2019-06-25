@@ -5,8 +5,44 @@ function limpiarCampos() {
     document.getElementById("RecipesClub").value = "";
     document.getElementById("formIngredientes").innerHTML="";
     $('#frm').trigger("reset");  
-    $('#multipleSelect').fastselect();
+   document.getElementById("procedimiento").innerHTML="";
+   document.getElementById("procedimiento").value = " ";
+   document.getElementById("linkProcedimiento").innerHTML="";
+   document.getElementById("linkProcedimiento").value = "";
+   document.getElementById("lblIngredientes").innerHTML = "";
 }
+
+function borrarCategoria(){
+  categorias = $('#select').val();
+  //console.log(categorias);
+
+  cantCategoriasSeleccionadas =  categorias.length;
+ // console.log("Cantidad de categorias seleccionadas: "+ cantCategoriasSeleccionadas);
+  //if ($('.fstQueryInput').focus == true && $('.fstQueryInput').value="") {
+    var ultimaCatSeleccionada;
+  //  totalDeCategorias=categorias[cantCategoriasSeleccionadas];
+  //  console.log("total de categorias seleccionadas: " + totalDeCategorias);
+    
+    for (var i =0; i <= categorias.length; i++) {
+        if (cantCategoriasSeleccionadas=i) {
+        ultimaCatSeleccionada= categorias[i-1];
+   //        console.log("la ultima categoria es:"+ ultimaCatSeleccionada);
+           
+        }
+        for (var j = 0; j < categorias.length; j++) {
+              if(ultimaCatSeleccionada == categorias[j]){
+     //           console.log("Es correcto");
+                $('fstChoiceRemove').click();
+              }
+           }
+        
+    }
+    //fstChoiceRemove la x q se tiene q cerrar
+    //fstChoiceItem itemSeleccionado
+    //data-value  es el valor a comparar para poder borrarlo 
+  }
+ //}
+
 
 /*PARA AGREGAR Y QUITAR INGREDIENTES*/
 $(document).ready(function(){
@@ -24,6 +60,7 @@ $(document).ready(function(){
         //Clear input field when add button is pressed
        // $('input').val('');
        document.getElementById("nuevoIngrediente").value = "";
+       document.getElementById("lblIngredientes").innerHTML = "";
         
     });
     //Checks off items as they are pressed
@@ -45,6 +82,8 @@ $(document).ready(function(){
    //     $('.done').remove('.done');
    // });
 });
+
+
 
 
 
@@ -80,7 +119,7 @@ window.mostrarVistaPrevia = function mostrarVistaPrevia() {
             //Si el tipo de archivo es válido lo muestra, 
             //sino muestra un mensaje 
             if (tipo !== 'image/jpeg' && tipo !== 'image/png' && tipo !== 'image/gif') {
-                jQuery('#vistaPrevia').attr('src', window.imagenVacia);
+                jQuery('#vistaPrevia').attr('src', "http://recipes-club.s3-website.us-east-2.amazonaws.com/img/imagen_no_disponible.jpeg");
                 alert('El formato de imagen no es válido: debe seleccionar una imagen JPG, PNG o GIF.');
             } else {
                 jQuery('#vistaPrevia').attr('src', origen.result);
@@ -160,6 +199,7 @@ function mostrar(opcion) {
     } else {
         document.getElementById("linkProcedimiento").style.display = "none";
         document.getElementById("procedimiento").style.display = "block";
+
     }
 }
 
@@ -192,6 +232,6 @@ if (t.match(regex)) {
     
     document.getElementById("lbllinkprocedimiento").innerHTML = '';
   } else {
-    document.getElementById("lbllinkprocedimiento").innerHTML = 'Formato incorrecto';
+    document.getElementById("lbllinkprocedimiento").innerHTML = 'Formato incorrecto debe ser www.pagina.com o  http://www.pagina.com';
 }
 }

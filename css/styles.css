@@ -81,7 +81,7 @@ form {
     width: 100%;
 }
 
-#lbllinkprocedimiento{
+#lbllinkprocedimiento,#lblIngredientes{
     color: red;
 }
 
