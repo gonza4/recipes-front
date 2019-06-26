@@ -10,6 +10,7 @@ function limpiarCampos() {
    document.getElementById("linkProcedimiento").innerHTML="";
    document.getElementById("linkProcedimiento").value = "";
    document.getElementById("lblIngredientes").innerHTML = "";
+    document.getElementById("lblCategorias").innerHTML = "";
 }
 
 function borrarCategoria(){
@@ -235,3 +236,28 @@ if (t.match(regex)) {
     document.getElementById("lbllinkprocedimiento").innerHTML = 'Formato incorrecto debe ser www.pagina.com o  http://www.pagina.com';
 }
 }
+
+
+  $('#cantPorciones').on('input', function(e) {
+   this.setCustomValidity('')
+     if ($(this).val() > 1) {
+     //  this.setCustomValidity('wooo~~~~')
+     }
+     // e.target.checkValidity()
+     this.reportValidity();
+   })
+
+  $('#totalCalorias').on('input', function(e) {
+   this.setCustomValidity('')
+    
+     this.reportValidity();
+   })
+
+   $('#linkProcedimiento').on('input', function(e) {
+   this.setCustomValidity('')
+     if ($(this).val() > 5) {
+     //  this.setCustomValidity('wooo~~~~')
+     }
+     // e.target.checkValidity()
+     this.reportValidity();
+   })

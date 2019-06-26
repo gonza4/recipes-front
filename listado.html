@@ -577,6 +577,7 @@
 												<h6>
 													Categorías *
 												</h6>
+												<label for=""id=lblCategorias></label>
 												<select id="select" ng-model="formCategorias"
 													class="multipleSelect form-control " multiple name="categorias"
 													placeholder="SELECCIONE CATEGORIAS" style="width: 100%;" required onchange="borrarCategoria()">
@@ -677,7 +678,10 @@
 															
 															<input type="text" ng-model="formLinkProcedimiento"
 																 class="form-control col-xs-2"
-																id="linkProcedimiento" name="url" required onchange="validarUrl(this)" >
+																id="linkProcedimiento" name="url" required 
+																pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$" title="formatos aceptados: https://www.google.com - 
+																http://www.google.com - 
+																www.google.com">
 															<label for=""id=lbllinkprocedimiento></label>
 														</fieldset>
 													</div>

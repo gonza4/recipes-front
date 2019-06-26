@@ -117,6 +117,7 @@ app.controller("myController", function ($scope, $http, $location) {
                     break;
                 }
                 $scope.totalPages = aux;
+                document.getElementById("entrada").value="";
                 $scope.procesando--;
 
             }, function fracaso(respose) {
@@ -213,6 +214,9 @@ app.controller("myController", function ($scope, $http, $location) {
             if ($scope.categorias[0].DietLabels.values.includes(element)) { dietLabels.push(element) }
                 if ($scope.categorias[1].HealthLabels.values.includes(element)) { healthLabels.push(element) }
             });
+
+        
+
 
         // para borrar el procedimiento q no esta visible
         var link = document.getElementById('linkProcedimiento');

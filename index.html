@@ -175,8 +175,11 @@
 															</textarea>
 															<label for=""id=lbltextprocedimiento></label>
 															<input type="text" ng-model="formLinkProcedimiento"
-																value="" class="form-control col-xs-2"
-																id="linkProcedimiento" name="url" required onchange="validarUrl(this);" required="" > 
+																 class="form-control col-xs-2"
+																id="linkProcedimiento" name="url" required 
+																pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$" title="formatos aceptados: https://www.google.com - 
+																http://www.google.com - 
+																www.google.com">
 																<label for=""id=lbllinkprocedimiento></label>
 														</fieldset>
 													</div>
