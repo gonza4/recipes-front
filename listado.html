@@ -576,8 +576,10 @@
 											<div class="col-12 mb-3 form-group">
 												<h6>
 													Categorías *
+													<label for=""id=lblCategorias></label>
 												</h6>
-												<label for=""id=lblCategorias></label>
+
+												
 												<select id="select" ng-model="formCategorias"
 													class="multipleSelect form-control " multiple name="categorias"
 													placeholder="SELECCIONE CATEGORIAS" style="width: 100%;" required onchange="borrarCategoria()">
@@ -617,14 +619,14 @@
 													<div class="col-6">
 														<label>Cantidad de porciones *</label> <input type="text"
 															ng-model="formPorciones" class="form-control"
-															id="cantPorciones" name="yield" required=""
+															id="cantPorciones" name="formPorciones" required=""
 															pattern="[1234567890]+" title="Solo números enteros">
 															<label for=""id=lblPorciones></label>
 													</div>
 													<div class="col-6">
 														<label>Total de calorías (Kcal) *</label> <input type="text"
 															ng-model="formCalorias" class="form-control"
-															id="totalCalorias" name="calories" required=""
+															id="totalCalorias" name="formCalorias" required
 															pattern="[1234567890]+" title="Solo números enteros">
 															<label for=""id=lblTotalCalorias></label>
 													</div>
@@ -641,6 +643,7 @@
 															<input id="nuevoIngrediente" type="text"
 																name="checkListItem" class="form-control"
 																placeholder="Nuevo ingrediente"  />
+																 
 															<div class="input-group-append">
 																<button type="button" id="add"
 																	class="btn btn-outline-info">Agregar</button>
@@ -671,14 +674,14 @@
 															
 															<textarea class="form-control"
 																ng-model="formTextProcedimiento" rows="5"
-																id="procedimiento" name="procedure" required >
+																id="procedimiento" name="formTextProcedimiento" required="" title="Este campo es requerido">
 															</textarea>
 
 															<label for=""id=lbltextprocedimiento></label>
 															
 															<input type="text" ng-model="formLinkProcedimiento"
 																 class="form-control col-xs-2"
-																id="linkProcedimiento" name="url" required 
+																id="linkProcedimiento" name="formLinkProcedimiento" required 
 																pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$" title="formatos aceptados: https://www.google.com - 
 																http://www.google.com - 
 																www.google.com">

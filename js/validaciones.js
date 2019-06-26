@@ -6,11 +6,12 @@ function limpiarCampos() {
     document.getElementById("formIngredientes").innerHTML="";
     $('#frm').trigger("reset");  
    document.getElementById("procedimiento").innerHTML="";
-   document.getElementById("procedimiento").value = " ";
+  // document.getElementById("procedimiento").value = " ";
    document.getElementById("linkProcedimiento").innerHTML="";
    document.getElementById("linkProcedimiento").value = "";
    document.getElementById("lblIngredientes").innerHTML = "";
-    document.getElementById("lblCategorias").innerHTML = "";
+   document.getElementById("lblCategorias").innerHTML = "";
+   document.getElementById("btnGuardar").disabled=false;
 }
 
 function borrarCategoria(){
@@ -188,7 +189,7 @@ function imgPorDefecto() {
     jQuery('#vistaPrevia').attr('src', "http://recipes-club.s3-website.us-east-2.amazonaws.com/img/imagen_no_disponible.jpeg");
     document.getElementById("linkProcedimiento").style.display = "block";
     document.getElementById("procedimiento").style.display = "none";
-    document.getElementById("procedimiento").value = " ";
+    //document.getElementById("procedimiento").value = " ";
     limpiarCampos();   
 
 }
@@ -240,10 +241,7 @@ if (t.match(regex)) {
 
   $('#cantPorciones').on('input', function(e) {
    this.setCustomValidity('')
-     if ($(this).val() > 1) {
-     //  this.setCustomValidity('wooo~~~~')
-     }
-     // e.target.checkValidity()
+     
      this.reportValidity();
    })
 
@@ -255,9 +253,6 @@ if (t.match(regex)) {
 
    $('#linkProcedimiento').on('input', function(e) {
    this.setCustomValidity('')
-     if ($(this).val() > 5) {
-     //  this.setCustomValidity('wooo~~~~')
-     }
-     // e.target.checkValidity()
-     this.reportValidity();
+    this.reportValidity();
    })
+
