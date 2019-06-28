@@ -174,11 +174,12 @@
 																		name="optradio" value="2"
 																		onchange="mostrar(this.value);"> Cargar
 																	procedimiento</label>
+
 															</div>
 															
-															<textarea class="form-control"
+															<textarea class="form-control" maxlength="1500"
 																ng-model="formTextProcedimiento" rows="5"
-																id="procedimiento" name="formTextProcedimiento" required="" title="Este campo es requerido">
+																id="procedimiento" name="formTextProcedimiento" required="" title="Limite de 1500 caracteres">
 															</textarea>
 
 															<label for=""id=lbltextprocedimiento></label>
@@ -214,11 +215,11 @@
 																	<tr class="nutri">
 																		<td>
 																			Vitamina K <input type="hidden" name="label"
-																				value="VITK1">
+																				value="VITK1" >
 																		</td>
 																		<td>																			
-																			<input type="text" class="form-control"
-																				id="VITK1" name="quantity">
+																			<input type="text" class="form-control infoNutri infoNutri"
+																				id="VITK1" name="quantity"  pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			µg <input type="hidden" name="unit"
@@ -231,8 +232,8 @@
 																				value="TOCPHA">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="">
+																			<input type="text" class="form-control infoNutri"
+																				id="" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			mg <input type="hidden" name="unit"
@@ -245,8 +246,8 @@
 																				value="VITD">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="VD">
+																			<input type="text" class="form-control infoNutri"
+																				id="VD" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			µg <input type="hidden" name="unit"
@@ -259,8 +260,8 @@
 																				name="label" value="VITB12">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="B12">
+																			<input type="text" class="form-control infoNutri"
+																				id="B12" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			µg <input type="hidden" name="unit"
@@ -273,8 +274,8 @@
 																				name="label" value="FOL">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="B9">
+																			<input type="text" class="form-control infoNutri"
+																				id="B9" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			µg <input type="hidden" name="unit"
@@ -287,8 +288,8 @@
 																				name="label" value="VITB6A">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="B6">
+																			<input type="text" class="form-control infoNutri"
+																				id="B6" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			mg <input type="hidden" name="unit"
@@ -301,8 +302,8 @@
 																				name="label" value="NIA">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="B3">
+																			<input type="text" class="form-control infoNutri"
+																				id="B3" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			mg <input type="hidden" name="unit"
@@ -315,8 +316,8 @@
 																				name="label" value="RIBF">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="B2">
+																			<input type="text" class="form-control infoNutri"
+																				id="B2" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			mg <input type="hidden" name="unit"
@@ -329,8 +330,8 @@
 																				name="label" value="THIA">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="B1">
+																			<input type="text" class="form-control infoNutri"
+																				id="B1" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			mg <input type="hidden" name="unit"
@@ -343,8 +344,8 @@
 																				value="VITC">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="VC">
+																			<input type="text" class="form-control infoNutri"
+																				id="VC" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			mg <input type="hidden" name="unit"
@@ -357,8 +358,8 @@
 																				value="VITA_RAE">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="VA">
+																			<input type="text" class="form-control infoNutri"
+																				id="VA" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			µg <input type="hidden" name="unit"
@@ -371,8 +372,8 @@
 																				value="P">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="P">
+																			<input type="text" class="form-control infoNutri"
+																				id="P" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			mg <input type="hidden" name="unit"
@@ -385,8 +386,8 @@
 																				value="ZN">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="Zn">
+																			<input type="text" class="form-control infoNutri"
+																				id="Zn" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			mg <input type="hidden" name="unit"
@@ -399,8 +400,8 @@
 																				value="FE">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="Fe">
+																			<input type="text" class="form-control infoNutri"
+																				id="Fe" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			mg <input type="hidden" name="unit"
@@ -413,8 +414,8 @@
 																				value="K">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="K">
+																			<input type="text" class="form-control infoNutri"
+																				id="K" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			mg <input type="hidden" name="unit"
@@ -441,8 +442,8 @@
 																				value="MG">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="MG">
+																			<input type="text" class="form-control infoNutri"
+																				id="MG" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			mg <input type="hidden" name="unit"
@@ -455,8 +456,8 @@
 																				value="CA">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="CA">
+																			<input type="text" class="form-control infoNutri"
+																				id="CA" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			mg <input type="hidden" name="unit"
@@ -469,8 +470,8 @@
 																				value="NA">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="NA">
+																			<input type="text" class="form-control infoNutri"
+																				id="NA" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			mg <input type="hidden" name="unit"
@@ -483,8 +484,8 @@
 																				value="PROCNT">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="PROCNT">
+																			<input type="text" class="form-control infoNutri"
+																				id="PROCNT" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			g <input type="hidden" name="unit"
@@ -497,8 +498,8 @@
 																				value="SUGAR">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="SUGAR">
+																			<input type="text" class="form-control infoNutri"
+																				id="SUGAR" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			g <input type="hidden" name="unit"
@@ -511,8 +512,8 @@
 																				value="FIBTG">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="FIBTG">
+																			<input type="text" class="form-control infoNutri"
+																				id="FIBTG" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			g <input type="hidden" name="unit"
@@ -525,8 +526,8 @@
 																				name="label" value="CHOCDF">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="CHOCDF">
+																			<input type="text" class="form-control infoNutri"
+																				id="CHOCDF" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			g <input type="hidden" name="unit"
@@ -539,8 +540,8 @@
 																				name="label" value="FAPU">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="FAPU">
+																			<input type="text" class="form-control infoNutri"
+																				id="FAPU" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			g <input type="hidden" name="unit"
@@ -553,8 +554,8 @@
 																				name="label" value="FAMS">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="FAMS">
+																			<input type="text" class="form-control infoNutri"
+																				id="FAMS" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			g <input type="hidden" name="unit"
@@ -567,8 +568,8 @@
 																				name="label" value="FATRN">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="FATRN">
+																			<input type="text" class="form-control infoNutri"
+																				id="FATRN" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			g <input type="hidden" name="unit"
@@ -581,8 +582,8 @@
 																				name="label" value="FASAT">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="FASAT">
+																			<input type="text" class="form-control infoNutri"
+																				id="FASAT" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			g <input type="hidden" name="unit"
@@ -595,8 +596,8 @@
 																				value="FAT">
 																		</td>
 																		<td>
-																			<input type="text" class="form-control"
-																				id="FAT">
+																			<input type="text" class="form-control infoNutri"
+																				id="FAT" pattern="[1234567890.]+" title="Solo números ">
 																		</td>
 																		<td>
 																			g <input type="hidden" name="unit"
@@ -611,7 +612,8 @@
 											</div>
 										</div>
 									</div>
-								</div><!-- Footer modal -->
+								</div>
+								<!-- Footer modal -->
 								<div class="modal fade" id="errorModal" role="dialog">
 								    <div class="modal-dialog">
 								      <div class="modal-content">
@@ -623,7 +625,7 @@
 								          <p id="errorMessage"></p>
 								        </div>
 								        <div class="modal-footer">
-								          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 								        </div>
 								      </div>
 								      

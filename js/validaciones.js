@@ -256,3 +256,8 @@ if (t.match(regex)) {
     this.reportValidity();
    })
 
+    $('.infoNutri').on('input', function(e) {
+   this.setCustomValidity('')
+    this.reportValidity();
+   })
+

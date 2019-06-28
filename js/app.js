@@ -19,7 +19,7 @@ app.controller("myController", function($scope, $http, $location) {
   $scope.recetas;
   $scope.receta;
   $scope.r = "";
-  $scope.url = "http://ec2-18-220-217-216.us-east-2.compute.amazonaws.com:5000";
+  $scope.url = "http://ec2-3-17-172-56.us-east-2.compute.amazonaws.com:5000";
   $scope.category = "HealthLabels";
   $scope.relation = "HEALTH_LABELS";
   $scope.value = "Vegana";
@@ -355,9 +355,7 @@ app.controller("myController", function($scope, $http, $location) {
     var image = $("#RecipesClub")[0].files[0];
     formData.append("RecipesClub", image);
 
-    console.log("2.1 hago el if y el return");
-
-    console.log("3 cargo el form data para guardar");
+     console.log("3 cargo el form data para guardar");
     for (key in recetaNva) {
       formData.append(key, angular.toJson(recetaNva[key]));
     }
@@ -380,6 +378,7 @@ app.controller("myController", function($scope, $http, $location) {
           $scope.formCalorias = "";
           $scope.formPorciones = "";
           $scope.formTextProcedimiento = "";
+          $scope.formTitulo = "";
 
           $("#errorMessage").html("Receta guardada con exito");
           $('#myModal').modal()

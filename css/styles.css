@@ -81,7 +81,7 @@ form {
     width: 100%;
 }
 
-#lbllinkprocedimiento,#lblIngredientes,#lblCategorias{
+#lbllinkprocedimiento,#lblIngredientes,#lblSelect{
     color: red;
 }
 
