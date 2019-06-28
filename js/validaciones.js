@@ -10,7 +10,7 @@ function limpiarCampos() {
    document.getElementById("linkProcedimiento").innerHTML="";
    document.getElementById("linkProcedimiento").value = "";
    document.getElementById("lblIngredientes").innerHTML = "";
-   document.getElementById("lblCategorias").innerHTML = "";
+   document.getElementById("lblSelect").innerHTML = "";
    document.getElementById("btnGuardar").disabled=false;
 }
 
