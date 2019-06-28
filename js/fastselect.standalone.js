@@ -1,4 +1,4 @@
-(function(factory) {
+(function (factory) {
 
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
@@ -8,7 +8,7 @@
         factory(jQuery);
     }
 
-}(function($) {
+}(function ($) {
 
     var $document = $(window.document),
         instanceNum = 0,
@@ -28,7 +28,7 @@
 
     $.extend(Fastsearch.prototype, {
 
-        init: function(inputElement, options) {
+        init: function (inputElement, options) {
 
             options = this.options = $.extend(true, {}, Fastsearch.defaults, options);
 
@@ -49,26 +49,26 @@
 
         },
 
-        namespaceEvents: function(events) {
+        namespaceEvents: function (events) {
 
             var eventNamespace = this.ens;
 
-            return events.replace(eventStringRE, function(match) {
+            return events.replace(eventStringRE, function (match) {
                 return match + eventNamespace;
             });
 
         },
 
-        events: function() {
+        events: function () {
 
             var self = this,
                 options = this.options;
 
-            this.$input.on(this.namespaceEvents('keyup focus click'), function(e) {
+            this.$input.on(this.namespaceEvents('keyup focus click'), function (e) {
 
                 keyMap[e.keyCode] !== 'enter' && self.handleTyping();
 
-            }).on(this.namespaceEvents('keydown'), function(e) {
+            }).on(this.namespaceEvents('keydown'), function (e) {
 
                 keyMap[e.keyCode] === 'enter' && options.preventSubmit && e.preventDefault();
 
@@ -84,18 +84,18 @@
 
             });
 
-            this.$el.on(this.namespaceEvents('click'), this.itemSelector, function(e) {
+            this.$el.on(this.namespaceEvents('click'), this.itemSelector, function (e) {
 
                 e.preventDefault();
                 self.handleItemSelect($(this));
 
             });
 
-            options.mouseEvents && this.$el.on(this.namespaceEvents('mouseleave'), this.itemSelector, function(e) {
+            options.mouseEvents && this.$el.on(this.namespaceEvents('mouseleave'), this.itemSelector, function (e) {
 
                 $(this).removeClass(options.focusedItemClass);
 
-            }).on(this.namespaceEvents('mouseenter'), this.itemSelector, function(e) {
+            }).on(this.namespaceEvents('mouseenter'), this.itemSelector, function (e) {
 
                 self.$resultItems.removeClass(options.focusedItemClass);
                 $(this).addClass(options.focusedItemClass);
@@ -104,7 +104,7 @@
 
         },
 
-        handleTyping: function() {
+        handleTyping: function () {
 
             var inputValue = $.trim(this.$input.val()),
                 self = this;
@@ -121,13 +121,13 @@
 
                 clearTimeout(this.keyupTimeout);
 
-                this.keyupTimeout = setTimeout(function() {
+                this.keyupTimeout = setTimeout(function () {
 
                     self.$el.addClass(self.options.loadingClass);
 
                     self.query = inputValue;
 
-                    self.getResults(function(data) {
+                    self.getResults(function (data) {
 
                         self.showResults(self.storeResponse(data).generateResults(data));
 
@@ -139,17 +139,17 @@
 
         },
 
-        getResults: function(callback) {
+        getResults: function (callback) {
 
             var self = this,
                 options = this.options,
                 formValues = this.$el.find('input, textarea, select').serializeArray();
 
             if (options.apiInputName) {
-                formValues.push({'name': options.apiInputName, 'value': this.$input.val()});
+                formValues.push({ 'name': options.apiInputName, 'value': this.$input.val() });
             }
 
-            $.get(options.url, formValues, function(data) {
+            $.get(options.url, formValues, function (data) {
 
                 callback(options.parseResponse ? options.parseResponse.call(self, data, self) : data);
 
@@ -157,7 +157,7 @@
 
         },
 
-        storeResponse: function(data) {
+        storeResponse: function (data) {
 
             this.responseData = data;
             this.hasResults = data.length !== 0;
@@ -166,7 +166,7 @@
 
         },
 
-        generateResults: function(data) {
+        generateResults: function (data) {
 
             var $allResults = $('<div>'),
                 options = this.options;
@@ -179,7 +179,7 @@
 
                 $allResults.html(
                     '<p class="' + options.noResultsClass + '">' +
-                        (typeof options.noResultsText === 'function' ? options.noResultsText.call(this) : options.noResultsText) +
+                    (typeof options.noResultsText === 'function' ? options.noResultsText.call(this) : options.noResultsText) +
                     '</p>'
                 );
 
@@ -201,19 +201,19 @@
 
         },
 
-        generateSimpleResults: function(data, $cont) {
+        generateSimpleResults: function (data, $cont) {
 
             var self = this;
 
             this.itemModels = data;
 
-            $.each(data, function(i, item) {
+            $.each(data, function (i, item) {
                 $cont.append(self.generateItem(item));
             });
 
         },
 
-        generateGroupedResults: function(data, $cont) {
+        generateGroupedResults: function (data, $cont) {
 
             var self = this,
                 options = this.options,
@@ -221,7 +221,7 @@
 
             this.itemModels = [];
 
-            $.each(data, function(i, groupData) {
+            $.each(data, function (i, groupData) {
 
                 var $group = $('<div class="' + options.groupClass + '">').appendTo($cont);
 
@@ -229,7 +229,7 @@
                     '<h3 class="' + options.groupTitleClass + '">' + groupData[format.groupCaption] + '</h3>'
                 );
 
-                $.each(groupData.items, function(i, item) {
+                $.each(groupData.items, function (i, item) {
 
                     self.itemModels.push(item);
                     $group.append(self.generateItem(item));
@@ -242,7 +242,7 @@
 
         },
 
-        generateItem: function(item) {
+        generateItem: function (item) {
 
             var options = this.options,
                 format = options.responseFormat,
@@ -258,7 +258,7 @@
 
         },
 
-        showResults: function($content) {
+        showResults: function ($content) {
 
             if (!$content && this.resultsOpened) {
                 return;
@@ -295,7 +295,7 @@
 
         },
 
-        checkDropdownPosition: function() {
+        checkDropdownPosition: function () {
 
             var flipOnBottom = this.options.flipOnBottom;
             var offset = typeof flipOnBottom === 'boolean' && flipOnBottom ? 400 : flipOnBottom;
@@ -305,7 +305,7 @@
 
         },
 
-        documentCancelEvents: function(setup, onCancel) {
+        documentCancelEvents: function (setup, onCancel) {
 
             var self = this;
 
@@ -317,7 +317,7 @@
 
             } else if (setup === 'on' && !this.closeEventsSetuped) {
 
-                $document.on(this.namespaceEvents('click keyup'), function(e) {
+                $document.on(this.namespaceEvents('click keyup'), function (e) {
 
                     if (keyMap[e.keyCode] === 'escape' || (!$(e.target).is(self.$el) && !$.contains(self.$el.get(0), e.target) && $.contains(document.documentElement, e.target))) {
 
@@ -333,7 +333,7 @@
 
         },
 
-        navigateItem: function(direction) {
+        navigateItem: function (direction) {
 
             var $currentItem = this.$resultItems.filter(this.focusedItemSelector),
                 maxPosition = this.$resultItems.length - 1;
@@ -357,19 +357,19 @@
 
         },
 
-        navigateDown: function() {
+        navigateDown: function () {
 
             this.navigateItem('down');
 
         },
 
-        navigateUp: function() {
+        navigateUp: function () {
 
             this.navigateItem('up');
 
         },
 
-        onEnter: function(e) {
+        onEnter: function (e) {
 
             var $currentItem = this.$resultItems.filter(this.focusedItemSelector);
 
@@ -380,7 +380,7 @@
 
         },
 
-        handleItemSelect: function($item) {
+        handleItemSelect: function ($item) {
 
             var selectOption = this.options.onItemSelect,
                 model = this.itemModels.length ? this.itemModels[this.$resultItems.index($item)] : {};
@@ -403,7 +403,7 @@
 
         },
 
-        fillInput: function(model) {
+        fillInput: function (model) {
 
             var options = this.options,
                 format = options.responseFormat;
@@ -433,7 +433,7 @@
 
         },
 
-        hideResults: function() {
+        hideResults: function () {
 
             if (this.resultsOpened) {
 
@@ -448,7 +448,7 @@
 
         },
 
-        clear: function() {
+        clear: function () {
 
             this.hideResults();
             this.$input.val('').trigger('change');
@@ -457,7 +457,7 @@
 
         },
 
-        destroy: function() {
+        destroy: function () {
 
             $document.off(this.ens);
 
@@ -482,9 +482,9 @@
 
     $.extend(Fastsearch, {
 
-        pickTo: function(dest, src, keys) {
+        pickTo: function (dest, src, keys) {
 
-            $.each(keys, function(i, key) {
+            $.each(keys, function (i, key) {
                 dest[key] = (src && src[key]) || dest[key];
             });
 
@@ -492,7 +492,7 @@
 
         },
 
-        selectorFromClass: function(classes) {
+        selectorFromClass: function (classes) {
 
             return '.' + classes.replace(/\s/g, '.');
 
@@ -548,8 +548,8 @@
 
     $.fastsearch = Fastsearch;
 
-    $.fn.fastsearch = function(options) {
-        return this.each(function() {
+    $.fn.fastsearch = function (options) {
+        return this.each(function () {
             if (!$.data(this, 'fastsearch')) {
                 $.data(this, 'fastsearch', new Fastsearch(this, options));
             }
@@ -560,7 +560,7 @@
 
 }));
 
-(function(root, factory) {
+(function (root, factory) {
 
     if (typeof define === 'function' && define.amd) {
         define(['jquery', 'fastsearch'], factory);
@@ -570,7 +570,7 @@
         factory(root.jQuery);
     }
 
-}(this, function($) {
+}(this, function ($) {
 
     var $document = $(document),
         instanceNum = 0,
@@ -586,22 +586,22 @@
 
     $.extend(Fastselect.prototype, {
 
-        init: function(inputElement, options) {
+        init: function (inputElement, options) {
 
             this.$input = $(inputElement);
 
             this.options = pickTo($.extend(true, {}, Fastselect.defaults, options, {
                 placeholder: this.$input.attr('placeholder')
             }), this.$input.data(), [
-                'url', 'loadOnce', 'apiParam', 'initialValue', 'userOptionAllowed'
-            ]);
+                    'url', 'loadOnce', 'apiParam', 'initialValue', 'userOptionAllowed'
+                ]);
 
             this.ens = '.fastselect' + (++instanceNum);
             this.hasCustomLoader = this.$input.is('input');
             this.isMultiple = !!this.$input.attr('multiple');
             this.userOptionAllowed = this.hasCustomLoader && this.isMultiple && this.options.userOptionAllowed;
 
-            this.optionsCollection = new OptionsCollection(pickTo({multipleValues: this.isMultiple}, this.options, [
+            this.optionsCollection = new OptionsCollection(pickTo({ multipleValues: this.isMultiple }, this.options, [
                 'url', 'loadOnce', 'parseData', 'matcher'
             ]));
 
@@ -611,11 +611,11 @@
 
         },
 
-        setupDomElements: function() {
+        setupDomElements: function () {
 
             this.$el = $('<div>').addClass(this.options.elementClass);
 
-            this[this.isMultiple ? 'setupMultipleElement' : 'setupSingleElement'](function() {
+            this[this.isMultiple ? 'setupMultipleElement' : 'setupSingleElement'](function () {
 
                 this.updateDomElements();
                 this.$controls.appendTo(this.$el);
@@ -626,7 +626,7 @@
 
         },
 
-        setupSingleElement: function(onDone) {
+        setupSingleElement: function (onDone) {
 
             var initialOptions = this.processInitialOptions(),
                 toggleBtnText = initialOptions && initialOptions.length ? initialOptions[0].text : this.options.placeholder;
@@ -640,7 +640,7 @@
 
         },
 
-        setupMultipleElement: function(onDone) {
+        setupMultipleElement: function (onDone) {
 
             var self = this,
                 options = self.options,
@@ -650,7 +650,7 @@
             this.$controls = $('<div>').addClass(options.controlsClass);
             this.$queryInput = $('<input>').addClass(options.queryInputClass).appendTo(this.$controls);
 
-            initialOptions && $.each(initialOptions, function(i, option) {
+            initialOptions && $.each(initialOptions, function (i, option) {
 
                 self.addChoiceItem(option);
 
@@ -660,14 +660,14 @@
 
         },
 
-        updateDomElements: function() {
+        updateDomElements: function () {
 
             this.$el.toggleClass(this.options.noneSelectedClass, !this.optionsCollection.hasSelectedValues());
             this.adjustQueryInputLayout();
 
         },
 
-        processInitialOptions: function() {
+        processInitialOptions: function () {
 
             var self = this, options;
 
@@ -679,7 +679,7 @@
 
             } else {
 
-                options = $.map(this.$input.find('option:selected').get(), function(option) {
+                options = $.map(this.$input.find('option:selected').get(), function (option) {
 
                     var $option = $(option);
 
@@ -692,7 +692,7 @@
 
             }
 
-            options && $.each(options, function(i, option) {
+            options && $.each(options, function (i, option) {
                 self.optionsCollection.setSelected(option);
             });
 
@@ -700,18 +700,18 @@
 
         },
 
-        addChoiceItem: function(optionModel) {
+        addChoiceItem: function (optionModel) {
 
             $(
                 '<div data-text="' + optionModel.text + '" data-value="' + optionModel.value + '" class="' + this.options.choiceItemClass + '">' +
-                    $('<div>').html(optionModel.text).text() +
-                    '<button class="' + this.options.choiceRemoveClass + '" type="button">×</button>' +
+                $('<div>').html(optionModel.text).text() +
+                '<button class="' + this.options.choiceRemoveClass + '" type="button">×</button>' +
                 '</div>'
             ).insertBefore(this.$queryInput);
 
         },
 
-        setupFastsearch: function() {
+        setupFastsearch: function () {
 
             var self = this,
                 options = this.options,
@@ -736,7 +736,7 @@
                     groupCaption: 'label'
                 },
 
-                onItemSelect: function($item, model, fastsearch) {
+                onItemSelect: function ($item, model, fastsearch) {
 
                     var maxItems = options.maxItems;
 
@@ -763,7 +763,7 @@
 
                 },
 
-                onItemCreate: function($item, model) {
+                onItemCreate: function ($item, model) {
 
                     model.$item = $item;
                     model.selected && $item.addClass(options.itemSelectedClass);
@@ -778,13 +778,13 @@
 
             }));
 
-            this.fastsearch.getResults = function() {
+            this.fastsearch.getResults = function () {
 
                 if (self.userOptionAllowed && self.$queryInput.val().length > 1) {
                     self.renderOptions();
                 }
 
-                self.getOptions(function() {
+                self.getOptions(function () {
                     self.renderOptions(true);
                 });
 
@@ -792,7 +792,7 @@
 
         },
 
-        getOptions: function(onDone) {
+        getOptions: function (onDone) {
 
             var options = this.options,
                 self = this,
@@ -817,41 +817,54 @@
 
         },
 
-        namespaceEvents: function(events) {
+        namespaceEvents: function (events) {
 
             return Fastsearch.prototype.namespaceEvents.call(this, events);
 
         },
 
-        setupEvents: function() {
+        setupEvents: function () {
 
             var self = this,
                 options = this.options;
 
             if (this.isMultiple) {
 
-                this.$el.on(this.namespaceEvents('click'), function(e) {
+                this.$el.on(this.namespaceEvents('click'), function (e) {
 
                     $(e.target).is(selectorFromClass(options.controlsClass)) && self.$queryInput.focus();
 
                 });
 
-                this.$queryInput.on(this.namespaceEvents('keyup'), function(e) {
+                this.$queryInput.on(this.namespaceEvents('keyup'), function (e) {
 
-                    // if (self.$queryInput.val().length === 0 && e.keyCode === 8) {
-                    //     console.log('TODO implement delete');
-                    // }
+                    if (self.$queryInput.val().length === 0 && e.keyCode === 8) {
+                        
+                        console.log('RETURN PRESIONADO');
+                        
+                        var $choice = $(e.currentTarget.previousElementSibling);
+
+                        //console.log(e);
+                        //console.log(options);
+                        //console.log($choice);
+
+                        self.removeSelectedOption({
+                            value: $choice.attr('data-value'),
+                            text: $choice.attr('data-text')
+                        }, $choice);
+
+                    }
 
                     self.adjustQueryInputLayout();
                     self.show();
 
-                }).on(this.namespaceEvents('focus'), function() {
+                }).on(this.namespaceEvents('focus'), function () {
 
                     self.show();
 
                 });
 
-                this.$el.on(this.namespaceEvents('click'), selectorFromClass(options.choiceRemoveClass), function(e) {
+                this.$el.on(this.namespaceEvents('click'), selectorFromClass(options.choiceRemoveClass), function (e) {
 
                     var $choice = $(e.currentTarget).closest(selectorFromClass(options.choiceItemClass));
 
@@ -864,7 +877,7 @@
 
             } else {
 
-                this.$el.on(this.namespaceEvents('click'), selectorFromClass(options.toggleButtonClass), function() {
+                this.$el.on(this.namespaceEvents('click'), selectorFromClass(options.toggleButtonClass), function () {
 
                     self.$el.hasClass(options.activeClass) ? self.hide() : self.show(true);
 
@@ -874,7 +887,7 @@
 
         },
 
-        adjustQueryInputLayout: function() {
+        adjustQueryInputLayout: function () {
 
             if (this.isMultiple && this.$queryInput) {
 
@@ -902,7 +915,7 @@
 
         },
 
-        show: function(focus) {
+        show: function (focus) {
 
             this.$el.addClass(this.options.activeClass);
             focus ? this.$queryInput.focus() : this.fastsearch.handleTyping();
@@ -911,7 +924,7 @@
 
         },
 
-        hide: function() {
+        hide: function () {
 
             this.$el.removeClass(this.options.activeClass);
 
@@ -919,13 +932,13 @@
 
         },
 
-        documentCancelEvents: function(setup) {
+        documentCancelEvents: function (setup) {
 
             Fastsearch.prototype.documentCancelEvents.call(this, setup, this.hide);
 
         },
 
-        setSelectedOption: function(option) {
+        setSelectedOption: function (option) {
 
             if (this.optionsCollection.isSelected(option.value)) {
                 return;
@@ -933,7 +946,7 @@
 
             this.optionsCollection.setSelected(option);
 
-            var selectedModel = this.optionsCollection.findWhere(function(model) {
+            var selectedModel = this.optionsCollection.findWhere(function (model) {
                 return model.value === option.value;
             });
 
@@ -954,7 +967,7 @@
 
         },
 
-        removeSelectedOption: function(option, $choiceItem) {
+        removeSelectedOption: function (option, $choiceItem) {
 
             var removedModel = this.optionsCollection.removeSelected(option);
 
@@ -975,7 +988,7 @@
 
         },
 
-        writeToInput: function() {
+        writeToInput: function () {
 
             var values = this.optionsCollection.getValues(),
                 delimiter = this.options.valueDelimiter,
@@ -985,7 +998,7 @@
 
         },
 
-        renderOptions: function(filter) {
+        renderOptions: function (filter) {
 
             var query = this.$queryInput.val();
             var data;
@@ -998,7 +1011,7 @@
 
             if (this.userOptionAllowed) {
 
-                var queryInList = this.optionsCollection.models && this.optionsCollection.findWhere(function(model) {
+                var queryInList = this.optionsCollection.models && this.optionsCollection.findWhere(function (model) {
                     return model.value === query;
                 });
 
@@ -1014,14 +1027,14 @@
 
         },
 
-        gleanSelectData: function($select) {
+        gleanSelectData: function ($select) {
 
             var self = this,
                 $elements = $select.children();
 
             if ($elements.eq(0).is('optgroup')) {
 
-                return $.map($elements.get(), function(optgroup) {
+                return $.map($elements.get(), function (optgroup) {
 
                     var $optgroup = $(optgroup);
 
@@ -1040,9 +1053,9 @@
 
         },
 
-        gleanOptionsData: function($options) {
+        gleanOptionsData: function ($options) {
 
-            return $.map($options.get(), function(option) {
+            return $.map($options.get(), function (option) {
                 var $option = $(option);
                 return {
                     text: $option.text(),
@@ -1053,7 +1066,7 @@
 
         },
 
-        destroy: function() {
+        destroy: function () {
 
             $document.off(this.ens);
             this.fastsearch.destroy();
@@ -1079,24 +1092,24 @@
             url: null,
             parseData: null,
             multipleValues: false,
-            matcher: function(text, query) {
+            matcher: function (text, query) {
 
                 return text.toLowerCase().indexOf(query.toLowerCase()) > -1;
 
             }
         },
 
-        init: function(options) {
+        init: function (options) {
 
             this.options = $.extend({}, this.defaults, options);
             this.selectedValues = {};
 
         },
 
-        fetch: function(fetchParams, onDone) {
+        fetch: function (fetchParams, onDone) {
 
             var self = this,
-                afterFetch = function() {
+                afterFetch = function () {
                     self.applySelectedValues(onDone);
                 };
 
@@ -1111,16 +1124,16 @@
 
         },
 
-        reset: function(models) {
+        reset: function (models) {
 
             this.models = this.options.parseData ? this.options.parseData(models) : models;
             this.applySelectedValues();
 
         },
 
-        applySelectedValues: function(onDone) {
+        applySelectedValues: function (onDone) {
 
-            this.each(function(option) {
+            this.each(function (option) {
 
                 if (this.options.multipleValues && option.selected) {
 
@@ -1138,12 +1151,12 @@
 
         },
 
-        load: function(params, onDone) {
+        load: function (params, onDone) {
 
             var self = this,
                 options = this.options;
 
-            return $.get(options.url, params, function(data) {
+            return $.get(options.url, params, function (data) {
 
                 self.models = options.parseData ? options.parseData(data) : data;
 
@@ -1153,7 +1166,7 @@
 
         },
 
-        setSelected: function(option) {
+        setSelected: function (option) {
 
             if (!this.options.multipleValues) {
                 this.selectedValues = {};
@@ -1164,9 +1177,9 @@
 
         },
 
-        removeSelected: function(option) {
+        removeSelected: function (option) {
 
-            var model = this.findWhere(function(model) {
+            var model = this.findWhere(function (model) {
                 return option.value === model.value;
             });
 
@@ -1178,25 +1191,25 @@
 
         },
 
-        isSelected: function(value) {
+        isSelected: function (value) {
 
             return !!this.selectedValues[value];
 
         },
 
-        hasSelectedValues: function() {
+        hasSelectedValues: function () {
 
             return this.getValues().length > 0;
 
         },
 
-        each: function(iterator) {
+        each: function (iterator) {
 
             var self = this;
 
-            this.models && $.each(this.models, function(i, option) {
+            this.models && $.each(this.models, function (i, option) {
 
-                option.items ? $.each(option.items, function(i, nestedOption) {
+                option.items ? $.each(option.items, function (i, nestedOption) {
                     iterator.call(self, nestedOption);
                 }) : iterator.call(self, option);
 
@@ -1204,11 +1217,11 @@
 
         },
 
-        where: function(predicate) {
+        where: function (predicate) {
 
             var temp = [];
 
-            this.each(function(option) {
+            this.each(function (option) {
                 predicate(option) && temp.push(option);
             });
 
@@ -1216,7 +1229,7 @@
 
         },
 
-        findWhere: function(predicate) {
+        findWhere: function (predicate) {
 
             var models = this.where(predicate);
 
@@ -1224,7 +1237,7 @@
 
         },
 
-        filter: function(query) {
+        filter: function (query) {
 
             var self = this;
 
@@ -1236,7 +1249,7 @@
                 return this.models;
             }
 
-            return $.map(this.models, function(item) {
+            return $.map(this.models, function (item) {
 
                 if (item.items) {
 
@@ -1255,9 +1268,9 @@
 
         },
 
-        getValues: function() {
+        getValues: function () {
 
-            return $.map(this.selectedValues, function(prop, key) {
+            return $.map(this.selectedValues, function (prop, key) {
                 return prop ? key : null;
             });
 
@@ -1322,8 +1335,8 @@
     $.Fastselect = Fastselect;
     $.Fastselect.OptionsCollection = OptionsCollection;
 
-    $.fn.fastselect = function(options) {
-        return this.each(function() {
+    $.fn.fastselect = function (options) {
+        return this.each(function () {
             if (!$.data(this, 'fastselect')) {
                 $.data(this, 'fastselect', new Fastselect(this, options));
             }
