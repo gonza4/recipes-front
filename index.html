@@ -48,21 +48,24 @@
 
 <body class="ng-cloak" class="body body-lighten bodyGral" ng-app="myApp" ng-controller="myController">
 
-<div class="container-fluid">
+<!-- MODAL NUEVA RECETA -->
+			<div class="container-fluid">
 
 				<!-- MODAL -->
-				<div class="modal  fade fluid" id="modalNuevaReceta" tabindex="-1" role="dialog"
-					aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
-					<div class="modal-dialog modal-xl" id="MNR"role="document">
-						<div class="modal-content">
+				<div  class="modal  fade fluid" id="modalNuevaReceta" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" >
+
+					<div class="modal-dialog modal-xl" role="document">
+						<div class="modal-content" id="modalNR">
 							<!-- Header modal -->
 							<div class="modal-header">
 								<h3 id="exampleModalLabel" class="text-justify pt-3">
 									Nueva Receta
 								</h3><button type="button" class="close" data-dismiss="modal" aria-label="Close"
 									onclick="limpiarCampos()"><span aria-hidden="true">×</span></button>
-							</div><!-- Body modal -->
-							<form id="frm" class="card card-sm">
+							</div>
+							<!-- Body modal -->
+							<form id="frm" class="card card-sm"  >
 								<div class="form-group">
 									<div class="modal-body">
 										<div class="row">
@@ -77,22 +80,26 @@
 											<div class="col-12 mb-3 form-group">
 												<h6>
 													Categorías *
+													<label for=""id=lblCategorias></label>
 												</h6>
+
 												
 												<select id="select" ng-model="formCategorias"
 													class="multipleSelect form-control " multiple name="categorias"
-													placeholder="SELECCIONE CATEGORIAS" style="width: 100%;" required>
+													placeholder="SELECCIONE CATEGORIAS" style="width: 100%;" required onchange="borrarCategoria()">
+													
 													<optgroup ng-repeat="c in categorias">
-														<option s ng-repeat="cv in c.HealthLabels.values " value="{{cv}}">
+														<option ng-repeat="cv in c.HealthLabels.values " value="{{cv}}">
 															{{cv}}</option>
 														<option ng-repeat="cv in c.DietLabels.values" value="{{cv}}">
-															{{cv}}</option>
-
+															{{cv}}</option>													
 													</optgroup>
+												
 												</select> <label for=""id=lblSelect></label>
 												<script>
 													$('.multipleSelect').fastselect();
 												</script>
+											
 												<br>
 											</div>
 											<!--IMAGEN-->
@@ -116,21 +123,21 @@
 													<div class="col-6">
 														<label>Cantidad de porciones *</label> <input type="text"
 															ng-model="formPorciones" class="form-control"
-															id="cantPorciones" name="yield" required=""
+															id="cantPorciones" name="formPorciones" required=""
 															pattern="[1234567890]+" title="Solo números enteros">
 															<label for=""id=lblPorciones></label>
 													</div>
 													<div class="col-6">
 														<label>Total de calorías (Kcal) *</label> <input type="text"
 															ng-model="formCalorias" class="form-control"
-															id="totalCalorias" name="calories" required=""
+															id="totalCalorias" name="formCalorias" required
 															pattern="[1234567890]+" title="Solo números enteros">
 															<label for=""id=lblTotalCalorias></label>
 													</div>
 												</div>
 												<div class="row justify-content-center">
 													<h4 class="mt-3">
-														Ingredientes
+														Ingredientes * 
 													</h4>
 													<div class="container mb-3 mt-1"></div>
 													<div class="col-12 ">
@@ -139,12 +146,11 @@
 
 															<input id="nuevoIngrediente" type="text"
 																name="checkListItem" class="form-control"
-																placeholder="Nuevo ingrediente" />
+																placeholder="Nuevo ingrediente"  />
+																 
 															<div class="input-group-append">
 																<button type="button" id="add"
 																	class="btn btn-outline-info">Agregar</button>
-
-
 															</div>
 
 														</div><label for="" id="lblIngredientes"></label>
@@ -169,18 +175,21 @@
 																		onchange="mostrar(this.value);"> Cargar
 																	procedimiento</label>
 															</div>
+															
 															<textarea class="form-control"
 																ng-model="formTextProcedimiento" rows="5"
-																id="procedimiento" name="procedure" required="" >
+																id="procedimiento" name="formTextProcedimiento" required="" title="Este campo es requerido">
 															</textarea>
+
 															<label for=""id=lbltextprocedimiento></label>
+															
 															<input type="text" ng-model="formLinkProcedimiento"
 																 class="form-control col-xs-2"
-																id="linkProcedimiento" name="url" required 
+																id="linkProcedimiento" name="formLinkProcedimiento" required 
 																pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$" title="formatos aceptados: https://www.google.com - 
 																http://www.google.com - 
 																www.google.com">
-																<label for=""id=lbllinkprocedimiento></label>
+															<label for=""id=lbllinkprocedimiento></label>
 														</fieldset>
 													</div>
 												</div>
@@ -603,10 +612,27 @@
 										</div>
 									</div>
 								</div><!-- Footer modal -->
+								<div class="modal fade" id="errorModal" role="dialog">
+								    <div class="modal-dialog">
+								      <div class="modal-content">
+								        <div class="modal-header">
+								          <h4 class="modal-title">Resultado</h4>
+								          <button type="button" class="close" data-dismiss="modal">&times;</button>
+								        </div>
+								        <div class="modal-body">
+								          <p id="errorMessage"></p>
+								        </div>
+								        <div class="modal-footer">
+								          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								        </div>
+								      </div>
+								      
+								    </div>
+								  </div>
 								<div class="modal-footer">
-									<button id="btnGuardar" class="btn btn-md btn-primary content-center"  type="submit"
-										ng-click="guardarReceta(formTitulo, formCategorias, formImagen, formPorciones, formCalorias, formTextProcedimiento, formLinkProcedimiento)" >Guardar</button>
-									<button type="button" class="btn btn-secondary" data-dismiss="modal"
+									<button id="btnGuardar" class="btn btn-md btn-primary content-center"
+										ng-click="guardarReceta(formTitulo, formCategorias, formImagen, formPorciones, formCalorias, formTextProcedimiento, formLinkProcedimiento)">Guardar</button>
+									<button id="btnCerrar" type="button" class="btn btn-secondary cerrar" data-dismiss="modal"
 										onclick="limpiarCampos()">Cerrar</button>
 								</div>
 
